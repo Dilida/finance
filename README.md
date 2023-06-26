@@ -38,15 +38,11 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/achingachris/react-router-bootstrap-starter.git
-   ```
-2. Install NPM packages
+1.Install NPM packages
    ```sh
    npm install
    ```
-3. Running the project
+2.Running the project
    ```sh
    npm start
    ```

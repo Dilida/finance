@@ -1,6 +1,6 @@
-import { Container } from 'react-bootstrap'
+import {Container} from 'react-bootstrap'
 
-const Header = ({ head, description }) => {
+const Header = ({head, description}) => {
   return (
     <Container>
       <div className='starter-template text-center mt-5'>
