@@ -118,7 +118,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="form-group mt-3">
-                  <label htmlFor="name">Subject</label>
+                  <label htmlFor="name">主題</label>
                   <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" required />
                 </div>
                 <div className="form-group mt-3">
