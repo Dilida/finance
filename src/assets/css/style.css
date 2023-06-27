@@ -1186,9 +1186,9 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Footer
+# Grade
 --------------------------------------------------------------*/
-#footer {
+.grade {
   background: #fff;
   padding: 0 0 30px 0;
   color: #212529;
@@ -1196,14 +1196,15 @@ section {
   background: #fef8f5;
 }
 
-#footer .footer-newsletter {
+
+.grade .footer-newsletter {
   padding: 50px 0;
   background: #fef8f5;
   text-align: center;
   font-size: 15px;
 }
 
-#footer .footer-newsletter h4 {
+.grade .footer-newsletter h4 {
   font-size: 24px;
   margin: 0 0 20px 0;
   padding: 0;
@@ -1212,7 +1213,7 @@ section {
   color: #4e4039;
 }
 
-#footer .footer-newsletter form {
+.grade .footer-newsletter form {
   margin-top: 30px;
   background: #fff;
   padding: 6px 10px;
@@ -1222,13 +1223,13 @@ section {
   text-align: left;
 }
 
-#footer .footer-newsletter form input[type=email] {
+.grade .footer-newsletter form input[type=email] {
   border: 0;
   padding: 4px 4px;
   width: calc(100% - 100px);
 }
 
-#footer .footer-newsletter form input[type=submit] {
+.grade .footer-newsletter form input[type=submit] {
   position: absolute;
   top: 0;
   right: 0;
@@ -1244,9 +1245,30 @@ section {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-#footer .footer-newsletter form input[type=submit]:hover {
+.grade .footer-newsletter form input[type=submit]:hover {
   background: #c54811;
 }
+
+.grade i {
+  font-size: 18px;
+  color: #f39e7a;
+}
+
+.grade .form-check{
+  margin-right: 5px;
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  background: #fff;
+  padding: 0 0 30px 0;
+  color: #212529;
+  font-size: 14px;
+  background: #fef8f5;
+}
+
 
 #footer .footer-top {
   padding: 60px 0 30px 0;

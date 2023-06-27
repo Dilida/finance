@@ -8,7 +8,7 @@ const Menu = () => {
         <div className="container d-flex align-items-center justify-content-between">
 
           <div className="logo">
-            <h1 className="text-light"><a href="index.html"><span>e化金檢知識網</span></a></h1>
+            <h1 className="text-light"><a href="/"><span><strong>e</strong> 化金檢知識網</span></a></h1>
           </div>
 
           <nav id="navbar" className="navbar">
