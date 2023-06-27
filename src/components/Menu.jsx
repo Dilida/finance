@@ -34,7 +34,7 @@ const Menu = () => {
                 </ul>
               </li>
               <li><a className="nav-link scrollto" href="#contact">意見區</a></li>
-              <li><a className="getstarted scrollto" href="#about">進入課程</a></li>
+              <li><a className="getstarted scrollto" href="#services">進入課程</a></li>
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>
           </nav>

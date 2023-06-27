@@ -34,6 +34,10 @@ h6,
   font-family: "Raleway", sans-serif;
 }
 
+.note{
+  color:#ff0066;
+}
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -352,10 +356,9 @@ h6,
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 70vh;
-  background: #fef8f5;
+  height: 50vh;
   border-bottom: 2px solid #fcebe3;
-  margin: 72px 0 -72px 0;
+  margin: 20px 0 -20px 0;
 }
 
 #hero h1 {
@@ -372,7 +375,7 @@ h6,
   font-size: 24px;
 }
 
-#hero .btn-get-started {
+.btn-get-started {
   font-family: "Raleway", sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -381,13 +384,13 @@ h6,
   padding: 8px 28px;
   border-radius: 3px;
   transition: 0.5s;
-  margin-top: 30px;
   color: #fff;
   background: #eb5d1e;
 }
 
-#hero .btn-get-started:hover {
+.btn-get-started:hover {
   background: #ef7f4d;
+  cursor: pointer;
 }
 
 #hero .animated {
@@ -588,7 +591,7 @@ section {
 # Services
 --------------------------------------------------------------*/
 .services .icon-box {
-  padding: 30px;
+  padding: 50px;
   position: relative;
   overflow: hidden;
   margin: 0 0 40px 0;
@@ -606,7 +609,7 @@ section {
 }
 
 .services .icon i {
-  font-size: 48px;
+  font-size: 60px;
   line-height: 1;
   margin-bottom: 15px;
   color: #ef7f4d;
