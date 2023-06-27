@@ -109,7 +109,7 @@ const Home = () => {
               <form action="forms/contact.php" method="post" role="form" className="php-email-form">
                 <div className="row">
                   <div className="form-group col-md-6">
-                    <label htmlFor="name">Your Name</label>
+                    <label htmlFor="name">姓名</label>
                     <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" required />
                   </div>
                   <div className="form-group col-md-6 mt-3 mt-md-0">
