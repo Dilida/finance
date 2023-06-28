@@ -1,29 +1,3 @@
-<a name="readme-top"></a>
-
-<br />
-
-<!-- Page Header -->
-<div align="center">
-  <a href="https://github.com/achingachris/react-router-bootstrap-starter">
-    <img src="./screenshots/react-bootstrap-starter.png" alt="Logo" width="200" height="200">
-  </a>
-
-  <h1 align="center">React-Router-Boostrap Starter Template</h1>
-
-  <p align="center">
-    React Bootstrap Starter is a starter template for react and bootstrap created by Chris Achinga. This theme uses `Create React App`, `react-bootstrap` and `gh-pages`.
-    <br />
-    <a href="https://github.com/achingachris/react-router-bootstrap-starter"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://react-bootstrap-temp.netlify.app/">View Demo</a>
-    ·
-    <a href="https://github.com/achingachris/react-router-bootstrap-starter/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/achingachris/react-router-bootstrap-starter/issues">Request Feature</a>
-  </p>
-</div>
-
 ## Getting Started
 
 This is how you set up the project locally.
