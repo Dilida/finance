@@ -113,24 +113,130 @@ const Home = () => {
           </div>
           <div className="row">
             <div className="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-              <form method="post" role="form" className="php-email-form">
-                <div className="row">
-                  <div className="form-group col-md-6">
-                    <label htmlFor="name">Your Name</label>
-                    <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" required />
-                  </div>
-                  <div className="form-group col-md-6 mt-3 mt-md-0">
-                    <label htmlFor="name">Your Email</label>
-                    <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" required />
-                  </div>
-                </div>
+              <form role="form" className="php-email-form">
                 <div className="form-group mt-3">
-                  <label htmlFor="name">Subject</label>
-                  <input type="text" className="form-control" name="subject" id="subject" placeholder="Subject" required />
+                  <label htmlFor="name" className="suggest"><i className="bi bi-geo-alt"></i><h4>架構版面評分</h4></label>
+                    <hr/>
+                    <form className="row gy-2 gx-6">
+                      <div className="form-check col-2">
+                        平台架構
+                      </div>
+                      <div className="form-check col-2">
+                        <lable htmlFor="platform1">五顆星<input className="form-check-input" type="radio" name="platform" id="platform1"/></lable>
+                        <i className="bx bxs-star"></i>
+                        <i className="bx bxs-star"></i>
+                        <i className="bx bxs-star"></i>
+                        <i className="bx bxs-star"></i>
+                        <i className="bx bxs-star"></i>
+                      </div>
+                      <div className="form-check col-2">
+                        <lable htmlFor="platform1">四顆星<input className="form-check-input" type="radio"
+                                                                name="platform" id="platform1"/></lable>
+                        <i className="bx bxs-star"></i>
+                        <i className="bx bxs-star"></i>
+                        <i className="bx bxs-star"></i>
+                        <i className="bx bxs-star"></i>
+                      </div>
+                      <div className="form-check col-2">
+                        <lable htmlFor="platform1">三顆星<input className="form-check-input" type="radio"
+                                                                name="platform" id="platform1"/></lable>
+                        <i className="bx bxs-star"></i>
+                        <i className="bx bxs-star"></i>
+                        <i className="bx bxs-star"></i>
+                      </div>
+                      <div className="form-check col-2">
+                        <lable htmlFor="platform1">兩顆星<input className="form-check-input" type="radio"
+                                                                name="platform" id="platform1"/></lable>
+                        <i className="bx bxs-star"></i>
+                        <i className="bx bxs-star"></i>
+                      </div>
+                      <div className="form-check col-auto">
+                        <lable htmlFor="platform1">一顆星<input className="form-check-input" type="radio"
+                                                                name="platform" id="platform1"/></lable>
+                        <i className="bx bxs-star"></i>
+                      </div>
+                    </form>
+                    <hr/>
+                    <form className="row gy-2 gx-6">
+                    <div className="form-check col-2">
+                      版面設計
+                    </div>
+                    <div className="form-check col-2">
+                      <lable htmlFor="platform2">五顆星<input className="form-check-input" type="radio" name="platform2"/></lable>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                    </div>
+                    <div className="form-check col-2">
+                      <lable htmlFor="platform2">四顆星<input className="form-check-input" type="radio" name="platform2" /></lable>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                    </div>
+                    <div className="form-check col-2">
+                      <lable htmlFor="platform2">三顆星<input className="form-check-input" type="radio" name="platform2" /></lable>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                    </div>
+                    <div className="form-check col-2">
+                      <lable htmlFor="platform2">兩顆星<input className="form-check-input" type="radio" name="platform2" /></lable>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                    </div>
+                    <div className="form-check col-auto">
+                      <lable htmlFor="platform2">一顆星<input className="form-check-input" type="radio" name="platform2" /></lable>
+                      <i className="bx bxs-star"></i>
+                    </div>
+                  </form>
+                    <hr/>
+                  <form className="row gy-2 gx-6">
+                    <div className="form-check col-2">
+                      使用便利性
+                    </div>
+                    <div className="form-check col-2">
+                      <lable htmlFor="platform3">五顆星<input className="form-check-input" type="radio" name="platform3"/></lable>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                    </div>
+                    <div className="form-check col-2">
+                      <lable htmlFor="platform3">四顆星<input className="form-check-input" type="radio" name="platform3" /></lable>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                    </div>
+                    <div className="form-check col-2">
+                      <lable htmlFor="platform3">三顆星<input className="form-check-input" type="radio" name="platform3" /></lable>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                    </div>
+                    <div className="form-check col-2">
+                      <lable htmlFor="platform3">兩顆星<input className="form-check-input" type="radio" name="platform3" /></lable>
+                      <i className="bx bxs-star"></i>
+                      <i className="bx bxs-star"></i>
+                    </div>
+                    <div className="form-check col-auto">
+                      <lable htmlFor="platform3">一顆星<input className="form-check-input" type="radio" name="platform3" /></lable>
+                      <i className="bx bxs-star"></i>
+                    </div>
+                  </form>
                 </div>
-                <div className="form-group mt-3">
-                  <label htmlFor="name">Message</label>
-                  <textarea className="form-control" name="message" rows="10" required></textarea>
+
+                <div className="form-group mt-5">
+                  <label htmlFor="name" className="suggest"><i className="bi bi-geo-alt"></i><h4>架構版面建議事項</h4></label>
+                  <textarea className="form-control" name="message" rows="3" required></textarea>
+                </div>
+                <div className="form-group mt-5">
+                  <label htmlFor="name" className="suggest"><i className="bi bi-geo-alt"></i><h4>其他建議事項</h4></label>
+                  <textarea className="form-control" name="message" rows="3" required></textarea>
                 </div>
                 <div className="my-3">
                   <div className="loading">Loading</div>
@@ -138,7 +244,7 @@ const Home = () => {
                   <div className="sent-message">Your message has been sent. Thank you!</div>
                 </div>
                 <div className="text-center">
-                  <button type="submit">Send Message</button>
+                  <button type="submit">送出評分</button>
                 </div>
               </form>
             </div>

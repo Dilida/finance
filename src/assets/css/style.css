@@ -102,7 +102,7 @@ h6,
 
 #header .logo h1 a,
 #header .logo h1 a:hover {
-  color: #7a6960;
+  color: #607a69;
   text-decoration: none;
 }
 
@@ -247,7 +247,7 @@ h6,
 * Mobile Navigation
 */
 .mobile-nav-toggle {
-  color: #7a6960;
+  color: #607a69;
   font-size: 28px;
   cursor: pointer;
   display: none;
@@ -303,7 +303,7 @@ h6,
 .navbar-mobile a:focus {
   padding: 10px 20px;
   font-size: 15px;
-  color: #7a6960;
+  color: #607a69;
 }
 
 .navbar-mobile a:hover,
@@ -370,7 +370,7 @@ h6,
 }
 
 #hero h2 {
-  color: #a08f86;
+  color: #607a69;
   margin: 15px 0 ;
   font-size: 24px;
 }
@@ -560,7 +560,7 @@ section {
   font-size: 20px;
   font-weight: 700;
   margin-top: 5px;
-  color: #7a6960;
+  color: #607a69;
 }
 
 .about i {
@@ -1029,13 +1029,13 @@ section {
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
 }
 
-.contact .info i {
+.contact .suggest > i {
   font-size: 20px;
   color: #5cb874;
   float: left;
   width: 44px;
   height: 44px;
-  background: #fdf1ec;
+  background: #ecfdf0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1043,12 +1043,12 @@ section {
   transition: all 0.3s ease-in-out;
 }
 
-.contact .info h4 {
-  padding: 0 0 0 60px;
+.contact h4 {
+  padding: 0 0 0 50px;
   font-size: 22px;
   font-weight: 600;
-  margin-bottom: 5px;
-  color: #7a6960;
+  margin-top: 10px;
+  color: #607a69;
 }
 
 .contact .info p {
@@ -1147,16 +1147,13 @@ section {
   animation: animate-loading 1s linear infinite;
 }
 
-.contact .php-email-form input,
+
 .contact .php-email-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
 }
 
-.contact .php-email-form input {
-  height: 44px;
-}
 
 .contact .php-email-form textarea {
   padding: 10px 12px;
