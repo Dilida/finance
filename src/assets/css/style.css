@@ -356,7 +356,7 @@ h6,
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 50vh;
+  height: 30vh;
   border-bottom: 2px solid #fcebe3;
   margin: 20px 0 -20px 0;
 }
@@ -371,7 +371,7 @@ h6,
 
 #hero h2 {
   color: #a08f86;
-  margin: 15px 0 0 0;
+  margin: 15px 0 ;
   font-size: 24px;
 }
 
@@ -389,7 +389,7 @@ h6,
 }
 
 .btn-get-started:hover {
-  background: #5cb874;
+  background: #178133;
   cursor: pointer;
 }
 

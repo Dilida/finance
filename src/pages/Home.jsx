@@ -1,6 +1,7 @@
-import aboutImg from '../assets/img/about-img.svg';
-import mapImg from '../assets/img/achievement.svg';
-
+import aboutImg from '../assets/img/about-img.png';
+import map1 from '../assets/img/c1.png';
+import map2 from '../assets/img/c2.png';
+import map3 from '../assets/img/c3.png';
 const Home = () => {
   return (
     <main id="main">
@@ -41,13 +42,19 @@ const Home = () => {
       </section>
       <section id="hero" className="d-flex align-items-center">
         <div className="container">
+          <div className="section-title">
+            <p>金檢課程學習地圖</p>
+            <h2>本園區提供15站探索之旅，請循序漸進體驗</h2>
+          </div>
           <div className="row gy-4">
-            <div className="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-              <h1>金檢課程學習地圖</h1>
-              <h2>本園區提供15站探索之旅，請循序漸進體驗</h2>
+            <div className="col-lg-4 order-1 order-lg-2 hero-img">
+              <img src={map1} className="img-fluid animated" alt="學習地圖" />
             </div>
-            <div className="col-lg-6 order-1 order-lg-2 hero-img">
-              <img src={mapImg} className="img-fluid animated" alt="學習地圖" />
+            <div className="col-lg-4 order-1 order-lg-2 hero-img">
+              <img src={map2} className="img-fluid animated" alt="學習地圖" />
+            </div>
+            <div className="col-lg-4 order-1 order-lg-2 hero-img">
+              <img src={map3} className="img-fluid animated" alt="學習地圖" />
             </div>
           </div>
         </div>
@@ -106,7 +113,7 @@ const Home = () => {
           </div>
           <div className="row">
             <div className="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-              <form action="forms/contact.php" method="post" role="form" className="php-email-form">
+              <form method="post" role="form" className="php-email-form">
                 <div className="row">
                   <div className="form-group col-md-6">
                     <label htmlFor="name">Your Name</label>
