@@ -471,12 +471,12 @@ section {
 }
 
 .section-title h2 {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   padding-bottom: 0;
   line-height: 1px;
   margin-bottom: 15px;
-  color: #c2b7b1;
+  color: #607a69;
 }
 
 .section-title p {
@@ -1171,6 +1171,20 @@ section {
 .contact .php-email-form button[type=submit]:hover {
   background: #178133;
 }
+
+.list-suggest i{
+  font-size: 18px;
+  color: #5cb874;
+}
+
+.satisfy{
+
+}
+.satisfy i{
+  font-size: 24px;
+  color: #5cb874;
+}
+
 
 @keyframes animate-loading {
   0% {
