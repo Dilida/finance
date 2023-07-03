@@ -3,6 +3,7 @@ import {Container} from "react-bootstrap";
 import DropClassMenu from "./DropClassMenu";
 import {userLoginKey} from "../config";
 
+
 const Menu = () => {
   const [mobileMenu, setMobileMenu] = useState([])
   const [dropDown, setDropDown] = useState([])
@@ -30,6 +31,14 @@ const Menu = () => {
     setDropDown2(!dropDown2)
   }
 
+  const scrollHandle = (e) => {
+    e.preventDefault();
+    const id = e.target.id;
+    const position = document.getElementById(id.slice(0, id.length - 1)); //removing extra last - (dash)
+    window.location.href = "/#" + id.slice(0, id.length - 1); // changing the url
+    position && position.scrollIntoView({ behavior: "smooth", block: "start" }) //scrolling the page
+  }
+
   return (
     <Container>
       <header id="header" className="fixed-top d-flex align-items-center">
@@ -41,16 +50,16 @@ const Menu = () => {
 
           <nav id="navbar" className={mobileMenu ? "navbar" : "navbar navbar-mobile"}>
             <ul>
-              <li><a className="nav-link scrollto active" href="#about">金檢學堂</a></li>
-              <li><a className="nav-link scrollto" href="#about">學習架構介紹</a></li>
+              <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-">金檢學堂</a></li>
+              <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-">學習地圖</a></li>
               {userLogin ? <DropClassMenu
                 dropDown={dropDown}
                 dropDown2={dropDown2}
                 handleDropDown={handleDropDown}
                 handleDropDown2={handleDropDown2}
               /> : null}
-              <li><a className="nav-link scrollto" href="#contact">意見區</a></li>
-              <li><a className="getstarted scrollto" href="#services">進入課程</a></li>
+              <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-">意見區</a></li>
+              <li><a className="getstarted scrollto" onClick={scrollHandle} id="services-">進入課程</a></li>
             </ul>
             <i className={mobileMenu ? "bi bi-list mobile-nav-toggle" : "bi mobile-nav-toggle bi-x"}
                onClick={handleMobileMenu}></i>

@@ -47,7 +47,7 @@ const Home = () => {
 
         </div>
       </section>
-      <section id="hero" className="d-flex align-items-center">
+      <section id="hero" className="hero d-flex align-items-center">
         <div className="container">
           <div className="section-title">
             <p>金檢課程學習地圖</p>
