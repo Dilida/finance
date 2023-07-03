@@ -1,6 +1,8 @@
 import {useNavigate} from 'react-router-dom';
 import {postUser} from '../utils/post'
-import {post} from "../utils/http";
+import {postUserObj} from '../utils/requestMock'
+import {userLoginKey} from "../config";
+
 
 const UserLogin = () => {
   const userList = [
@@ -11,17 +13,18 @@ const UserLogin = () => {
   ]
   const navigate = useNavigate();
   const handlePostUser = (userId) => {
-    const obj = [{"userId": userId}]
-    postUser(obj).then(
+    //todo: change userId
+    postUser(postUserObj).then(
       (res) => {
         console.log("get article response:", res);
+        sessionStorage.setItem(userLoginKey, userId);
+        navigate('/aboutClass')
+        window.location.reload();
       },
-      (error) => {
+      (e) => {
         console.log("get response failed!");
       }
     );
-
-    navigate('/aboutClass')
   }
 
   return (
