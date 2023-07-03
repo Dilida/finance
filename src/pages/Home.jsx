@@ -6,7 +6,17 @@ import map3 from '../assets/img/c3.png';
 import SectionSuggestion from "../components/SectionSuggestion";
 import SectionLogin from "../components/SectionLogin";
 
+import {userLoginKey} from "../config";
+import React, {useEffect, useState} from "react";
+import DropClassMenu from "../components/DropClassMenu";
+
 const Home = () => {
+  const [userLogin, setUserLogin] = useState(false)
+  useEffect(() => {
+    if (sessionStorage.getItem(userLoginKey)) {
+      setUserLogin(true)
+    }
+  }, [])
 
   return (
     <main id="main">
@@ -68,7 +78,7 @@ const Home = () => {
 
       </section>
 
-      <SectionLogin/>
+      {userLogin ? null : <SectionLogin/>}
       <SectionSuggestion/>
 
     </main>
