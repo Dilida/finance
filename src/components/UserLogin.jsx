@@ -1,3 +1,7 @@
+import {useNavigate} from 'react-router-dom';
+import {postUser} from '../utils/post'
+import {post} from "../utils/http";
+
 const UserLogin = () => {
   const userList = [
     {"id": 1, "name": "社會大眾"},
@@ -5,9 +9,19 @@ const UserLogin = () => {
     {"id": 3, "name": "學生"},
     {"id": 4, "name": "本會各局處"}
   ]
-
+  const navigate = useNavigate();
   const handlePostUser = (userId) => {
-    console.log(userId)
+    const obj = [{"userId": userId}]
+    postUser(obj).then(
+      (res) => {
+        console.log("get article response:", res);
+      },
+      (error) => {
+        console.log("get response failed!");
+      }
+    );
+
+    navigate('/aboutClass')
   }
 
   return (
