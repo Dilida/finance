@@ -195,7 +195,7 @@ h6,
 }
 
 .navbar .dropdown ul li {
-  min-width: 200px;
+  min-width: 220px;
 }
 
 .navbar .dropdown ul a {
@@ -235,7 +235,7 @@ h6,
 
 @media (max-width: 1366px) {
   .navbar .dropdown .dropdown ul {
-    left: -90%;
+    left: -78%;
   }
 
   .navbar .dropdown .dropdown:hover>ul {

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {getSubjectList, postUser} from "../utils/api";
+import {getSubjectList} from "../utils/api";
 
 const DropClassMenu = ({dropDown, dropDown2, handleDropDown, handleDropDown2}) => {
   const [subjectList, setSubjectList] = useState([])

@@ -50,14 +50,14 @@ const Menu = () => {
 
           <nav id="navbar" className={mobileMenu ? "navbar" : "navbar navbar-mobile"}>
             <ul>
-              <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-">金檢學堂</a></li>
-              <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-">學習地圖</a></li>
               {userLogin ? <DropClassMenu
                 dropDown={dropDown}
                 dropDown2={dropDown2}
                 handleDropDown={handleDropDown}
                 handleDropDown2={handleDropDown2}
               /> : null}
+              <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-">金檢學堂</a></li>
+              <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-">學習地圖</a></li>
               <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-">意見區</a></li>
               {userLogin ? null:  <li><a className="getstarted scrollto" onClick={scrollHandle} id="services-">進入課程</a></li>}
 
