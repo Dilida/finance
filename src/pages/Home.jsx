@@ -8,7 +8,6 @@ import SectionLogin from "../components/SectionLogin";
 
 import {userLoginKey} from "../config";
 import React, {useEffect, useState} from "react";
-import DropClassMenu from "../components/DropClassMenu";
 
 const Home = () => {
   const [userLogin, setUserLogin] = useState(false)
@@ -65,13 +64,13 @@ const Home = () => {
           </div>
           <div className="row gy-4">
             <div className="col-lg-4 order-1 order-lg-2 hero-img">
-              <img src={map1} className="img-fluid animated" alt="學習地圖"/>
+              <img src={map1} className="img-fluid animated" alt="學習地圖1-5"/>
             </div>
             <div className="col-lg-4 order-1 order-lg-2 hero-img">
-              <img src={map2} className="img-fluid animated" alt="學習地圖"/>
+              <img src={map2} className="img-fluid animated" alt="學習地圖6-10"/>
             </div>
             <div className="col-lg-4 order-1 order-lg-2 hero-img">
-              <img src={map3} className="img-fluid animated" alt="學習地圖"/>
+              <img src={map3} className="img-fluid animated" alt="學習地圖11-15"/>
             </div>
           </div>
         </div>

@@ -59,7 +59,8 @@ const Menu = () => {
                 handleDropDown2={handleDropDown2}
               /> : null}
               <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-">意見區</a></li>
-              <li><a className="getstarted scrollto" onClick={scrollHandle} id="services-">進入課程</a></li>
+              {userLogin ? null:  <li><a className="getstarted scrollto" onClick={scrollHandle} id="services-">進入課程</a></li>}
+
             </ul>
             <i className={mobileMenu ? "bi bi-list mobile-nav-toggle" : "bi mobile-nav-toggle bi-x"}
                onClick={handleMobileMenu}></i>

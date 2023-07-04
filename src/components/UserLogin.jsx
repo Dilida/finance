@@ -1,5 +1,5 @@
 import {useNavigate} from 'react-router-dom';
-import {postUser} from '../utils/post'
+import {postUser} from '../utils/api'
 import {postUserObj} from '../utils/requestMock'
 import {userLoginKey} from "../config";
 
