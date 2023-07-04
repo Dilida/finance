@@ -1,5 +1,24 @@
-
+import Spinner from 'react-bootstrap/Spinner';
+import React, {useEffect} from "react";
+import {postSubject} from "../utils/api";
+import {postSubjectObj} from "../utils/requestMock";
+import {getQueryString} from "../utils/utils";
 const AboutClass = () => {
+
+  useEffect(() => {
+    const first = getQueryString("title")
+    const second = getQueryString("sub")
+    console.log(first,second)
+    postSubject(postSubjectObj).then(
+      (res) => {
+        console.log("get article response:", res);
+      },
+      (e) => {
+        console.log("get response failed!");
+      }
+    );
+  }, []);
+
   return (
     <main id="main">
 
@@ -19,6 +38,9 @@ const AboutClass = () => {
       </section>
 
       <section id="portfolio-details" className="portfolio-details">
+        <div className="text-center">
+          <Spinner animation="border" variant="success" />
+        </div>
         <div className="container">
 
           <div className="row gy-4">

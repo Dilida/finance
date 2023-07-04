@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {getSubjectList, postUser} from "../utils/api";
-import {postSubject} from "../utils/requestMock";
-import {useNavigate} from "react-router-dom";
+import {getSubjectList} from "../utils/api";
 
-const DropClassMenu = ({dropDown, dropDown2, handleDropDown, handleDropDown2}) => {
-  const navigate = useNavigate();
+
+const DropClassMenu = ({dropDown, dropDown2, handleDropDown, handleDropDown2, handleSelect}) => {
   const [subjectList, setSubjectList] = useState([])
   useEffect(() => {
     getSubjectList().then(
@@ -17,19 +15,6 @@ const DropClassMenu = ({dropDown, dropDown2, handleDropDown, handleDropDown2}) =
       }
     );
   }, []);
-
-  const handleSelect = (first, second) => {
-    console.log(first,second)
-    postUser(postSubject).then(
-      (res) => {
-        console.log("get article response:", res);
-        navigate('/aboutClass')
-      },
-      (e) => {
-        console.log("get response failed!");
-      }
-    );
-  }
 
   return (
     <li className="dropdown">

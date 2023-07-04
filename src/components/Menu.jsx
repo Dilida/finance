@@ -4,6 +4,7 @@ import DropClassMenu from "./DropClassMenu";
 import {userLoginKey} from "../config";
 
 
+
 const Menu = () => {
   const [mobileMenu, setMobileMenu] = useState([])
   const [dropDown, setDropDown] = useState([])
@@ -39,6 +40,11 @@ const Menu = () => {
     position && position.scrollIntoView({ behavior: "smooth", block: "start" }) //scrolling the page
   }
 
+  const handleSelect = (first, second) => {
+    console.log(first,second)
+    window.location.href = "/aboutClass?title="+first+"&sub="+second
+  }
+
   return (
     <Container>
       <header id="header" className="fixed-top d-flex align-items-center">
@@ -55,6 +61,7 @@ const Menu = () => {
                 dropDown2={dropDown2}
                 handleDropDown={handleDropDown}
                 handleDropDown2={handleDropDown2}
+                handleSelect={handleSelect}
               /> : null}
               <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-">金檢學堂</a></li>
               <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-">學習地圖</a></li>
