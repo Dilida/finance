@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {getSubjectList} from "../utils/api";
+import {getSubjectList, postUser} from "../utils/api";
+import {postSubject} from "../utils/requestMock";
+import {useNavigate} from "react-router-dom";
 
 const DropClassMenu = ({dropDown, dropDown2, handleDropDown, handleDropDown2}) => {
+  const navigate = useNavigate();
   const [subjectList, setSubjectList] = useState([])
   useEffect(() => {
     getSubjectList().then(
@@ -15,6 +18,19 @@ const DropClassMenu = ({dropDown, dropDown2, handleDropDown, handleDropDown2}) =
     );
   }, []);
 
+  const handleSelect = (first, second) => {
+    console.log(first,second)
+    postUser(postSubject).then(
+      (res) => {
+        console.log("get article response:", res);
+        navigate('/aboutClass')
+      },
+      (e) => {
+        console.log("get response failed!");
+      }
+    );
+  }
+
   return (
     <li className="dropdown">
       <a href="#" onClick={() => handleDropDown()}><span>課程區</span> <i className="bi bi-chevron-down"></i></a>
@@ -27,7 +43,7 @@ const DropClassMenu = ({dropDown, dropDown2, handleDropDown, handleDropDown2}) =
             </a>
             <ul className={dropDown2 ? "" : "dropdown-active"}>
               {list.subjectList.map((item) =>(
-                <li key={item.subjectID}><a href="#">{item.subjectID}.{item.subjectName}</a></li>
+                <li key={item.subjectID}><a href="#" onClick={()=>handleSelect(list.subjectID, item.subjectID)}>{item.subjectID}.{item.subjectName}</a></li>
               ))}
             </ul>
           </li>
