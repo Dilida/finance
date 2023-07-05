@@ -7,8 +7,8 @@ const DropClassMenu = ({dropDown, dropDown2, handleDropDown, handleDropDown2, ha
   useEffect(() => {
     getSubjectList().then(
       (res) => {
-        console.log("get article response:", res.data);
-        setSubjectList(res.data)
+        console.log("get article response:", res);
+        setSubjectList(res)
       },
       (e) => {
         console.log("get response failed!");
