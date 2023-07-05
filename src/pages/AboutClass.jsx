@@ -5,36 +5,30 @@ import {postSubjectObj} from "../utils/requestMock";
 import {getQueryString} from "../utils/utils";
 
 const AboutClass = () => {
-  const [subjectList, setSubjectList] = useState([])
-  const [nowTitle, setNowTitle] = useState({"itemID": 1, "itemTitle": "課程內容"})
-  const [itemList, setItemList] = useState([
-    {"itemID": 1, "itemTitle": "課程內容"},
-    {"itemID": 2, "itemTitle": "檢查重點"},
-    {"itemID": 3, "itemTitle": "個案分享"},
-    {"itemID": 4, "itemTitle": "參考資料"}])
+  const [nowSelect, setNowSelect] = useState({})
+  const [itemList, setItemList] = useState([])
 
   useEffect(() => {
     const first = getQueryString("title")
     const second = getQueryString("sub")
+    //todo 獲得影片
     console.log(first, second)
     postSubject(postSubjectObj).then(
       (res) => {
         console.log("get article response:", res);
-        setSubjectList(res)
-        const showSubTitle = res.filter(item => item.content === 1)[0].contentScript
-        const newItemList = itemList.map((item) => {
-          if (item.itemID === 1) {
-            item.itemSubList = showSubTitle
-          }
-          return item
-        })
-        setItemList(newItemList)
+        setNowSelect(res[0])
+        setItemList(res)
       },
       (e) => {
         console.log("get response failed!");
       }
     );
   }, []);
+
+  const handleClass = (contentID) => {
+      const newSelect = itemList.filter((item)=>item.contentID === contentID)
+      setNowSelect(newSelect[0])
+  }
 
   return (
     <main id="main">
@@ -47,7 +41,7 @@ const AboutClass = () => {
             <ol>
               <li>01.存款業務</li>
               <li>A.存款業務及開戶審查</li>
-              <li>{nowTitle.itemTitle}</li>
+              <li>{nowSelect.contentName}</li>
             </ol>
           </div>
 
@@ -62,34 +56,25 @@ const AboutClass = () => {
 
           <div className="row gy-4">
 
-            <div className="col-lg-8">
-              <div className="portfolio-details-slider swiper">
-                <div className="swiper-wrapper align-items-center">
-
-                  {/*iframe 插入奇妙的頁面*/}
-                </div>
-                <div className="swiper-pagination"></div>
-              </div>
+            <div className="col-lg-10">
+              <iframe src={nowSelect.contentFilm} className="iframeSpecial"></iframe>
             </div>
-
-            <div className="col-lg-4">
+            <div className="col-lg-2">
               <div className="portfolio-info">
                 <h3>A.存款業務及開戶審查</h3>
                 <ul>
                   {itemList.map((item) => (
-                    <li key={item.itemID} className="portfolio-description">
-                      <strong>{item.itemTitle}</strong>
-                      {item.itemSubList && item.itemSubList.map((minItem) => (
-                        <p>{minItem}</p>
+                    <li key={item.contentID} className="portfolio-description">
+                      <strong onClick={() => handleClass(item.contentID)} className={nowSelect.contentID === item.contentID ? "active" :""}>{item.contentName}</strong>
+                      {item.contentScript && item.contentScript.map((minItem) => (
+                        <p key={item.itemID + minItem}>{minItem}</p>
                       ))}
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-
           </div>
-
         </div>
       </section>
       <section className="grade">

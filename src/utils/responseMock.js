@@ -5,20 +5,24 @@ export const subjectContent = {
   "msg": "success",
   "data": [
     {
-      "content":1, //課程內容
+      "contentID":1, //課程內容
+      "contentName": "課程內容",
       "contentFilm":"https://elearning.feb.gov.tw/Html5Servlet/17325/index.html",
       "contentScript":["1.1 徵信作業","1.2 審查核貸作業","1.3 貸放後管理"]
     },
     {
-      "content":2, //檢查重點
+      "contentID":2, //檢查重點
+      "contentName":"檢查重點",
       "contentFilm":"https://elearning.feb.gov.tw/Html5Servlet/17339/index.html",
     },
     {
-      "content":3, //個案分享
+      "contentID":3, //個案分享
+      "contentName":"個案分享",
       "contentFilm":"https://elearning.feb.gov.tw/Html5Servlet/17353/index.html",
     },
     {
-      "content":4, //參考資料
+      "contentID":4, //參考資料
+      "contentName":"參考資料",
       "contentFilm":"https://elearning.feb.gov.tw/Html5Servlet/17367/index.html",
     },
   ]
