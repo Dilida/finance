@@ -5,21 +5,21 @@ const AboutClass =() =>{
   const myKey = "my-secret-key@123"
   const ciphertext = AES.encrypt(JSON.stringify(sample1), myKey).toString();
 
-  const trans2Array = base64ToArrayBuffer(sample1)
-  const newBytes = new Uint8Array(trans2Array)
-  const newImage = "data:image/jpeg;base64," +encode(newBytes)
+  // const trans2Array = base64ToArrayBuffer(sample1)
+  // const newBytes = new Uint8Array(trans2Array)
+  // const newImage = "data:image/jpeg;base64," +encode(newBytes)
 
-  console.log("newBytes")
-  console.log(newBytes)
+
+  //以下可用，要留下來 blob file
+  const blob = dataURItoBlob(base64Image +sample1)
+  const blobUrl = URL.createObjectURL(blob) // blob is the Blob object
+  const newImage =  blobUrl // image is the image element from the DOM
+
+  console.log("blob")
+  console.log(blob)
   console.log("newImage")
   console.log(newImage)
-
-  //以下可用，要留下來
-  // const blob = dataURItoBlob(base64Image +sample1)
-  // const blobUrl = URL.createObjectURL(blob) // blob is the Blob object
-  // const newImage =  blobUrl // image is the image element from the DOM
-
-
+  // URL.revokeObjectURL(blobUrl)
 
   return (
     <main id="main">
