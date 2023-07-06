@@ -1,19 +1,40 @@
 
-const AboutClass = () => {
+import {sample1, dataURItoBlob, encode, base64ToArrayBuffer, base64Image} from '../encryption/sample1'
+import { AES, enc } from 'crypto-js';
+const AboutClass =() =>{
+  const myKey = "my-secret-key@123"
+  const ciphertext = AES.encrypt(JSON.stringify(sample1), myKey).toString();
+
+  const trans2Array = base64ToArrayBuffer(sample1)
+  const newBytes = new Uint8Array(trans2Array)
+  const newImage = "data:image/jpeg;base64," +encode(newBytes)
+
+  console.log("newBytes")
+  console.log(newBytes)
+  console.log("newImage")
+  console.log(newImage)
+
+  //以下可用，要留下來
+  // const blob = dataURItoBlob(base64Image +sample1)
+  // const blobUrl = URL.createObjectURL(blob) // blob is the Blob object
+  // const newImage =  blobUrl // image is the image element from the DOM
+
+
+
   return (
     <main id="main">
 
       <section className="breadcrumbs">
         <div className="container">
 
-          <div className="d-flex justify-content-between align-items-center">
-            <h2>課程內容</h2>
-            <ol>
-              <li>01.存款業務</li>
-              <li>A.存款業務及開戶審查</li>
-              <li>檢查重點</li>
-            </ol>
-          </div>
+          {/*<div className="d-flex justify-content-between align-items-center">*/}
+          {/*  <h2>課程內容</h2>*/}
+          {/*  <ol>*/}
+          {/*    <li>01.存款業務</li>*/}
+          {/*    <li>A.存款業務及開戶審查</li>*/}
+          {/*    <li>檢查重點</li>*/}
+          {/*  </ol>*/}
+          {/*</div>*/}
 
         </div>
       </section>
@@ -27,6 +48,7 @@ const AboutClass = () => {
               <div className="portfolio-details-slider swiper">
                 <div className="swiper-wrapper align-items-center">
 
+                  <img src={newImage}/>
                   {/*iframe 插入奇妙的頁面*/}
                 </div>
                 <div className="swiper-pagination"></div>
@@ -89,7 +111,7 @@ const AboutClass = () => {
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="col-2">
-                    <input type="submit" value="送出意見" />
+                    <input type="submit" value="送出意見"/>
                   </div>
                 </form>
               </div>
@@ -97,7 +119,6 @@ const AboutClass = () => {
           </div>
         </div>
       </section>
-
 
 
     </main>
