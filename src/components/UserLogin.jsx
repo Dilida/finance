@@ -16,10 +16,9 @@ const UserLogin = () => {
     //todo: change userId
     postUser(postUserObj).then(
       (res) => {
-        console.log("get article response:", res);
         sessionStorage.setItem(userLoginKey, userId);
         navigate('/aboutClass')
-        window.location.reload();
+        // window.location.reload();
       },
       (e) => {
         console.log("get response failed!");

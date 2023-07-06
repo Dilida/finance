@@ -1,15 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Container} from "react-bootstrap";
 import DropClassMenu from "./DropClassMenu";
 import {userLoginKey} from "../config";
-
-
+import {ClassContext} from "../context/ClassLists";
+import {useNavigate} from 'react-router-dom';
 
 const Menu = () => {
   const [mobileMenu, setMobileMenu] = useState([])
   const [dropDown, setDropDown] = useState([])
   const [dropDown2, setDropDown2] = useState([])
   const [userLogin, setUserLogin] = useState(false)
+  const {saveClassItem} = useContext(ClassContext)
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (sessionStorage.getItem(userLoginKey)) {
@@ -40,9 +42,10 @@ const Menu = () => {
     position && position.scrollIntoView({ behavior: "smooth", block: "start" }) //scrolling the page
   }
 
-  const handleSelect = (first, second) => {
-    console.log(first,second)
-    window.location.href = "/aboutClass?title="+first+"&sub="+second
+  const handleSelect = (firstID, firstName, secondID, secondName) => {
+    console.log("firstID", firstID)
+    saveClassItem(firstID, firstName, secondID, secondName)
+    navigate('/aboutClass')
   }
 
   return (

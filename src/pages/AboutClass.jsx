@@ -1,18 +1,15 @@
 import Spinner from 'react-bootstrap/Spinner';
-import React, {useEffect, useState} from "react";
-import {postSubject} from "../utils/api";
+import React, {useContext, useEffect, useState} from "react";
+import {ClassContext} from "../context/ClassLists";
+import { postSubject} from "../utils/api";
 import {postSubjectObj} from "../utils/requestMock";
-import {getQueryString} from "../utils/utils";
 
 const AboutClass = () => {
+  const {saveItem} = useContext(ClassContext)
   const [nowSelect, setNowSelect] = useState({})
   const [itemList, setItemList] = useState([])
-
   useEffect(() => {
-    const first = getQueryString("title")
-    const second = getQueryString("sub")
-    //todo 獲得影片
-    console.log(first, second)
+    //todo 要換送進去的id
     postSubject(postSubjectObj).then(
       (res) => {
         console.log("get article response:", res);
@@ -21,13 +18,12 @@ const AboutClass = () => {
       },
       (e) => {
         console.log("get response failed!");
-      }
-    );
-  }, []);
+      })
 
+  }, [saveItem]);
   const handleClass = (contentID) => {
-      const newSelect = itemList.filter((item)=>item.contentID === contentID)
-      setNowSelect(newSelect[0])
+    const newSelect = itemList.filter((item) => item.contentID === contentID)
+    setNowSelect(newSelect[0])
   }
 
   return (
@@ -39,8 +35,8 @@ const AboutClass = () => {
           <div className="d-flex justify-content-between align-items-center">
             <h2>課程內容</h2>
             <ol>
-              <li>01.存款業務</li>
-              <li>A.存款業務及開戶審查</li>
+              <li>{saveItem[0]}.{saveItem[1]}</li>
+              <li>{saveItem[2]}.{saveItem[3]}</li>
               <li>{nowSelect.contentName}</li>
             </ol>
           </div>
@@ -49,9 +45,9 @@ const AboutClass = () => {
       </section>
 
       <section id="portfolio-details" className="portfolio-details">
-        <div className="text-center">
-          <Spinner animation="border" variant="success"/>
-        </div>
+        {/*<div className="text-center">*/}
+        {/*  <Spinner animation="border" variant="success"/>*/}
+        {/*</div>*/}
         <div className="container">
 
           <div className="row gy-4">
@@ -61,11 +57,12 @@ const AboutClass = () => {
             </div>
             <div className="col-lg-2">
               <div className="portfolio-info">
-                <h3>A.存款業務及開戶審查</h3>
+                <h3>{saveItem[2]}.{saveItem[3]}</h3>
                 <ul>
                   {itemList.map((item) => (
                     <li key={item.contentID} className="portfolio-description">
-                      <strong onClick={() => handleClass(item.contentID)} className={nowSelect.contentID === item.contentID ? "active" :""}>{item.contentName}</strong>
+                      <strong onClick={() => handleClass(item.contentID)}
+                              className={nowSelect.contentID === item.contentID ? "active" : ""}>{item.contentName}</strong>
                       {item.contentScript && item.contentScript.map((minItem) => (
                         <p key={item.itemID + minItem}>{minItem}</p>
                       ))}
