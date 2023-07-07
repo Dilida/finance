@@ -43,9 +43,9 @@ const Menu = () => {
   }
 
   const handleSelect = (firstID, firstName, secondID, secondName) => {
+    navigate('/aboutClass')
     console.log("firstID", firstID)
     saveClassItem(firstID, firstName, secondID, secondName)
-    navigate('/aboutClass')
   }
 
   return (
