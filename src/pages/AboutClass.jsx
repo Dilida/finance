@@ -61,7 +61,7 @@ const AboutClass = () => {
           <div className="row gy-4">
 
             <div className="col-lg-10">
-              <iframe src={nowSelect.contentFilm} className="iframeSpecial"></iframe>
+              <iframe src={nowSelect.contentFilm} className="iframeSpecial" title="iframeSpecial"></iframe>
             </div>
             <div className="col-lg-2">
               <div className="portfolio-info">
