@@ -1,14 +1,22 @@
 import Spinner from 'react-bootstrap/Spinner';
-import React, {useContext, useEffect, useState} from "react";
-import {ClassContext} from "../context/ClassLists";
+import React, {useEffect, useState} from "react";
 import { postSubject} from "../utils/api";
 import {postSubjectObj} from "../utils/requestMock";
+import {classSelectKey} from "../config";
 
 const AboutClass = () => {
-  const {saveItem} = useContext(ClassContext)
   const [nowSelect, setNowSelect] = useState({})
   const [itemList, setItemList] = useState([])
+  const [classSelect, setClassSelect] = useState(["01","MIMIMI", "B", "FIFIFFI"])
+
+
   useEffect(() => {
+    if (sessionStorage.getItem(classSelectKey)) {
+      console.log('show the class', sessionStorage.getItem(classSelectKey))
+      const myArray = sessionStorage.getItem(classSelectKey).split(",");
+      setClassSelect(myArray)
+    }
+
     //todo 要換送進去的id
     postSubject(postSubjectObj).then(
       (res) => {
@@ -20,7 +28,7 @@ const AboutClass = () => {
         console.log("get response failed!");
       })
 
-  }, [saveItem]);
+  }, []);
   const handleClass = (contentID) => {
     const newSelect = itemList.filter((item) => item.contentID === contentID)
     setNowSelect(newSelect[0])
@@ -35,8 +43,8 @@ const AboutClass = () => {
           <div className="d-flex justify-content-between align-items-center">
             <h2>課程內容</h2>
             <ol>
-              <li>{saveItem[0]}.{saveItem[1]}</li>
-              <li>{saveItem[2]}.{saveItem[3]}</li>
+              <li>{classSelect[0]}.{classSelect[1]}</li>
+              <li>{classSelect[2]}.{classSelect[3]}</li>
               <li>{nowSelect.contentName}</li>
             </ol>
           </div>
@@ -57,7 +65,7 @@ const AboutClass = () => {
             </div>
             <div className="col-lg-2">
               <div className="portfolio-info">
-                <h3>{saveItem[2]}.{saveItem[3]}</h3>
+                <h3>{classSelect[2]}.{classSelect[3]}</h3>
                 <ul>
                   {itemList.map((item) => (
                     <li key={item.contentID} className="portfolio-description">

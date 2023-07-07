@@ -1,7 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 import {postUser} from '../utils/api'
 import {postUserObj} from '../utils/requestMock'
-import {userLoginKey} from "../config";
+import {classSelectKey, userLoginKey} from "../config";
 
 
 const UserLogin = () => {
@@ -17,8 +17,10 @@ const UserLogin = () => {
     postUser(postUserObj).then(
       (res) => {
         sessionStorage.setItem(userLoginKey, userId);
+        const selectKey = `01,存款業務,A,存款業務及開戶審查`
+        sessionStorage.setItem(classSelectKey,selectKey)
         navigate('/aboutClass')
-        // window.location.reload();
+        navigate(0)
       },
       (e) => {
         console.log("get response failed!");

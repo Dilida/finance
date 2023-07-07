@@ -1,8 +1,7 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import {Container} from "react-bootstrap";
 import DropClassMenu from "./DropClassMenu";
-import {userLoginKey} from "../config";
-import {ClassContext} from "../context/ClassLists";
+import {userLoginKey, classSelectKey} from "../config";
 import {useNavigate} from 'react-router-dom';
 
 const Menu = () => {
@@ -10,7 +9,6 @@ const Menu = () => {
   const [dropDown, setDropDown] = useState([])
   const [dropDown2, setDropDown2] = useState([])
   const [userLogin, setUserLogin] = useState(false)
-  const {saveClassItem} = useContext(ClassContext)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,9 +41,11 @@ const Menu = () => {
   }
 
   const handleSelect = (firstID, firstName, secondID, secondName) => {
+    const selectKey = `${firstID},${firstName},${secondID},${secondName}`
+    sessionStorage.setItem(classSelectKey,selectKey)
     navigate('/aboutClass')
-    console.log("firstID", firstID)
-    saveClassItem(firstID, firstName, secondID, secondName)
+    navigate(0)
+
   }
 
   return (
