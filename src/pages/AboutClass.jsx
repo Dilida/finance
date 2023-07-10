@@ -1,18 +1,18 @@
-import Spinner from 'react-bootstrap/Spinner';
 import React, {useEffect, useState} from "react";
-import { postSubject} from "../utils/api";
+import {postSubject, postSubjectSuggestion} from "../utils/api";
 import {postSubjectObj} from "../utils/requestMock";
 import {classSelectKey} from "../config";
+import {useNavigate} from "react-router-dom";
 
 const AboutClass = () => {
-  const [nowSelect, setNowSelect] = useState({})
+  const [nowSelect, setNowSelect] = useState({}) // 該頁內的選擇 課程內容 檢查重點 個案分享 參考資料
   const [itemList, setItemList] = useState([])
-  const [classSelect, setClassSelect] = useState(["01","MIMIMI", "B", "FIFIFFI"])
-
+  const [classSelect, setClassSelect] = useState(["01", "存款業務", "A", "存款業務及開戶審查"])  // menu bar 的選擇
+  const [starSelect, setStarSelect] = useState({"subjectID": "01", "subSubjectID": "A", "value": "5"})
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (sessionStorage.getItem(classSelectKey)) {
-      console.log('show the class', sessionStorage.getItem(classSelectKey))
       const myArray = sessionStorage.getItem(classSelectKey).split(",");
       setClassSelect(myArray)
     }
@@ -20,7 +20,7 @@ const AboutClass = () => {
     //todo 要換送進去的id
     postSubject(postSubjectObj).then(
       (res) => {
-        console.log("get article response:", res);
+        // console.log("get article response:", res);
         setNowSelect(res[0])
         setItemList(res)
       },
@@ -34,9 +34,30 @@ const AboutClass = () => {
     setNowSelect(newSelect[0])
   }
 
+  const handleSelectChange = event => {
+    setStarSelect({
+      "subjectID": classSelect[0],
+      "subSubjectID": classSelect[2],
+      "value": event.target.value,
+    })
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log("show", starSelect)
+    postSubjectSuggestion(starSelect).then(
+      (res) => {
+        // console.log("get article response:", res);
+        navigate('/suggestion')
+      },
+      (e) => {
+        console.log("get response failed!");
+      })
+
+  }
+
   return (
     <main id="main">
-
       <section className="breadcrumbs">
         <div className="container">
 
@@ -53,13 +74,8 @@ const AboutClass = () => {
       </section>
 
       <section id="portfolio-details" className="portfolio-details">
-        {/*<div className="text-center">*/}
-        {/*  <Spinner animation="border" variant="success"/>*/}
-        {/*</div>*/}
         <div className="container">
-
           <div className="row gy-4">
-
             <div className="col-lg-10">
               <iframe src={nowSelect.contentFilm} className="iframeSpecial" title="iframeSpecial"></iframe>
             </div>
@@ -86,13 +102,15 @@ const AboutClass = () => {
         <div className="footer-newsletter">
           <div className="container">
             <div className="row justify-content-center">
-              <div className="col-lg-7">
+              <div className="col-lg-8">
                 <h4>單元評價</h4>
                 {/*單元評價 radio button*/}
                 {/*看評價結果*/}
-                <form className="row gy-2 gx-6">
-                  <div className="form-check col-2">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                <form className="row gy-2 gx-7" onSubmit={handleSubmit}>
+                  <div className="form-check col-auto">
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                           value="5" onChange={handleSelectChange}
+                           checked={starSelect["value"] && starSelect["value"] === "5"}/>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
@@ -100,25 +118,29 @@ const AboutClass = () => {
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="form-check col-2">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                           value="4" onChange={handleSelectChange}/>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="form-check col-2">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                           value="3" onChange={handleSelectChange}/>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="form-check col-2">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                           value="2" onChange={handleSelectChange}/>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="form-check col-auto">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                           value="1" onChange={handleSelectChange}/>
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="col-2">

@@ -38,3 +38,15 @@ export function postSubject(param){
     // })
   })
 }
+
+export function postSubjectSuggestion(param){
+  return new Promise((resolve, reject) => {
+    resolve(success)
+    // http("post",'/postUser', param).then(res => {
+    //   resolve (res);
+    // },error => {
+    //   console.log("internet error~",error);
+    //   reject(error)
+    // })
+  })
+}
