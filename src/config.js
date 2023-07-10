@@ -5,3 +5,5 @@ export const exportedObject = {
 export const userLoginKey = "userLogin"
 
 export const classSelectKey = "classSelect"
+
+export const suggestListKey = "suggestList"
