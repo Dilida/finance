@@ -20,7 +20,6 @@ const Menu = () => {
 
   const handleMobileMenu = () => {
     setDropDown(true)
-
     setMobileMenu(!mobileMenu)
   }
 
@@ -35,7 +34,9 @@ const Menu = () => {
     const position = document.getElementById(id.slice(0, id.length - 1)); //removing extra last - (dash)
     window.location.href = "/#" + id.slice(0, id.length - 1); // changing the url
     position && position.scrollIntoView({ behavior: "smooth", block: "start" }) //scrolling the page
-    setMobileMenu(!mobileMenu)
+    if (!mobileMenu) {
+      setMobileMenu(true)
+    }
   }
 
   const handleSelect = (firstID, firstName, secondID, secondName) => {
