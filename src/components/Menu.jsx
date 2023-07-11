@@ -7,8 +7,8 @@ import Logo from '../assets/img/logo.png'
 
 const Menu = () => {
   const [mobileMenu, setMobileMenu] = useState([])
-  const [dropDown, setDropDown] = useState([])
-  const [dropDown2, setDropDown2] = useState([])
+  const [dropDown, setDropDown] = useState([])  //第一層
+  const [dropDown2, setDropDown2] = useState([])  //第二層
   const [userLogin, setUserLogin] = useState(false)
   const navigate = useNavigate();
 
@@ -21,7 +21,6 @@ const Menu = () => {
   const handleMobileMenu = () => {
     setDropDown(true)
     setDropDown2(true)
-    setMobileMenu(!mobileMenu)
 
   }
 
@@ -39,13 +38,14 @@ const Menu = () => {
     const position = document.getElementById(id.slice(0, id.length - 1)); //removing extra last - (dash)
     window.location.href = "/#" + id.slice(0, id.length - 1); // changing the url
     position && position.scrollIntoView({ behavior: "smooth", block: "start" }) //scrolling the page
+    setMobileMenu(!mobileMenu)
   }
 
   const handleSelect = (firstID, firstName, secondID, secondName) => {
     const selectKey = `${firstID},${firstName},${secondID},${secondName}`
     sessionStorage.setItem(classSelectKey,selectKey)
     navigate('/aboutClass')
-    navigate(0)
+    document.location.reload();
 
   }
 
