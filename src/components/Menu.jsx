@@ -21,7 +21,7 @@ const Menu = () => {
   const handleMobileMenu = () => {
     setDropDown(true)
     setDropDown2(true)
-
+    setMobileMenu(!mobileMenu)
   }
 
   const handleDropDown = () => {
