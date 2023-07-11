@@ -127,8 +127,6 @@ const AboutClass = () => {
             <div className="row justify-content-center">
               <div className="col-lg-8">
                 <h4>單元評價</h4>
-                {/*單元評價 radio button*/}
-                {/*看評價結果*/}
                 {showAlert.show ?
                   <Alert key="success" variant={showAlert.type}>
                     {showAlert.type === "success" ? "評分已成功送出，請勿重覆操作。" : "此課程已評分過，請勿重覆操作。"}

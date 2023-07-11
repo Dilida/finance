@@ -6,9 +6,9 @@ const Satisfy = ({handleSelectChange}) => {
         <h4>網站綜合評價</h4>
       </label>
       <hr/>
-      <form className="row gy-2 ms-lg-5">
+      <div className="row gy-2 ms-lg-5">
         <div className="form-check col-2 satisfy">
-          <label htmlFor="platform4">很滿意<input className="form-check-input" type="radio" name="platform4" value="5" onChange={handleSelectChange}/></label>
+          <label htmlFor="platform4">很滿意<input className="form-check-input" type="radio" name="platform4" value="5" onChange={handleSelectChange} required/></label>
           <i className="bx bxs-happy-alt"></i>
         </div>
         <div className="form-check col-2 satisfy">
@@ -27,7 +27,7 @@ const Satisfy = ({handleSelectChange}) => {
           <label htmlFor="platform4">很不滿意<input className="form-check-input" type="radio" name="platform4" value="1" onChange={handleSelectChange}/></label>
           <i className="bx bxs-angry"></i>
         </div>
-      </form>
+      </div>
     </div>
 
   )
