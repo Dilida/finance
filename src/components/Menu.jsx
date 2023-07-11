@@ -8,7 +8,7 @@ import Logo from '../assets/img/logo.png'
 const Menu = () => {
   const [mobileMenu, setMobileMenu] = useState([])
   const [dropDown, setDropDown] = useState([])  //第一層
-  const [dropDown2, setDropDown2] = useState([])  //第二層
+
   const [userLogin, setUserLogin] = useState(false)
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const Menu = () => {
 
   const handleMobileMenu = () => {
     setDropDown(true)
-    setDropDown2(true)
+
     setMobileMenu(!mobileMenu)
   }
 
@@ -28,9 +28,6 @@ const Menu = () => {
     setDropDown(!dropDown)
   }
 
-  const handleDropDown2 = () => {
-    setDropDown2(!dropDown2)
-  }
 
   const scrollHandle = (e) => {
     e.preventDefault();
@@ -70,9 +67,7 @@ const Menu = () => {
             <ul>
               {userLogin ? <DropClassMenu
                 dropDown={dropDown}
-                dropDown2={dropDown2}
                 handleDropDown={handleDropDown}
-                handleDropDown2={handleDropDown2}
                 handleSelect={handleSelect}
               /> : null}
               <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="金檢學堂">金檢學堂</a></li>
