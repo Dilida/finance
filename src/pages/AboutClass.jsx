@@ -9,7 +9,7 @@ const AboutClass = () => {
   const [nowSelect, setNowSelect] = useState({}) // 該頁內的選擇 課程內容 檢查重點 個案分享 參考資料
   const [itemList, setItemList] = useState([])
   const [classSelect, setClassSelect] = useState(["01", "存款業務", "A", "存款業務及開戶審查"])  // menu bar 的選擇
-  const [starSelect, setStarSelect] = useState({"subjectID": "01", "subSubjectID": "A", "value": "5"})
+  const [starSelect, setStarSelect] = useState({"subjectID": "01", "subSubjectID": "A", "value": 5})
   const [showAlert, setShowAlert] = useState({"show": false, "type": "success"})
 
 
@@ -40,7 +40,7 @@ const AboutClass = () => {
     setStarSelect({
       "subjectID": classSelect[0],
       "subSubjectID": classSelect[2],
-      "value": event.target.value,
+      "value": parseInt(event.target.value),
     })
   }
 
