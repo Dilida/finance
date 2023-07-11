@@ -39,13 +39,14 @@ const Menu = () => {
     const position = document.getElementById(id.slice(0, id.length - 1)); //removing extra last - (dash)
     window.location.href = "/#" + id.slice(0, id.length - 1); // changing the url
     position && position.scrollIntoView({ behavior: "smooth", block: "start" }) //scrolling the page
+    setMobileMenu(!mobileMenu)
   }
 
   const handleSelect = (firstID, firstName, secondID, secondName) => {
     const selectKey = `${firstID},${firstName},${secondID},${secondName}`
     sessionStorage.setItem(classSelectKey,selectKey)
     navigate('/aboutClass')
-    navigate(0)
+    document.location.reload();
 
   }
 
