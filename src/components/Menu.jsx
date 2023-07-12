@@ -25,6 +25,9 @@ const Menu = () => {
 
   const handleDropDown = () => {
     setDropDown(!dropDown)
+    if (mobileMenu !== false){
+      handleSelect("01","存款業務","A","存款業務及開戶審查")
+    }
   }
 
 
