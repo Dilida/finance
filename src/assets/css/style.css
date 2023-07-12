@@ -56,7 +56,7 @@ h6,
 }
 
 .back-to-top i {
-    font-size: 24px;
+    font-size: 1.6em;
     color: #fff;
     line-height: 0;
 }
@@ -93,7 +93,7 @@ h6,
 }
 
 #header .logo h1 {
-    font-size: 20px;
+    font-size: 1.333em;
     margin-top: 12px;
     line-height: 1;
     font-weight: 400;
@@ -144,7 +144,7 @@ h6,
     align-items: center;
     justify-content: space-between;
     padding: 10px 0 10px 30px;
-    font-size: 15px;
+    font-size: 1em;
     color: #4e4039;
     white-space: nowrap;
     transition: 0.3s;
@@ -152,12 +152,13 @@ h6,
 
 .navbar a i,
 .navbar a:focus i {
-    font-size: 12px;
+    font-size: 0.8emx;
     line-height: 0;
     margin-left: 5px;
 }
 
 .navbar a:hover,
+.navbar a:focus,
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover > a {
@@ -200,12 +201,12 @@ h6,
 
 .navbar .dropdown ul a {
     padding: 10px 20px;
-    font-size: 15px;
+    font-size: 1em;
     text-transform: none;
 }
 
 .navbar .dropdown ul a i {
-    font-size: 12px;
+    font-size: 0.8em;
 }
 
 .navbar .dropdown ul a:hover,
@@ -213,7 +214,7 @@ h6,
 .navbar .dropdown ul li:hover > a {
     color: #5cb874;
 }
-
+.navbar .dropdown:focus > ul,
 .navbar .dropdown:hover > ul {
     opacity: 1;
     top: 100%;
@@ -248,7 +249,7 @@ h6,
 */
 .mobile-nav-toggle {
     color: #607a69;
-    font-size: 28px;
+    font-size: 1.75em;
     cursor: pointer;
     display: none;
     line-height: 0;
@@ -302,7 +303,7 @@ h6,
 .navbar-mobile a,
 .navbar-mobile a:focus {
     padding: 10px 20px;
-    font-size: 15px;
+    font-size: 1em;
     color: #607a69;
 }
 
@@ -338,7 +339,7 @@ h6,
 }
 
 .navbar-mobile .dropdown ul a i {
-    font-size: 12px;
+    font-size: 0.8em;
 }
 
 .navbar-mobile .dropdown ul a:hover,
@@ -364,7 +365,7 @@ h6,
 
 #hero h1 {
     margin: 0;
-    font-size: 48px;
+    font-size: 3em;
     font-weight: 700;
     line-height: 56px;
     color: #4e4039;
@@ -373,13 +374,13 @@ h6,
 #hero h2 {
     color: #607a69;
     margin: 15px 0;
-    font-size: 24px;
+    font-size: 1.6em;
 }
 
 .btn-get-started {
     font-family: "Raleway", sans-serif;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1.067em;
     letter-spacing: 1px;
     display: inline-block;
     padding: 8px 28px;
@@ -418,12 +419,12 @@ h6,
 
 @media (max-width: 768px) {
     #hero h1 {
-        font-size: 28px;
+        font-size: 1.75em;
         line-height: 36px;
     }
 
     #hero h2 {
-        font-size: 18px;
+        font-size: 1.2em;
         line-height: 24px;
     }
 
@@ -472,7 +473,7 @@ section {
 }
 
 .section-title h2 {
-    font-size: 18px;
+    font-size: 1.75em;
     font-weight: 700;
     padding-bottom: 0;
     line-height: 1px;
@@ -484,7 +485,7 @@ section {
     padding-bottom: 15px;
     margin-bottom: 15px;
     position: relative;
-    font-size: 32px;
+    font-size: 2em;
     font-weight: 700;
     color: #4e4039;
 }
@@ -510,7 +511,7 @@ section {
 }
 
 .breadcrumbs h2 {
-    font-size: 24px;
+    font-size: 1.6em;
     font-weight: 300;
 }
 
@@ -520,7 +521,7 @@ section {
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 14px;
+    font-size: 0.9333em;
 }
 
 .breadcrumbs ol li + li {
@@ -553,25 +554,25 @@ section {
 --------------------------------------------------------------*/
 .about h3 {
     font-weight: 700;
-    font-size: 34px;
+    font-size: 2em;
     color: #4e4039;
 }
 
 .about h4 {
-    font-size: 20px;
+    font-size: 1.25em;
     font-weight: 700;
     margin-top: 5px;
     color: #607a69;
 }
 
 .about i {
-    font-size: 48px;
+    font-size:4em;
     margin-top: 15px;
     color: #5cb874;
 }
 
 .about p {
-    font-size: 15px;
+    font-size: 0.9375em;
     color: #5a6570;
     text-align: justify;
 }
@@ -610,7 +611,7 @@ section {
 }
 
 .services .icon i {
-    font-size: 60px;
+    font-size: 3.75em;
     line-height: 1;
     margin-bottom: 15px;
     color: #5cb874;
@@ -619,7 +620,7 @@ section {
 .services .title {
     font-weight: 700;
     margin-bottom: 15px;
-    font-size: 18px;
+    font-size: 1.125em;
 }
 
 .services .title a {
@@ -627,7 +628,7 @@ section {
 }
 
 .services .description {
-    font-size: 15px;
+    font-size: 0.9375em;
     line-height: 28px;
     margin-bottom: 0;
 }
@@ -651,7 +652,7 @@ section {
     margin: 0 15px 15px 0;
     display: inline-block;
     padding: 5px;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 600;
     line-height: 20px;
     color: #212529;
@@ -722,7 +723,7 @@ section {
 
 .portfolio .portfolio-wrap .portfolio-links a i {
     line-height: 0;
-    font-size: 20px;
+    font-size: 1.25em;
 }
 
 .portfolio .portfolio-wrap .portfolio-links a:hover {
@@ -742,14 +743,14 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-info h4 {
-    font-size: 20px;
+    font-size: 1.25em;
     color: #fff;
     font-weight: 600;
 }
 
 .portfolio .portfolio-wrap .portfolio-info p {
     color: #ffffff;
-    font-size: 14px;
+    font-size: 0.875em;
     text-transform: uppercase;
 }
 
@@ -798,7 +799,7 @@ section {
 }
 
 .portfolio-details .portfolio-info h3 {
-    font-size: 22px;
+    font-size: 1.375em;
     font-weight: 700;
     margin-bottom: 20px;
     padding-bottom: 20px;
@@ -808,7 +809,7 @@ section {
 .portfolio-details .portfolio-info ul {
     list-style: none;
     padding: 0;
-    font-size: 15px;
+    font-size: 0.9375em;
 }
 
 .portfolio-details .portfolio-info ul li + li {
@@ -850,7 +851,7 @@ section {
     display: block;
     position: relative;
     font-family: #5cb874;
-    font-size: 18px;
+    font-size: 1.125em;
     line-height: 24px;
     font-weight: 400;
     font-weight: 600;
@@ -861,7 +862,7 @@ section {
 }
 
 .faq .faq-list i {
-    font-size: 16px;
+    font-size: 1em;
     position: absolute;
     left: 0;
     top: -2px;
@@ -931,7 +932,7 @@ section {
 .team .member .member-info-content h4 {
     font-weight: 700;
     margin-bottom: 2px;
-    font-size: 18px;
+    font-size: 1.125em;
     color: #fff;
 }
 
@@ -965,7 +966,7 @@ section {
 }
 
 .team .member .social i {
-    font-size: 18px;
+    font-size: 1.125em;
     margin: 0 2px;
 }
 
@@ -1027,7 +1028,7 @@ section {
 }
 
 .contact .suggest > i {
-    font-size: 20px;
+    font-size: 1.25em;
     color: #5cb874;
     float: left;
     width: 44px;
@@ -1042,7 +1043,7 @@ section {
 
 .contact h4 {
     padding: 0 0 0 50px;
-    font-size: 22px;
+    font-size: 1.375em;
     font-weight: 600;
     margin-top: 10px;
     color: #607a69;
@@ -1051,7 +1052,7 @@ section {
 .contact .info p {
     padding: 0 0 10px 60px;
     margin-bottom: 20px;
-    font-size: 14px;
+    font-size: 0.875em;
     color: #ab9d95;
 }
 
@@ -1064,7 +1065,7 @@ section {
 }
 
 .contact .info .social-links a {
-    font-size: 18px;
+    font-size: 1.125em;
     display: inline-block;
     background: #333;
     color: #fff;
@@ -1148,7 +1149,7 @@ section {
 .contact .php-email-form textarea {
     border-radius: 0;
     box-shadow: none;
-    font-size: 14px;
+    font-size: 0.875em;
 }
 
 
@@ -1170,7 +1171,7 @@ section {
 }
 
 .list-suggest i {
-    font-size: 18px;
+    font-size: 1.125em;
     color: #5cb874;
 }
 
@@ -1179,7 +1180,7 @@ section {
 }
 
 .satisfy i {
-    font-size: 24px;
+    font-size: 1.5em;
     color: #5cb874;
 }
 
@@ -1201,7 +1202,7 @@ section {
     background: #fff;
     padding: 0 0 30px 0;
     color: #212529;
-    font-size: 14px;
+    font-size: 0.875em;
     background: #f8fcf9;
 }
 
@@ -1210,11 +1211,11 @@ section {
     padding: 50px 0;
     background: #f8fcf9;
     text-align: center;
-    font-size: 15px;
+    font-size: 0.9375em;
 }
 
 .grade .footer-newsletter h4 {
-    font-size: 24px;
+    font-size: 1.5em;
     margin: 0 0 20px 0;
     padding: 0;
     line-height: 1;
@@ -1245,7 +1246,7 @@ section {
     bottom: 0;
     border: 0;
     background: none;
-    font-size: 16px;
+    font-size: 1.25em;
     padding: 0 20px;
     background: #5cb874;
     color: #fff;
@@ -1259,7 +1260,7 @@ section {
 }
 
 .grade i {
-    font-size: 18px;
+    font-size: 1.5em;
     color: #5cb874;
 }
 
@@ -1274,7 +1275,7 @@ section {
     background: #fff;
     padding: 0 0 30px 0;
     color: #212529;
-    font-size: 14px;
+    font-size: 0.875em;
     background: #f8fcf9;
 }
 
@@ -1289,7 +1290,7 @@ section {
 }
 
 #footer .footer-top .footer-contact h4 {
-    font-size: 22px;
+    font-size: 1.375em;
     margin: 0 0 30px 0;
     padding: 2px 0 2px 0;
     line-height: 1;
@@ -1297,7 +1298,7 @@ section {
 }
 
 #footer .footer-top .footer-contact p {
-    font-size: 14px;
+    font-size: 0.875em;
     line-height: 24px;
     margin-bottom: 0;
     font-family: "Raleway", sans-serif;
@@ -1305,7 +1306,7 @@ section {
 }
 
 #footer .footer-top h4 {
-    font-size: 16px;
+    font-size: 1em;
     font-weight: bold;
     color: #212529;
     position: relative;
@@ -1325,7 +1326,7 @@ section {
 #footer .footer-top .footer-links ul i {
     padding-right: 2px;
     color: #5cb874;
-    font-size: 18px;
+    font-size: 1.125em;
     line-height: 1;
 }
 
@@ -1352,7 +1353,7 @@ section {
 }
 
 #footer .footer-top .social-links a {
-    font-size: 18px;
+    font-size: 1.125em;
     display: inline-block;
     background: #5cb874;
     color: #fff;

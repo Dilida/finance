@@ -33,7 +33,7 @@ const Home = () => {
               </p>
               <div className="row">
                 <div className="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                  <i className="bx bx-cube-alt"></i>
+                  <i className="bx bx-cube-alt" title="建置目的"></i>
                   <h4>建置目的</h4>
                   <p>本學習專區為向金融機構之稽核人員、對金融檢查有興趣者及金檢人官宣導金檢相關知識、建立金融檢查之基本觀念。
                     本局每年配合法規變動及檢查發現增修相關課程教育內容，並不定期新增課程單元，於年底前將增修課程內容公告上網，
@@ -41,7 +41,7 @@ const Home = () => {
                 </div>
                 <div className="col-md-6" data-aos="fade-up" data-aos-delay="200">
 
-                  <i className="bx bx-receipt"></i>
+                  <i className="bx bx-receipt" title="重要訊息"></i>
                   <h4>重要訊息</h4>
                   <p>
                     111 年 11 月份已於「金檢學堂」新增「保險業收費及佣金作業」主題，並於該主題項下建立 2 個課程單元【即新增「佣金作業」1
@@ -64,13 +64,13 @@ const Home = () => {
           </div>
           <div className="row gy-4">
             <div className="col-lg-4 order-1 order-lg-2 hero-img">
-              <img src={map1} className="img-fluid animated" alt="學習地圖1-5"/>
+              <img src={map1} className="img-fluid animated" alt="學習地圖1-5 存款業務、洗錢防制、內部管理、授信業務、投資業務"/>
             </div>
             <div className="col-lg-4 order-1 order-lg-2 hero-img">
-              <img src={map2} className="img-fluid animated" alt="學習地圖6-10"/>
+              <img src={map2} className="img-fluid animated" alt="學習地圖6-10 信託業務、金融商品銷售、資訊作業、保險招纜、證券承銷"/>
             </div>
             <div className="col-lg-4 order-1 order-lg-2 hero-img">
-              <img src={map3} className="img-fluid animated" alt="學習地圖11-15"/>
+              <img src={map3} className="img-fluid animated" alt="學習地圖11-15 核保理賠、投資型商品、證券經紀、保險業資金運用、保險業收費及佣金"/>
             </div>
           </div>
         </div>

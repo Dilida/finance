@@ -71,11 +71,11 @@ const Menu = () => {
                 handleDropDown={handleDropDown}
                 handleSelect={handleSelect}
               /> : null}
-              <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="金檢學堂">金檢學堂</a></li>
-              <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-" title="學習地圖">學習地圖</a></li>
-              <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-" title="意見區">意見區</a></li>
+              <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="金檢學堂" href="">金檢學堂</a></li>
+              <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-" title="學習地圖" href="">學習地圖</a></li>
+              <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-" title="意見區" href="">意見區</a></li>
               <li><a className="nav-link scrollto" href="/suggestion" title="評價結果">評價結果</a></li>
-              {userLogin ? null:  <li><a className="getstarted scrollto" onClick={scrollHandle} id="services-" title="進入課程">進入課程</a></li>}
+              {userLogin ? null:  <li><a className="getstarted scrollto" onClick={scrollHandle} id="services-" title="進入課程" href="">進入課程</a></li>}
 
             </ul>
             <i className={mobileMenu ? "bi bi-list mobile-nav-toggle" : "bi mobile-nav-toggle bi-x"}

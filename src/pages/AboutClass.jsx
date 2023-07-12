@@ -85,7 +85,7 @@ const AboutClass = () => {
         <div className="container">
 
           <div className="d-flex justify-content-between align-items-center">
-            <h2>課程內容</h2>
+            <h2 aria-current="page">{classSelect[2]}.{classSelect[3]}</h2>
             <ol>
               <li>{classSelect[0]}.{classSelect[1]}</li>
               <li>{classSelect[2]}.{classSelect[3]}</li>
@@ -100,15 +100,15 @@ const AboutClass = () => {
         <div className="container">
           <div className="row gy-4">
             <div className="col-lg-10">
-              <iframe src={nowSelect.contentFilm} className="iframeSpecial" title="iframeSpecial"></iframe>
+              <iframe src={nowSelect.contentFilm} className="iframeSpecial" title={nowSelect.contentName+ "頁面播放"}></iframe>
             </div>
             <div className="col-lg-2">
               <div className="portfolio-info">
                 <h3>{classSelect[2]}.{classSelect[3]}</h3>
                 <ul>
-                  {itemList.map((item) => (
-                    <li key={item.contentID} className="portfolio-description">
-                      <strong onClick={() => handleClass(item.contentID)}
+                  {itemList.map((item, index) => (
+                    <li key={item.contentID} className="portfolio-description" >
+                      <strong role="button" title={item.contentName} onClick={() => handleClass(item.contentID)}
                               className={nowSelect.contentID === item.contentID ? "active" : ""}>{item.contentName}</strong>
                       {item.contentScript && item.contentScript.map((minItem) => (
                         <p key={item.itemID + minItem}>{minItem}</p>
@@ -130,8 +130,8 @@ const AboutClass = () => {
                 {showAlert.show ?
                   <Alert key="success" variant={showAlert.type}>
                     {showAlert.type === "success" ? "評分已成功送出，請勿重覆操作。" : "此課程已評分過，請勿重覆操作。"}
-                    <Alert.Link href="/suggestion">點我看評分結果 </Alert.Link>
-                    <Button onClick={() => setShowAlert({"show": false, "type": "success"})}
+                    <Alert.Link href="/suggestion" title="點我看評分結果">點我看評分結果 </Alert.Link>
+                    <Button title="關閉此提醒" onClick={() => setShowAlert({"show": false, "type": "success"})}
                             variant={`outline-${showAlert.type}`}>
                       關閉此提醒
                     </Button>
@@ -174,7 +174,7 @@ const AboutClass = () => {
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="col-2">
-                    <input type="submit" value="送出意見"/>
+                    <input type="submit" value="送出意見" aria-label="送出意見課程評分"/>
                   </div>
                 </form>
               </div>

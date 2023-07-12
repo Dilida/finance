@@ -34,8 +34,8 @@ const UserLogin = () => {
         <div className="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100"
              key={list.id}>
           <div className="icon-box">
-            <div className="icon"><i className="bx bx-body"></i></div>
-            <h4 className="title"><a href="">{list.name}</a></h4>
+            <div className="icon"><i className="bx bx-body" title={list.name}></i></div>
+            <h4 className="title"><a href="" onClick={() => handlePostUser(list.id)} title={list.name}>{list.name}</a></h4>
             <div className="btn-get-started" onClick={() => handlePostUser(list.id)}>進入課程 Start</div>
           </div>
         </div>

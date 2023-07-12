@@ -22,17 +22,18 @@ const DropClassMenu = ({dropDown, handleDropDown,  handleSelect}) => {
 
   return (
     <li className="dropdown">
-      <a href="#" onClick={() => handleDropDown()}><span>課程區</span> <i className="bi bi-chevron-down"></i></a>
+      <a href="#" onClick={() => handleDropDown()} title="課程列表" aria-expanded="false" aria-label="課程選單展開/收合"><span>課程區</span> <i className="bi bi-chevron-down"></i></a>
       <ul className={dropDown ? "" : "dropdown-active"}>
         {subjectList.map((list) => (
           <li key={list.subjectID} className="dropdown">
-            <a href="#">
+            <a href="#" title={list.subjectID+"."+list.subjectName}>
               <span>{list.subjectID}.{list.subjectName}</span>
               <i className="bi bi-chevron-right"></i>
             </a>
             <ul className="dropdown-active">
               {list.subjectList.map((item) => (
-                <li key={item.subjectID}><a href="#" onClick={() => handleSelect(list.subjectID, list.subjectName, item.subjectID, item.subjectName)}>{item.subjectID}.{item.subjectName}</a>
+                <li key={item.subjectID}>
+                  <a href="#" title={item.subjectID+"."+item.subjectName} onClick={() => handleSelect(list.subjectID, list.subjectName, item.subjectID, item.subjectName)}>{item.subjectID}.{item.subjectName}</a>
                 </li>
               ))}
             </ul>
