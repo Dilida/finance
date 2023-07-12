@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+=======
+<a name="readme-top"></a>
+
+<br />
+
+<!-- Page Header -->
+<div align="center">
+ <h1 align="center">React-Router-Boostrap Starter Template</h1>
+
+  <p align="center">
+    React Bootstrap Starter is a starter template for react and bootstrap created by Chris Achinga. This theme uses `Create React App`, `react-bootstrap` and `gh-pages`.
+    <br />
+
+  </p>
+</div>
+
+>>>>>>> css
 ## Getting Started
 
 This is how you set up the project locally.

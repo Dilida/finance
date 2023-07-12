@@ -1,6 +1,5 @@
 
 import { Routes, Route } from "react-router-dom";
-
 // Layout
 import Layout from "./layout/Layout";
 
@@ -8,6 +7,7 @@ import Layout from "./layout/Layout";
 import Home from "./pages/Home";
 import AboutClass from "./pages/AboutClass";
 import NotFound from "./pages/NotFound";
+import SuggestionTable from "./pages/SuggestionTable";
 
 const App = () => {
   return (
@@ -15,6 +15,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} exact />
           <Route path="/aboutClass" element={<AboutClass />} />
+          <Route path='/suggestion' element={<SuggestionTable />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
     </Layout>

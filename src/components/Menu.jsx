@@ -1,42 +1,88 @@
-import { Link } from "react-router-dom";
-import { Nav, Container } from "react-bootstrap";
+import React, { useEffect, useState} from "react";
+import {Container} from "react-bootstrap";
+import DropClassMenu from "./DropClassMenu";
+import {userLoginKey, classSelectKey} from "../config";
+import {useNavigate} from 'react-router-dom';
+import Logo from '../assets/img/logo.png'
 
 const Menu = () => {
+  const [mobileMenu, setMobileMenu] = useState([])
+  const [dropDown, setDropDown] = useState([])  //第一層
+
+  const [userLogin, setUserLogin] = useState(false)
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (sessionStorage.getItem(userLoginKey)) {
+      setUserLogin(true)
+    }
+  }, [])
+
+  const handleMobileMenu = () => {
+    setDropDown(true)
+    setMobileMenu(!mobileMenu)
+  }
+
+  const handleDropDown = () => {
+    setDropDown(!dropDown)
+    if (mobileMenu !== false){
+      handleSelect("01","存款業務","A","存款業務及開戶審查")
+    }
+  }
+
+
+  const scrollHandle = (e) => {
+    e.preventDefault();
+    const id = e.target.id;
+    const position = document.getElementById(id.slice(0, id.length - 1)); //removing extra last - (dash)
+    window.location.href = "/#" + id.slice(0, id.length - 1); // changing the url
+    position && position.scrollIntoView({ behavior: "smooth", block: "start" }) //scrolling the page
+    if (!mobileMenu) {
+      setMobileMenu(true)
+    }
+  }
+
+  const handleSelect = (firstID, firstName, secondID, secondName) => {
+    const selectKey = `${firstID},${firstName},${secondID},${secondName}`
+    sessionStorage.setItem(classSelectKey,selectKey)
+    navigate('/aboutClass')
+    document.location.reload();
+
+  }
+
   return (
     <Container>
       <header id="header" className="fixed-top d-flex align-items-center">
         <div className="container d-flex align-items-center justify-content-between">
 
           <div className="logo">
-            <h1 className="text-light"><a href="/"><span><strong>e</strong> 化金檢知識網</span></a></h1>
+            <div className="row">
+              <div className="col-md-7" data-aos="fade-up" data-aos-delay="100">
+                <a href="/" title="e化金檢知識網"><img src={Logo} alt="金融監督管理委會員檢查局"/></a>
+              </div>
+              <div className="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <h1 className="text-light"><a href="/" title="e化金檢知識網"><span><strong>e</strong>化金檢知識網</span></a></h1>
+              </div>
+            </div>
+
           </div>
 
-          <nav id="navbar" className="navbar">
+          <nav id="navbar" className={mobileMenu ? "navbar" : "navbar navbar-mobile"}>
             <ul>
-              <li><a className="nav-link scrollto active" href="#about">金檢學堂</a></li>
-              <li><a className="nav-link scrollto" href="#about">學習架構介紹</a></li>
-              <li className="dropdown"><a href="#"><span>課程區</span> <i className="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="#">Drop Down 1</a></li>
-                  <li className="dropdown"><a href="#"><span>Deep Drop Down</span> <i
-                    className="bi bi-chevron-right"></i></a>
-                    <ul>
-                      <li><a href="#">Deep Drop Down 1</a></li>
-                      <li><a href="#">Deep Drop Down 2</a></li>
-                      <li><a href="#">Deep Drop Down 3</a></li>
-                      <li><a href="#">Deep Drop Down 4</a></li>
-                      <li><a href="#">Deep Drop Down 5</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Drop Down 2</a></li>
-                  <li><a href="#">Drop Down 3</a></li>
-                  <li><a href="#">Drop Down 4</a></li>
-                </ul>
-              </li>
-              <li><a className="nav-link scrollto" href="#contact">意見區</a></li>
-              <li><a className="getstarted scrollto" href="#services">進入課程</a></li>
+              {userLogin ? <DropClassMenu
+                dropDown={dropDown}
+                handleDropDown={handleDropDown}
+                handleSelect={handleSelect}
+              /> : null}
+              <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="金檢學堂" href="">金檢學堂</a></li>
+              <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-" title="學習地圖" href="">學習地圖</a></li>
+              <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-" title="意見區" href="">意見區</a></li>
+              <li><a className="nav-link scrollto" href="/suggestion" title="評價結果">評價結果</a></li>
+              {userLogin ? null:  <li><a className="getstarted scrollto" onClick={scrollHandle} id="services-" title="進入課程" href="">進入課程</a></li>}
+
             </ul>
-            <i className="bi bi-list mobile-nav-toggle"></i>
+            <i className={mobileMenu ? "bi bi-list mobile-nav-toggle" : "bi mobile-nav-toggle bi-x"}
+               onClick={handleMobileMenu}></i>
           </nav>
 
         </div>

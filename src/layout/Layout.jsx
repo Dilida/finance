@@ -2,12 +2,12 @@
 import Menu from "../components/Menu";
 import Footer from "../components/Footer.jsx";
 
-const Layout = ({ children }) => {
+const Layout = ({children}) => {
   return (
     <>
-      <Menu />
+      <Menu/>
       <main>{children}</main>
-      <Footer />
+      <Footer/>
     </>
   );
 };

@@ -6,7 +6,7 @@ const Footer = () => {
 
         <div className="container py-4">
           <div className="copyright">
-            &copy; <strong><span>金融監督管理委員會檢查局</span></strong> 版權所有
+            &copy; <strong><span>{year} 金融監督管理委員會檢查局</span></strong> 版權所有
           </div>
           <div className="credits">
             22041 新北市板橋區縣民大道2段7號14樓 電話：(02)8968-0899
