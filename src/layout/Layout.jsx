@@ -5,8 +5,10 @@ import Footer from "../components/Footer.jsx";
 const Layout = ({children}) => {
   return (
     <>
+
       <Menu/>
-      <main>{children}</main>
+       {children}
+      <a accessKey="Z" className="accesskey" href="#aZ" id="aZ" title="下方功能區塊">:::</a>
       <Footer/>
     </>
   );

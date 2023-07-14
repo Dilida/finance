@@ -108,8 +108,8 @@ const AboutClass = () => {
                 <ul>
                   {itemList.map((item, index) => (
                     <li key={item.contentID} className="portfolio-description" >
-                      <strong role="button" title={item.contentName} onClick={() => handleClass(item.contentID)}
-                              className={nowSelect.contentID === item.contentID ? "active" : ""}>{item.contentName}</strong>
+                      <a href=""><strong role="button" title={item.contentName} onClick={() => handleClass(item.contentID)}
+                                         className={nowSelect.contentID === item.contentID ? "active" : ""}>{item.contentName}</strong></a>
                       {item.contentScript && item.contentScript.map((minItem) => (
                         <p key={item.itemID + minItem}>{minItem}</p>
                       ))}

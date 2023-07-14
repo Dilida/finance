@@ -113,7 +113,7 @@ h6,
 }
 
 #main {
-    margin-top: 72px;
+    margin-top: 50px;
 }
 
 /*--------------------------------------------------------------
@@ -152,7 +152,7 @@ h6,
 
 .navbar a i,
 .navbar a:focus i {
-    font-size: 0.8emx;
+    font-size: 0.8em;
     line-height: 0;
     margin-left: 5px;
 }
@@ -569,7 +569,7 @@ section {
 .about p {
     font-size: 0.9375em;
     color: #5a6570;
-    text-align: justify;
+    /*text-align: justify;*/
 }
 
 @media (max-width: 991px) {
