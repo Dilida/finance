@@ -59,8 +59,8 @@ const SectionSuggestion = () => {
     <section id="contact" className="contact">
       <div className="container" data-aos="fade-up">
         <div className="section-title">
-          <p>意見表</p>
-          <h2>教材單元評價，請進入「課程區」閱覽教材內容後給予評價</h2>
+          <h2>意見表</h2>
+          <p>教材單元評價，請進入「課程區」閱覽教材內容後給予評價</p>
         </div>
         <div className="row">
           <div className="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">

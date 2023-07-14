@@ -59,8 +59,8 @@ const Home = () => {
       <section id="hero" className="hero d-flex align-items-center">
         <div className="container">
           <div className="section-title">
-            <p>金檢課程學習地圖</p>
-              <h2>本園區提供15站探索之旅，請循序漸進體驗</h2>
+            <h2>金檢課程學習地圖</h2>
+              <p>本園區提供15站探索之旅，請循序漸進體驗</p>
             </div>
           <div className="row gy-4">
             <div className="col-lg-4 order-1 order-lg-2 hero-img">

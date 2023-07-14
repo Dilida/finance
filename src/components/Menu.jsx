@@ -78,6 +78,7 @@ const Menu = () => {
               <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-" title="學習地圖" href="">學習地圖</a></li>
               <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-" title="意見區" href="">意見區</a></li>
               <li><a className="nav-link scrollto" href="/suggestion" title="評價結果">評價結果</a></li>
+              <li><a className="nav-link scrollto" href="/sitemap" title="網站導覽">網站導覽</a></li>
               {userLogin ? null:  <li><a className="getstarted scrollto" onClick={scrollHandle} id="services-" title="進入課程" href="">進入課程</a></li>}
 
             </ul>

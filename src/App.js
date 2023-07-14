@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import AboutClass from "./pages/AboutClass";
 import NotFound from "./pages/NotFound";
 import SuggestionTable from "./pages/SuggestionTable";
+import Sitemap from './pages/Sitemap'
 
 const App = () => {
   return (
