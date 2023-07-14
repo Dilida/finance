@@ -15,7 +15,7 @@ body {
 }
 
 a {
-    color: #5cb874;
+    color: #38804B;
     text-decoration: none;
 }
 
@@ -35,7 +35,11 @@ h6,
 }
 
 .note {
-    color: #ff0066;
+    color: #D10054;
+}
+
+.font12em{
+    font-size: 1.2em;
 }
 
 /*--------------------------------------------------------------
@@ -48,7 +52,7 @@ h6,
     right: 15px;
     bottom: 15px;
     z-index: 99999;
-    background: #5cb874;
+    background: #38804B;
     width: 40px;
     height: 40px;
     border-radius: 4px;
@@ -162,12 +166,12 @@ h6,
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover > a {
-    color: #5cb874;
+    color: #38804B;
 }
 
 .navbar .getstarted,
 .navbar .getstarted:focus {
-    background: #5cb874;
+    background: #38804B;
     color: #fff;
     padding: 10px 25px;
     margin-left: 30px;
@@ -212,7 +216,7 @@ h6,
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover > a {
-    color: #5cb874;
+    color: #38804B;
 }
 .navbar .dropdown:focus > ul,
 .navbar .dropdown:hover > ul {
@@ -310,7 +314,7 @@ h6,
 .navbar-mobile a:hover,
 .navbar-mobile .active,
 .navbar-mobile li:hover > a {
-    color: #5cb874;
+    color: #38804B;
 }
 
 .navbar-mobile .getstarted,
@@ -345,7 +349,7 @@ h6,
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
 .navbar-mobile .dropdown ul li:hover > a {
-    color: #5cb874;
+    color: #38804B;
 }
 
 .navbar-mobile .dropdown > .dropdown-active {
@@ -382,7 +386,7 @@ h6,
     border-radius: 3px;
     transition: 0.5s;
     color: #fff;
-    background: #5cb874;
+    background: #38804B;
 }
 
 .btn-get-started:hover {
@@ -491,7 +495,7 @@ section {
     display: block;
     width: 60px;
     height: 2px;
-    background: #5cb874;
+    background: #38804B;
     bottom: 0;
     left: calc(50% - 30px);
 }
@@ -500,7 +504,6 @@ section {
 # Breadcrumbs
 --------------------------------------------------------------*/
 .breadcrumbs {
-    padding: 15px 0;
     background-color: #f8fcf9;
     min-height: 40px;
 }
@@ -563,7 +566,7 @@ section {
 .about i {
     font-size:4em;
     margin-top: 15px;
-    color: #5cb874;
+    color: #38804B;
 }
 
 .about p {
@@ -609,7 +612,7 @@ section {
     font-size: 3.75em;
     line-height: 1;
     margin-bottom: 15px;
-    color: #5cb874;
+    color: #38804B;
 }
 
 .services .title {
@@ -702,7 +705,7 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-links a {
-    color: #5cb874;
+    color: #38804B;
     margin: 0 4px;
     line-height: 0;
     background-color: #fff;
@@ -781,11 +784,11 @@ section {
     height: 12px;
     background-color: #fff;
     opacity: 1;
-    border: 1px solid #5cb874;
+    border: 1px solid #38804B;
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-    background-color: #5cb874;
+    background-color: #38804B;
 }
 
 .portfolio-details .portfolio-info {
@@ -812,12 +815,12 @@ section {
 }
 
 .portfolio-details .portfolio-description:hover {
-    color: #5cb874;
+    color: #38804B;
     cursor: pointer;
 }
 
 .portfolio-details .portfolio-description .active {
-    color: #5cb874;
+    color: #38804B;
 }
 
 .portfolio-details .portfolio-description p {
@@ -845,14 +848,14 @@ section {
 .faq .faq-list .question {
     display: block;
     position: relative;
-    font-family: #5cb874;
+    font-family: #38804B;
     font-size: 1.125em;
     line-height: 24px;
     font-weight: 400;
     font-weight: 600;
     padding-left: 25px;
     cursor: pointer;
-    color: #5cb874;
+    color: #38804B;
     transition: 0.3s;
 }
 
@@ -1003,19 +1006,19 @@ section {
     height: 12px;
     background-color: #fff;
     opacity: 1;
-    border: 1px solid #5cb874;
+    border: 1px solid #38804B;
 }
 
 .clients .clients-slider .swiper-pagination .swiper-pagination-bullet-active {
-    background-color: #5cb874;
+    background-color: #38804B;
 }
 
 /*--------------------------------------------------------------
 # Contact Us
 --------------------------------------------------------------*/
 .contact .info {
-    border-top: 3px solid #5cb874;
-    border-bottom: 3px solid #5cb874;
+    border-top: 3px solid #38804B;
+    border-bottom: 3px solid #38804B;
     padding: 30px;
     background: #fff;
     width: 100%;
@@ -1024,7 +1027,7 @@ section {
 
 .contact .suggest > i {
     font-size: 1.25em;
-    color: #5cb874;
+    color: #38804B;
     float: left;
     width: 44px;
     height: 44px;
@@ -1088,8 +1091,8 @@ section {
 
 .contact .php-email-form {
     width: 100%;
-    border-top: 3px solid #5cb874;
-    border-bottom: 3px solid #5cb874;
+    border-top: 3px solid #38804B;
+    border-bottom: 3px solid #38804B;
     padding: 30px;
     background: #fff;
     box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
@@ -1153,7 +1156,7 @@ section {
 }
 
 .contact .php-email-form button[type=submit] {
-    background: #5cb874;
+    background: #38804B;
     border: 0;
     padding: 10px 24px;
     color: #fff;
@@ -1167,7 +1170,7 @@ section {
 
 .list-suggest i {
     font-size: 1.125em;
-    color: #5cb874;
+    color: #38804B;
 }
 
 .satisfy {
@@ -1176,7 +1179,7 @@ section {
 
 .satisfy i {
     font-size: 1.5em;
-    color: #5cb874;
+    color: #38804B;
 }
 
 
@@ -1243,7 +1246,7 @@ section {
     background: none;
     font-size: 1.25em;
     padding: 0 20px;
-    background: #5cb874;
+    background: #38804B;
     color: #fff;
     transition: 0.3s;
     border-radius: 4px;
@@ -1256,11 +1259,11 @@ section {
 
 .grade i {
     font-size: 1.5em;
-    color: #5cb874;
+    color: #38804B;
 }
 
 .grade .form-check {
-    margin-right: 5px;
+    margin-left: 10px;
 }
 
 /*--------------------------------------------------------------
@@ -1320,7 +1323,7 @@ section {
 
 #footer .footer-top .footer-links ul i {
     padding-right: 2px;
-    color: #5cb874;
+    color: #38804B;
     font-size: 1.125em;
     line-height: 1;
 }
@@ -1350,7 +1353,7 @@ section {
 #footer .footer-top .social-links a {
     font-size: 1.125em;
     display: inline-block;
-    background: #5cb874;
+    background: #38804B;
     color: #fff;
     line-height: 1;
     padding: 8px 0;
@@ -1381,7 +1384,7 @@ section {
 }
 
 #footer .credits a {
-    color: #5cb874;
+    color: #38804B;
 }
 
 @media (max-width: 575px) {

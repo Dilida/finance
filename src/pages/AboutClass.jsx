@@ -100,15 +100,17 @@ const AboutClass = () => {
         <div className="container">
           <div className="row gy-4">
             <div className="col-lg-10">
-              <iframe src={nowSelect.contentFilm} className="iframeSpecial" title={nowSelect.contentName+ "頁面播放"}></iframe>
+              <iframe src={nowSelect.contentFilm} className="iframeSpecial"
+                      title={nowSelect.contentName + "頁面播放"}></iframe>
             </div>
             <div className="col-lg-2">
               <div className="portfolio-info">
                 <h3>{classSelect[2]}.{classSelect[3]}</h3>
                 <ul>
                   {itemList.map((item, index) => (
-                    <li key={item.contentID} className="portfolio-description" >
-                      <a href=""><strong role="button" title={item.contentName} onClick={() => handleClass(item.contentID)}
+                    <li key={item.contentID} className="portfolio-description">
+                      <a href=""><strong role="button" title={item.contentName}
+                                         onClick={() => handleClass(item.contentID)}
                                          className={nowSelect.contentID === item.contentID ? "active" : ""}>{item.contentName}</strong></a>
                       {item.contentScript && item.contentScript.map((minItem) => (
                         <p key={item.itemID + minItem}>{minItem}</p>
@@ -125,7 +127,7 @@ const AboutClass = () => {
         <div className="footer-newsletter">
           <div className="container">
             <div className="row justify-content-center">
-              <div className="col-lg-8">
+              <div className="col-lg-12">
                 <h4>單元評價</h4>
                 {showAlert.show ?
                   <Alert key="success" variant={showAlert.type}>
@@ -138,9 +140,10 @@ const AboutClass = () => {
                   </Alert> : null}
                 <form className="row gy-2 gx-7" onSubmit={handleSubmit}>
                   <div className="form-check col-2">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                           value="5" onChange={handleSelectChange}
-                           checked={starSelect["value"] && starSelect["value"] === "5"}/>
+                    <label htmlFor="star5" className="font12em">五顆星
+                      <input className="form-check-input" type="radio" name="star5" id="star5"
+                             value="5" onChange={handleSelectChange}
+                             checked={starSelect["value"] && starSelect["value"] === "5"}/></label>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
@@ -148,29 +151,33 @@ const AboutClass = () => {
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="form-check col-2">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                           value="4" onChange={handleSelectChange}/>
+                    <label htmlFor="star4" className="font12em">四顆星
+                    <input className="form-check-input" type="radio" name="star4" id="star4"
+                           value="4" onChange={handleSelectChange}/></label>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="form-check col-2">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                           value="3" onChange={handleSelectChange}/>
+                    <label htmlFor="star3" className="font12em">三顆星
+                    <input className="form-check-input" type="radio" name="star3" id="star3"
+                           value="3" onChange={handleSelectChange}/></label>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="form-check col-2">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                           value="2" onChange={handleSelectChange}/>
+                    <label htmlFor="star2" className="font12em">二顆星
+                    <input className="form-check-input" type="radio" name="star2" id="star2"
+                           value="2" onChange={handleSelectChange}/></label>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="form-check col-1">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                           value="1" onChange={handleSelectChange}/>
+                    <label htmlFor="star1" className="font12em">一顆星
+                    <input className="form-check-input" type="radio" name="star1" id="star1"
+                           value="1" onChange={handleSelectChange}/></label>
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="col-2">

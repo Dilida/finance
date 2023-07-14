@@ -75,13 +75,13 @@ const SectionSuggestion = () => {
               </div>
 
               <div className="form-group mt-5">
-                <label htmlFor="架構版面建議事項-必填" className="suggest"><i className="bi bi-paint-bucket" title="架構版面建議事項"></i>
+                <label htmlFor="suggestion1" className="suggest"><i className="bi bi-paint-bucket" title="架構版面建議事項"></i>
                   <h4>架構版面建議事項</h4></label>
                 <textarea className="form-control" name="suggestion1" rows="3" id="suggestion1" required
                           value={textAreaUp} onChange={e => setTextAreaUp(e.target.value)}></textarea>
               </div>
               <div className="form-group mt-5">
-                <label htmlFor="其他建議事項-必填" className="suggest">
+                <label htmlFor="suggestion2" className="suggest">
                   <i className="bi bi-receipt" title="其他建議事項"></i>
                   <h4>其他建議事項</h4>
                 </label>
