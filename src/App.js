@@ -16,6 +16,7 @@ const App = () => {
           <Route path="/" element={<Home />} exact />
           <Route path="/aboutClass" element={<AboutClass />} />
           <Route path='/suggestion' element={<SuggestionTable />} />
+          <Route path='/sitemap' element={<Sitemap />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
     </Layout>
