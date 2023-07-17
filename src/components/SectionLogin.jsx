@@ -6,7 +6,7 @@ const SectionLogin = () => {
       <div className="container" data-aos="fade-up">
 
         <div className="section-title">
-          <p>請選擇使用身份</p>
+          <h2>請選擇使用身份</h2>
         </div>
 
         <UserList />
@@ -17,3 +17,4 @@ const SectionLogin = () => {
 }
 
 export default SectionLogin
+

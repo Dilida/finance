@@ -73,6 +73,7 @@ const Menu = () => {
 
   return (
     <Container>
+      <a className="accesskey" href="#aU" id="aU" accessKey="U" title="上方功能區塊" tabIndex="2">:::</a>
       <header id="header" className="fixed-top d-flex align-items-center">
         <div className="container d-flex align-items-center justify-content-between">
 
@@ -96,11 +97,11 @@ const Menu = () => {
                 handleSelect={handleSelect}
                 subjectList = {subjectList}
               /> : null}
-              <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="回首頁" href="">回首頁</a></li>
-              <li><a className="nav-link scrollto" href="/sitemap" title="網站導覽">網站導覽</a></li>
-              <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-" title="學習地圖" href="">學習地圖</a></li>
-              <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-" title="意見區" href="">意見區</a></li>
-              <li><a className="nav-link scrollto" href="/suggestion" title="評價結果">評價結果</a></li>
+              <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" onClick={scrollHandle} id="about-" title="回首頁" href="">回首頁</a></li>
+              <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" href="/sitemap" title="網站導覽">網站導覽</a></li>
+              <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" onClick={scrollHandle} id="hero-" title="學習地圖" href="">學習地圖</a></li>
+              <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" onClick={scrollHandle} id="contact-" title="意見區" href="">意見區</a></li>
+              <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" href="/suggestion" title="評價結果">評價結果</a></li>
 
               {userLogin ? null:  <li><a className="getstarted scrollto" onClick={scrollHandle} id="services-" title="進入課程" href="">進入課程</a></li>}
 

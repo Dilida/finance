@@ -3,7 +3,7 @@ const Satisfy = ({handleSelectChange}) => {
     <div className="form-group mt-5">
       <label htmlFor="suggestion3" className="suggest">
         <i className="bi bi-globe"></i>
-        <h4>網站綜合評價</h4>
+        <h3>網站綜合評價</h3>
       </label>
       <hr/>
       <div className="row gy-2 ms-lg-5">

@@ -68,7 +68,7 @@ const SectionSuggestion = () => {
               <div className="form-group mt-3">
                 <label htmlFor="架構版面評分-必填" className="suggest">
                   <i className="bi bi-palette" title="架構版面評分"></i>
-                  <h4>架構版面評分</h4>
+                  <h3>架構版面評分</h3>
                 </label>
                 <Star lists={suggestItem} handleSelectChange={handleSelectChange}/>
 
@@ -76,14 +76,14 @@ const SectionSuggestion = () => {
 
               <div className="form-group mt-5">
                 <label htmlFor="suggestion1" className="suggest"><i className="bi bi-paint-bucket" title="架構版面建議事項"></i>
-                  <h4>架構版面建議事項</h4></label>
+                  <h3>架構版面建議事項</h3></label>
                 <textarea className="form-control" name="suggestion1" rows="3" id="suggestion1" required
                           value={textAreaUp} onChange={e => setTextAreaUp(e.target.value)}></textarea>
               </div>
               <div className="form-group mt-5">
                 <label htmlFor="suggestion2" className="suggest">
                   <i className="bi bi-receipt" title="其他建議事項"></i>
-                  <h4>其他建議事項</h4>
+                  <h3>其他建議事項</h3>
                 </label>
                 <textarea className="form-control" name="suggestion2" rows="3" id="suggestion2" required
                           placeholder="請敘明主題、單元或項目等" value={textAreaDown}

@@ -481,7 +481,7 @@ section {
     margin-top:30px;
 }
 
-.section-title p {
+.section-title h3 {
     padding-bottom: 15px;
     margin-bottom: 15px;
     position: relative;
@@ -490,7 +490,7 @@ section {
     color: #4e4039;
 }
 
-.section-title p::after {
+.section-title h3::after {
     content: "";
     position: absolute;
     display: block;
@@ -551,13 +551,13 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-.about h3 {
+.about h2 {
     font-weight: 700;
     font-size: 2em;
     color: #4e4039;
 }
 
-.about h4 {
+.about h3 {
     font-size: 1.25em;
     font-weight: 700;
     margin-top: 5px;
@@ -1040,7 +1040,7 @@ section {
     transition: all 0.3s ease-in-out;
 }
 
-.contact h4 {
+.contact h3 {
     padding: 0 0 0 50px;
     font-size: 1.375em;
     font-weight: 600;

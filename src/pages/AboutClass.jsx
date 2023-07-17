@@ -104,7 +104,7 @@ const AboutClass = () => {
 
           <div className="d-flex justify-content-between align-items-center">
             <h2 aria-current="page">{classSelect[2]}.{classSelect[3]}</h2>
-            <ol>
+            <ol aria-label="Breadcrumb" role="navigation" >
               <li>{classSelect[0]}.{classSelect[1]}</li>
               <li>{classSelect[2]}.{classSelect[3]}</li>
               <li>{nowSelect.name}</li>

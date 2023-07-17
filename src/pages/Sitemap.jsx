@@ -53,14 +53,14 @@ const Sitemap = () => {
 
       <section id="portfolio-details" className="portfolio-details">
         <div className="container">
-          本網站依無障礙網頁設計原則建置，網站的主要內容分為三大區塊<br/>
-          1. 上方功能區塊、2. 中央內容區塊、3.下方功能區塊。<br/><br/>
+          本網站依無障礙網頁設計原則建置，網站的主要內容分為兩大區塊<br/>
+          1. 上方功能區塊、2.下方功能區塊。<br/><br/>
 
-          本網站的快速鍵﹝Accesskey﹞設定如下：<br/>
-          Alt+U：上方選單連結區，此區塊列有本網站的主要選單。<br/>
-          Alt+C：中間主要內容區，此區塊呈現網頁的網頁內容。<br/>
-          Alt+Z：下方連絡區，此區塊列有資訊安全政策、隱私權政策等連結。<br/>
-          Firefox瀏覽器若要存取上述快速鍵需加按shift鍵，如Alt+Shift+U來存取上方選單連結區。<br/><br/>
+          本網站的快速鍵﹝Accesskey﹞設定如下：<br/><br/>
+          Windows :Alt+U :上方選單連結區，此區塊列有本網站的主要選單。<br/>
+          Windows :Alt+Z :下方連絡區，此區塊列有資訊安全政策、隱私權政策等連結。<br/><br/>
+          Mac : Ctrl + Option + U :上方選單連結區，此區塊列有本網站的主要選單。<br/>
+          Mac : Ctrl + Option + Z :下方連絡區，此區塊列有資訊安全政策、隱私權政策等連結。<br/><br/>
           <b className="note">課程區請先回首頁登入身分後開啟連結</b>
         </div>
       </section>
