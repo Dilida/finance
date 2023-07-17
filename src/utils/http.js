@@ -1,7 +1,7 @@
 import axios from "axios";
 
 axios.defaults.timeout = 100000;
-axios.defaults.baseURL = "http://test.mediastack.cn/";
+axios.defaults.baseURL = "http://www.itez.com.tw:7070/elearn/api/";
 
 /**
  * http request 拦截器

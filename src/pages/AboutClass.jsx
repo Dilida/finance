@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {postSubject, postSubjectSuggestion} from "../utils/api";
-import {postSubjectObj} from "../utils/requestMock";
-import {classSelectKey, suggestListKey} from "../config";
+import {getClassList, getFilmUrl, postSubjectSuggestion} from "../utils/api";
+import {classSelectKey, selectClassFilm, suggestListKey} from "../config";
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 
@@ -14,27 +13,46 @@ const AboutClass = () => {
 
 
   useEffect(() => {
+    //todo: 要做error handle
+    const filmArray = JSON.parse(sessionStorage.getItem(selectClassFilm))
+    setItemList(filmArray)
+
+    //post folderId to get film url
+    getFilmUrl(filmArray[0].folderId).then(
+      (res) => {
+        console.log('res1', res)
+        filmArray[0].folderUrl = "http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html"
+        setNowSelect(filmArray[0])
+        // http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html
+
+      },
+      (e) => {
+        console.log("get response failed!");
+      })
+
     if (sessionStorage.getItem(classSelectKey)) {
       const myArray = sessionStorage.getItem(classSelectKey).split(",");
       setClassSelect(myArray)
       setStarSelect({"subjectID": myArray[0], "subSubjectID": myArray[2], "value": "5"})
     }
 
-    //todo 要換送進去的id
-    postSubject(postSubjectObj).then(
+  }, []);
+  const handleClass = (event, contentID) => {
+    event.preventDefault();
+    const newSelect = itemList.find((item) => item.id === contentID)
+    getFilmUrl(newSelect.folderId).then(
       (res) => {
-        // console.log("get article response:", res);
-        setNowSelect(res[0])
-        setItemList(res)
+        console.log('res1', res)
+        newSelect.folderUrl = "http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html"
+        setNowSelect(newSelect)
+        // http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html
+
       },
       (e) => {
         console.log("get response failed!");
       })
-  }, []);
-  const handleClass = (contentID) => {
-    const newSelect = itemList.filter((item) => item.contentID === contentID)
-    setNowSelect(newSelect[0])
   }
+
 
   const handleSelectChange = event => {
     setStarSelect({
@@ -89,7 +107,7 @@ const AboutClass = () => {
             <ol>
               <li>{classSelect[0]}.{classSelect[1]}</li>
               <li>{classSelect[2]}.{classSelect[3]}</li>
-              <li>{nowSelect.contentName}</li>
+              <li>{nowSelect.name}</li>
             </ol>
           </div>
 
@@ -99,22 +117,21 @@ const AboutClass = () => {
       <section id="portfolio-details" className="portfolio-details">
         <div className="container">
           <div className="row gy-4">
-            <div className="col-lg-10">
-              <iframe src={nowSelect.contentFilm} className="iframeSpecial"
-                      title={nowSelect.contentName + "頁面播放"}></iframe>
+            <div className="col-lg-9">
+              <iframe src={nowSelect.folderUrl} className="iframeSpecial"
+                      title={nowSelect.name + "頁面播放"}></iframe>
             </div>
-            <div className="col-lg-2">
+            <div className="col-lg-3">
               <div className="portfolio-info">
                 <h3>{classSelect[2]}.{classSelect[3]}</h3>
                 <ul>
                   {itemList.map((item, index) => (
-                    <li key={item.contentID} className="portfolio-description">
-                      <a href=""><strong role="button" title={item.contentName}
-                                         onClick={() => handleClass(item.contentID)}
-                                         className={nowSelect.contentID === item.contentID ? "active" : ""}>{item.contentName}</strong></a>
-                      {item.contentScript && item.contentScript.map((minItem) => (
-                        <p key={item.itemID + minItem}>{minItem}</p>
-                      ))}
+                    <li key={item.id} className="portfolio-description">
+                      <a href=""><strong role="button" title={item.name}
+                                         onClick={(e) => handleClass(e, item.id)}>{item.name}</strong></a>
+                      {/*{item.contentScript && item.contentScript.map((minItem) => (*/}
+                      {/*  <p key={item.itemID + minItem}>{minItem}</p>*/}
+                      {/*))}*/}
                     </li>
                   ))}
                 </ul>
@@ -152,8 +169,8 @@ const AboutClass = () => {
                   </div>
                   <div className="form-check col-2">
                     <label htmlFor="star4" className="font12em">四顆星
-                    <input className="form-check-input" type="radio" name="star" id="star4"
-                           value="4" onChange={handleSelectChange}/></label>
+                      <input className="form-check-input" type="radio" name="star" id="star4"
+                             value="4" onChange={handleSelectChange}/></label>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
@@ -161,23 +178,23 @@ const AboutClass = () => {
                   </div>
                   <div className="form-check col-2">
                     <label htmlFor="star3" className="font12em">三顆星
-                    <input className="form-check-input" type="radio" name="star" id="star3"
-                           value="3" onChange={handleSelectChange}/></label>
+                      <input className="form-check-input" type="radio" name="star" id="star3"
+                             value="3" onChange={handleSelectChange}/></label>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="form-check col-2">
                     <label htmlFor="star2" className="font12em">二顆星
-                    <input className="form-check-input" type="radio" name="star" id="star2"
-                           value="2" onChange={handleSelectChange}/></label>
+                      <input className="form-check-input" type="radio" name="star" id="star2"
+                             value="2" onChange={handleSelectChange}/></label>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="form-check col-1">
                     <label htmlFor="star1" className="font12em">一顆星
-                    <input className="form-check-input" type="radio" name="star" id="star1"
-                           value="1" onChange={handleSelectChange}/></label>
+                      <input className="form-check-input" type="radio" name="star" id="star1"
+                             value="1" onChange={handleSelectChange}/></label>
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="col-2">

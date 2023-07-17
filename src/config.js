@@ -9,3 +9,5 @@ export const classSelectKey = "classSelect"
 export const suggestListKey = "suggestList"
 
 export const suggestTotalKey = "suggestTotal"
+
+export const selectClassFilm = "classFilm"

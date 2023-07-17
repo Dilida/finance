@@ -1,5 +1,5 @@
 import React from "react";
-import {getSubjectList} from "../utils/api";
+import {getClassList} from "../utils/api";
 import {classSelectKey, userLoginKey} from "../config";
 import {useState, useEffect} from "react";
 import {useNavigate} from 'react-router-dom';
@@ -14,7 +14,7 @@ const Sitemap = () => {
       setUserLogin(true)
     }
 
-    getSubjectList().then(
+    getClassList().then(
       (res) => {
         setSubjectList(res)
       },
@@ -70,8 +70,8 @@ const Sitemap = () => {
             <div className="col-lg-12 col-md-6 footer-links">
               <h4>課程區</h4>
               <ul>
-                <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="金檢學堂"
-                       href="">金檢學堂</a></li>
+                <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="回首頁"
+                       href="">回首頁</a></li>
                 <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-" title="學習地圖"
                        href="">學習地圖</a></li>
                 <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-" title="意見區"
@@ -83,15 +83,15 @@ const Sitemap = () => {
                 <h4>選單區</h4>
                 <ul>
                   {subjectList.map((list) => (
-                    <li key={"sitemap" + list.subjectID}>
+                    <li key={"sitemap" + list.id}>
                       <i className="bx bx-chevron-right"></i>
-                      {list.subjectID}.{list.subjectName}
+                      {list.id}.{list.name}
                       {list.subjectList.map((item) => {
                         return userLogin === true ?
-                          <a href="#" key={item.subjectID} title={item.subjectID + "." + item.subjectName}
-                             onClick={() => handleSelect(list.subjectID, list.subjectName, item.subjectID, item.subjectName)}>{item.subjectID}.{item.subjectName}</a>
+                          <a href="#" key={item.id} title={item.id + "." + item.name}
+                             onClick={() => handleSelect(list.id, list.name, item.id, item.name)}>{item.id}.{item.name}</a>
                           :
-                          <div key={item.subjectID}>{item.subjectID}.{item.subjectName}</div>
+                          <div key={item.id}>{item.id}.{item.name}</div>
                       })}
                     </li>
                   ))}

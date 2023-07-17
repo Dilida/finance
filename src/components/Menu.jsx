@@ -1,14 +1,15 @@
 import React, { useEffect, useState} from "react";
 import {Container} from "react-bootstrap";
 import DropClassMenu from "./DropClassMenu";
-import {userLoginKey, classSelectKey} from "../config";
+import {userLoginKey, classSelectKey, selectClassFilm} from "../config";
 import {useNavigate} from 'react-router-dom';
 import Logo from '../assets/img/logo.png'
+import {getClassList} from "../utils/api";
 
 const Menu = () => {
   const [mobileMenu, setMobileMenu] = useState([])
   const [dropDown, setDropDown] = useState([])  //第一層
-
+  const [subjectList, setSubjectList] = useState([]) // dropmenu資料來源
   const [userLogin, setUserLogin] = useState(false)
   const navigate = useNavigate();
 
@@ -16,6 +17,26 @@ const Menu = () => {
     if (sessionStorage.getItem(userLoginKey)) {
       setUserLogin(true)
     }
+
+    getClassList().then(
+      (res) => {
+        setSubjectList(res)
+        // myArray = `${firstID},${firstName},${secondID},${secondName}`
+        let myArray = sessionStorage.getItem(classSelectKey)
+        if (myArray === null) {
+          const selectKey = `${res[0].id},${res[0].name},${res[0].subjectList[0].id},${res[0].subjectList[0].name}`
+          sessionStorage.setItem(classSelectKey,selectKey)
+          myArray = "01, 存款業務, A, 存款業務及開戶審查"
+        }
+
+
+        const saveFolder = res.find(item => item.id === myArray.split(',')[0])
+        const saveSubjectList = saveFolder.subjectList.find(item => item.id === myArray.split(',')[2])
+        sessionStorage.setItem(selectClassFilm,  JSON.stringify(saveSubjectList.subjectList))
+      },
+      (e) => {
+        console.log("get response failed!");
+      })
   }, [])
 
   const handleMobileMenu = () => {
@@ -73,12 +94,14 @@ const Menu = () => {
                 dropDown={dropDown}
                 handleDropDown={handleDropDown}
                 handleSelect={handleSelect}
+                subjectList = {subjectList}
               /> : null}
-              <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="金檢學堂" href="">金檢學堂</a></li>
+              <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="回首頁" href="">回首頁</a></li>
+              <li><a className="nav-link scrollto" href="/sitemap" title="網站導覽">網站導覽</a></li>
               <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-" title="學習地圖" href="">學習地圖</a></li>
               <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-" title="意見區" href="">意見區</a></li>
               <li><a className="nav-link scrollto" href="/suggestion" title="評價結果">評價結果</a></li>
-              <li><a className="nav-link scrollto" href="/sitemap" title="網站導覽">網站導覽</a></li>
+
               {userLogin ? null:  <li><a className="getstarted scrollto" onClick={scrollHandle} id="services-" title="進入課程" href="">進入課程</a></li>}
 
             </ul>
