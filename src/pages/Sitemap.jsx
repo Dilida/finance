@@ -70,7 +70,7 @@ const Sitemap = () => {
         <div className="footer-top">
           <div className="container">
             <div className="col-lg-12 col-md-6 footer-links">
-              <h4>課程區</h4>
+              <h3>課程區</h3>
               <ul>
                 <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="回首頁"
                        href="">回首頁</a></li>
@@ -82,7 +82,7 @@ const Sitemap = () => {
               </ul>
             </div>
               <div className="col-lg-12 col-md-6 footer-links">
-                <h4>選單區</h4>
+                <h3>選單區</h3>
                 <ul>
                   {subjectList.map((list) => (
                     <li key={"sitemap" + list.id}>
