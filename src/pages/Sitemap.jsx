@@ -57,8 +57,10 @@ const Sitemap = () => {
           1. 上方功能區塊、2.下方功能區塊。<br/><br/>
 
           本網站的快速鍵﹝Accesskey﹞設定如下：<br/><br/>
-          Windows :Alt+U :上方選單連結區，此區塊列有本網站的主要選單。<br/>
-          Windows :Alt+Z :下方連絡區，此區塊列有資訊安全政策、隱私權政策等連結。<br/><br/>
+          Windows : Alt+U :上方選單連結區，此區塊列有本網站的主要選單。<br/>
+          Windows : Alt+Z :下方連絡區，此區塊列有資訊安全政策、隱私權政策等連結。<br/><br/>
+          Windows + Firefox 瀏覽器 : Shift + Alt + U : 上方選單連結區，此區塊列有本網站的主要選單。<br/>
+          Windows + Firefox 瀏覽器 : Shift + Alt + Z : 下方連絡區，此區塊列有資訊安全政策、隱私權政策等連結。<br/><br/>
           Mac : Ctrl + Option + U :上方選單連結區，此區塊列有本網站的主要選單。<br/>
           Mac : Ctrl + Option + Z :下方連絡區，此區塊列有資訊安全政策、隱私權政策等連結。<br/><br/>
           <b className="note">課程區請先回首頁登入身分後開啟連結</b>
