@@ -6,12 +6,12 @@ import {classApi, subjectContent, success} from '../utils/responseMock'
 export function getClassList(){
   return new Promise((resolve, reject) => {
     resolve(classApi.data)
-  //   http("get",'/getClassList').then(res => {
-  //     resolve (res);
-  //   },error => {
-  //     console.log("internet error~",error);
-  //     reject(error)
-  //   })
+    // http("get",'/getClassList').then(res => {
+    //   resolve (res);
+    // },error => {
+    //   console.log("internet error~",error);
+    //   reject(error)
+    // })
   })
 }
 
