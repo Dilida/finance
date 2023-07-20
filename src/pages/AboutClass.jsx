@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {getFilmUrl, postSubjectSuggestion} from "../utils/api";
-import {classListKey, classSelectKey, suggestListKey} from "../config";
+import {classListKey, classSelectKey, suggestListKey, userLoginKey} from "../config";
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import failedImg from '../assets/img/fail.png'
-import map1 from "../assets/img/c1.png";
+import {useNavigate} from "react-router-dom";
+
 
 const AboutClass = () => {
   const [nowSelect, setNowSelect] = useState({"folderUrl":""}) // 該頁內的選擇 課程內容 檢查重點 個案分享 參考資料
@@ -12,9 +13,11 @@ const AboutClass = () => {
   const [classSelect, setClassSelect] = useState(["01", "存款業務", "A", "存款業務及開戶審查"])  // menu bar 的選擇
   const [starSelect, setStarSelect] = useState({"subjectID": "01", "subSubjectID": "A", "value": 5})
   const [showAlert, setShowAlert] = useState({"show": false, "type": "success"})
-
+  const navigate = useNavigate();
 
   useEffect(() => {
+    let isUnmounted = false
+
     //todo: 要做error handle
     const filmArray = JSON.parse(sessionStorage.getItem(classListKey))
     const myArray = sessionStorage.getItem(classSelectKey)
@@ -30,6 +33,9 @@ const AboutClass = () => {
     console.log("show the folderID", saveSubjectList.subjectList[0])
     getFilmUrl(saveSubjectList.subjectList[0].folderId).then(
       (res) => {
+        if (sessionStorage.getItem(userLoginKey) === null && !isUnmounted) {
+          navigate("/")
+        }
         if (res.code !== "200") {
           saveSubjectList.subjectList[0].folderUrl = ""
           setNowSelect(saveSubjectList.subjectList[0])
@@ -49,6 +55,8 @@ const AboutClass = () => {
       setClassSelect(myArray)
       setStarSelect({"subjectID": myArray[0], "subSubjectID": myArray[2], "value": "5"})
     }
+
+    return () => isUnmounted = true
 
   }, []);
   const handleClass = (event, contentID) => {
