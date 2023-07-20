@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from "react";
 import {Container} from "react-bootstrap";
 import DropClassMenu from "./DropClassMenu";
-import {userLoginKey, classSelectKey, selectClassFilm} from "../config";
+import {userLoginKey, classSelectKey, classListKey} from "../config";
 import {useNavigate} from 'react-router-dom';
 import Logo from '../assets/img/logo.png'
 import {getClassList} from "../utils/api";
@@ -18,25 +18,28 @@ const Menu = () => {
       setUserLogin(true)
     }
 
-    getClassList().then(
-      (res) => {
-        setSubjectList(res)
-        // myArray = `${firstID},${firstName},${secondID},${secondName}`
-        let myArray = sessionStorage.getItem(classSelectKey)
-        if (myArray === null) {
-          const selectKey = `${res[0].id},${res[0].name},${res[0].subjectList[0].id},${res[0].subjectList[0].name}`
-          sessionStorage.setItem(classSelectKey,selectKey)
-          myArray = "01, 存款業務, A, 存款業務及開戶審查"
-        }
+    if (sessionStorage.getItem(classListKey) === null) {
+      getClassList().then(
+        (res) => {
+          setSubjectList(res)
+          sessionStorage.setItem(classListKey, JSON.stringify(res))
+          // myArray = `${firstID},${firstName},${secondID},${secondName}`
+          let myArray = sessionStorage.getItem(classSelectKey)
+          if (myArray === null) {
+            const selectKey = `${res[0].id},${res[0].name},${res[0].subjectList[0].id},${res[0].subjectList[0].name}`
+            sessionStorage.setItem(classSelectKey,selectKey)
+          }
+
+        },
+        (e) => {
+          console.log("get response failed!");
+        })
+      return
+    }
+
+    setSubjectList(JSON.parse(sessionStorage.getItem(classListKey)))
 
 
-        const saveFolder = res.find(item => item.id === myArray.split(',')[0])
-        const saveSubjectList = saveFolder.subjectList.find(item => item.id === myArray.split(',')[2])
-        sessionStorage.setItem(selectClassFilm,  JSON.stringify(saveSubjectList.subjectList))
-      },
-      (e) => {
-        console.log("get response failed!");
-      })
   }, [])
 
   const handleMobileMenu = () => {
@@ -67,8 +70,7 @@ const Menu = () => {
     const selectKey = `${firstID},${firstName},${secondID},${secondName}`
     sessionStorage.setItem(classSelectKey,selectKey)
     navigate('/aboutClass')
-    document.location.reload();
-
+    document.location.reload()
   }
 
   return (

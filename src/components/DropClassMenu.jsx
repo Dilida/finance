@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {getClassList} from "../utils/api";
-import {classSelectKey, selectClassFilm} from "../config";
+import React from "react";
+
 
 
 const DropClassMenu = ({dropDown, handleDropDown,  handleSelect, subjectList}) => {

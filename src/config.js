@@ -6,6 +6,8 @@ export const userLoginKey = "userLogin"
 
 export const classSelectKey = "classSelect"
 
+export const classListKey = "classList"
+
 export const suggestListKey = "suggestList"
 
 export const suggestTotalKey = "suggestTotal"

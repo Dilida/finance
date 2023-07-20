@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {getClassList, getFilmUrl, postSubjectSuggestion} from "../utils/api";
-import {classSelectKey, selectClassFilm, suggestListKey} from "../config";
+import {getFilmUrl, postSubjectSuggestion} from "../utils/api";
+import {classListKey, classSelectKey, suggestListKey} from "../config";
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
+import failedImg from '../assets/img/fail.png'
+import map1 from "../assets/img/c1.png";
 
 const AboutClass = () => {
-  const [nowSelect, setNowSelect] = useState({}) // 該頁內的選擇 課程內容 檢查重點 個案分享 參考資料
+  const [nowSelect, setNowSelect] = useState({"folderUrl":""}) // 該頁內的選擇 課程內容 檢查重點 個案分享 參考資料
   const [itemList, setItemList] = useState([])
   const [classSelect, setClassSelect] = useState(["01", "存款業務", "A", "存款業務及開戶審查"])  // menu bar 的選擇
   const [starSelect, setStarSelect] = useState({"subjectID": "01", "subSubjectID": "A", "value": 5})
@@ -14,15 +16,27 @@ const AboutClass = () => {
 
   useEffect(() => {
     //todo: 要做error handle
-    const filmArray = JSON.parse(sessionStorage.getItem(selectClassFilm))
-    setItemList(filmArray)
+    const filmArray = JSON.parse(sessionStorage.getItem(classListKey))
+    const myArray = sessionStorage.getItem(classSelectKey)
 
-    //post folderId to get film url
-    getFilmUrl(filmArray[0].folderId).then(
+    const saveFolder = filmArray.find(item => item.id === myArray.split(',')[0])
+    const saveSubjectList = saveFolder.subjectList.find(item => item.id === myArray.split(',')[2])
+    console.log("saveFolder", saveFolder)
+    console.log("saveSubjectList", saveSubjectList)
+
+    setItemList(saveSubjectList.subjectList)
+
+    //get folderId to get film url
+    console.log("show the folderID", saveSubjectList.subjectList[0])
+    getFilmUrl(saveSubjectList.subjectList[0].folderId).then(
       (res) => {
-        console.log('res1', res)
-        filmArray[0].folderUrl = "http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html"
-        setNowSelect(filmArray[0])
+        if (res.code !== "200") {
+          saveSubjectList.subjectList[0].folderUrl = ""
+          setNowSelect(saveSubjectList.subjectList[0])
+          return
+        }
+        saveSubjectList.subjectList[0].folderUrl = "http://www.itez.com.tw:7070" + res.url
+        setNowSelect(saveSubjectList.subjectList[0])
         // http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html
 
       },
@@ -42,8 +56,12 @@ const AboutClass = () => {
     const newSelect = itemList.find((item) => item.id === contentID)
     getFilmUrl(newSelect.folderId).then(
       (res) => {
-        console.log('res1', res)
-        newSelect.folderUrl = "http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html"
+        if (res.code !== "200") {
+          newSelect.folderUrl = ""
+          setNowSelect(newSelect)
+          return
+        }
+        newSelect.folderUrl = "http://www.itez.com.tw:7070" + res.url
         setNowSelect(newSelect)
         // http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html
 
@@ -104,7 +122,7 @@ const AboutClass = () => {
 
           <div className="d-flex justify-content-between align-items-center">
             <h2 aria-current="page">{classSelect[2]}.{classSelect[3]}</h2>
-            <ol aria-label="Breadcrumb" role="navigation" >
+            <ol aria-label="Breadcrumb" role="navigation">
               <li>{classSelect[0]}.{classSelect[1]}</li>
               <li>{classSelect[2]}.{classSelect[3]}</li>
               <li>{nowSelect.name}</li>
@@ -118,8 +136,13 @@ const AboutClass = () => {
         <div className="container">
           <div className="row gy-4">
             <div className="col-lg-9">
-              <iframe src={nowSelect.folderUrl} className="iframeSpecial"
-                      title={nowSelect.name + "頁面播放"}></iframe>
+              {nowSelect.folderUrl.length > 0 ? <iframe src={nowSelect.folderUrl} className="iframeSpecial"
+                                                    title={nowSelect.name + "頁面播放"}></iframe> :
+                <div className="section-title">
+                  <img src={failedImg} style={{maxHeight: '100px'}} alt="課程檔案不存在，請直接與網站管理員連繫"/>
+                  <p>課程檔案不存在，請直接與網站管理員連繫</p>
+                </div>}
+
             </div>
             <div className="col-lg-3">
               <div className="portfolio-info">
