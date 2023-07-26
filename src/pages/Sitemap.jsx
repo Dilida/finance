@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import {getClassList} from "../utils/api";
-import {classSelectKey, userLoginKey} from "../config";
+import { userLoginKey} from "../config";
 import {useState, useEffect} from "react";
 import {useNavigate} from 'react-router-dom';
+import GlobalState from "../context/MenuSelect";
 
 const Sitemap = () => {
   const [subjectList, setSubjectList] = useState([])
   const [userLogin, setUserLogin] = useState(false)
   const navigate = useNavigate();
+  const { changeItem } = useContext(GlobalState)
 
   useEffect(() => {
     if (sessionStorage.getItem(userLoginKey)) {
@@ -26,9 +28,8 @@ const Sitemap = () => {
 
   const handleSelect = (firstID, firstName, secondID, secondName) => {
     const selectKey = `${firstID},${firstName},${secondID},${secondName}`
-    sessionStorage.setItem(classSelectKey, selectKey)
     navigate('/aboutClass')
-    document.location.reload();
+    changeItem(selectKey)
 
   }
 

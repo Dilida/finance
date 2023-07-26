@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import {getFilmUrl, postSubjectSuggestion} from "../utils/api";
-import {classListKey, classSelectKey, suggestListKey, userLoginKey} from "../config";
+import {classListKey, suggestListKey, userLoginKey} from "../config";
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import failedImg from '../assets/img/fail.png'
 import {useNavigate} from "react-router-dom";
+import GlobalState from "../context/MenuSelect";
 
 
 const AboutClass = () => {
@@ -14,16 +15,14 @@ const AboutClass = () => {
   const [starSelect, setStarSelect] = useState({"subjectID": "01", "subSubjectID": "A", "value": 5})
   const [showAlert, setShowAlert] = useState({"show": false, "type": "success"})
   const navigate = useNavigate();
+  const { selectItem } = useContext(GlobalState)
 
   useEffect(() => {
     let isUnmounted = false
-
     //todo: 要做error handle
     const filmArray = JSON.parse(sessionStorage.getItem(classListKey))
-    const myArray = sessionStorage.getItem(classSelectKey)
-
-    const saveFolder = filmArray.find(item => item.id === myArray.split(',')[0])
-    const saveSubjectList = saveFolder.subjectList.find(item => item.id === myArray.split(',')[2])
+    const saveFolder = filmArray.find(item => item.id === selectItem.split(',')[0])
+    const saveSubjectList = saveFolder.subjectList.find(item => item.id === selectItem.split(',')[2])
     console.log("saveFolder", saveFolder)
     console.log("saveSubjectList", saveSubjectList)
 
@@ -50,15 +49,15 @@ const AboutClass = () => {
         console.log("get response failed!");
       })
 
-    if (sessionStorage.getItem(classSelectKey)) {
-      const myArray = sessionStorage.getItem(classSelectKey).split(",");
+    if (selectItem) {
+      const myArray = selectItem.split(",");
       setClassSelect(myArray)
       setStarSelect({"subjectID": myArray[0], "subSubjectID": myArray[2], "value": "5"})
     }
 
     return () => isUnmounted = true
 
-  }, []);
+  }, [selectItem]);
   const handleClass = (event, contentID) => {
     event.preventDefault();
     const newSelect = itemList.find((item) => item.id === contentID)

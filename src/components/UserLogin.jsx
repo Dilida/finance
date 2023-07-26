@@ -1,7 +1,9 @@
 import {useNavigate} from 'react-router-dom';
 import {postUser} from '../utils/api'
 import {postUserObj} from '../utils/requestMock'
-import {classSelectKey, userLoginKey} from "../config";
+import { userLoginKey } from "../config";
+import {useContext} from "react";
+import GlobalState from "../context/MenuSelect";
 
 
 const UserLogin = () => {
@@ -12,15 +14,15 @@ const UserLogin = () => {
     {"id": 4, "name": "本會各局處"}
   ]
   const navigate = useNavigate();
+  const { changeItem } = useContext(GlobalState)
   const handlePostUser = (userId) => {
     //todo: change userId
     postUser(postUserObj).then(
       (res) => {
         sessionStorage.setItem(userLoginKey, userId);
         const selectKey = `01,存款業務,A,存款業務及開戶審查`
-        sessionStorage.setItem(classSelectKey,selectKey)
         navigate('/aboutClass')
-        document.location.reload();
+        changeItem(selectKey)
       },
       (e) => {
         console.log("get response failed!");

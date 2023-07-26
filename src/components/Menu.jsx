@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext} from "react";
 import {Container} from "react-bootstrap";
 import DropClassMenu from "./DropClassMenu";
-import {userLoginKey, classSelectKey, classListKey} from "../config";
+import {userLoginKey,  classListKey} from "../config";
 import {useNavigate} from 'react-router-dom';
 import Logo from '../assets/img/logo.png'
 import {getClassList} from "../utils/api";
-import MenuSelect from "../context/MenuSelect";
+import GlobalState from "../context/MenuSelect";
 
 const Menu = () => {
   const [mobileMenu, setMobileMenu] = useState([])
@@ -13,9 +13,10 @@ const Menu = () => {
   const [subjectList, setSubjectList] = useState([]) // dropmenu資料來源
   const [userLogin, setUserLogin] = useState(false)
   const navigate = useNavigate();
-  const {contextSelect, contextSetSelect} = useContext(MenuSelect);
+  const { selectItem,changeItem } = useContext(GlobalState)
 
   useEffect(() => {
+
     if (sessionStorage.getItem(userLoginKey)) {
       setUserLogin(true)
     }
@@ -26,10 +27,9 @@ const Menu = () => {
           setSubjectList(res)
           sessionStorage.setItem(classListKey, JSON.stringify(res))
           // myArray = `${firstID},${firstName},${secondID},${secondName}`
-          let myArray = sessionStorage.getItem(classSelectKey)
-          if (myArray === null) {
+          if (selectItem === null) {
             const selectKey = `${res[0].id},${res[0].name},${res[0].subjectList[0].id},${res[0].subjectList[0].name}`
-            sessionStorage.setItem(classSelectKey,selectKey)
+            changeItem(selectKey)
           }
 
         },
@@ -70,9 +70,9 @@ const Menu = () => {
 
   const handleSelect = (firstID, firstName, secondID, secondName) => {
     const selectKey = `${firstID},${firstName},${secondID},${secondName}`
-    sessionStorage.setItem(classSelectKey,selectKey)
+    // sessionStorage.setItem(classSelectKey,selectKey)
     navigate('/aboutClass')
-    document.location.reload()
+    changeItem(selectKey)
   }
 
   return (
