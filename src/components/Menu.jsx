@@ -1,10 +1,11 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState, useContext} from "react";
 import {Container} from "react-bootstrap";
 import DropClassMenu from "./DropClassMenu";
 import {userLoginKey, classSelectKey, classListKey} from "../config";
 import {useNavigate} from 'react-router-dom';
 import Logo from '../assets/img/logo.png'
 import {getClassList} from "../utils/api";
+import MenuSelect from "../context/MenuSelect";
 
 const Menu = () => {
   const [mobileMenu, setMobileMenu] = useState([])
@@ -12,6 +13,7 @@ const Menu = () => {
   const [subjectList, setSubjectList] = useState([]) // dropmenu資料來源
   const [userLogin, setUserLogin] = useState(false)
   const navigate = useNavigate();
+  const {contextSelect, contextSetSelect} = useContext(MenuSelect);
 
   useEffect(() => {
     if (sessionStorage.getItem(userLoginKey)) {
