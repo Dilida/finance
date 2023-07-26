@@ -1,8 +1,7 @@
 import React, {useEffect, useState, useContext} from "react";
 import {getFilmUrl, postSubjectSuggestion} from "../utils/api";
-import {classListKey, suggestListKey, userLoginKey} from "../config";
+import {classListKey, suggestListKey, suggestTotalKey, userLoginKey} from "../config";
 import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
 import failedImg from '../assets/img/fail.png'
 import {useNavigate} from "react-router-dom";
 import GlobalState from "../context/MenuSelect";
@@ -14,10 +13,13 @@ const AboutClass = () => {
   const [classSelect, setClassSelect] = useState(["01", "存款業務", "A", "存款業務及開戶審查"])  // menu bar 的選擇
   const [starSelect, setStarSelect] = useState({"subjectID": "01", "subSubjectID": "A", "value": 5})
   const [showAlert, setShowAlert] = useState({"show": false, "type": "success"})
+  const [disableSend, setDisableSend] = useState(false)
   const navigate = useNavigate();
   const { selectItem } = useContext(GlobalState)
 
   useEffect(() => {
+    setShowAlert({"show": false, "type": "danger"})
+    setDisableSend(false)
     let isUnmounted = false
     //todo: 要做error handle
     const filmArray = JSON.parse(sessionStorage.getItem(classListKey))
@@ -54,6 +56,7 @@ const AboutClass = () => {
       setClassSelect(myArray)
       setStarSelect({"subjectID": myArray[0], "subSubjectID": myArray[2], "value": "5"})
     }
+
 
     return () => isUnmounted = true
 
@@ -95,6 +98,7 @@ const AboutClass = () => {
       const sendAgain = getSuggestList.filter((item) => item.subjectID === starSelect.subjectID && item.subSubjectID === starSelect.subSubjectID)
       if (sendAgain.length > 0) {
         setShowAlert({"show": true, "type": "danger"})
+        setDisableSend(true)
         return
       }
     }
@@ -111,9 +115,7 @@ const AboutClass = () => {
         const newOBj = [...getSuggestList, ...suggestList]
         sessionStorage.setItem(suggestListKey, JSON.stringify(newOBj))
         setShowAlert({"show": true, "type": "success"})
-        setTimeout(() => {
-          setShowAlert({"show": false, "type": "success"})
-        }, 1000 * 10);
+        setDisableSend(true)
       },
       (e) => {
         console.log("get response failed!");
@@ -180,16 +182,12 @@ const AboutClass = () => {
                   <Alert key="success" variant={showAlert.type}>
                     {showAlert.type === "success" ? "評分已成功送出，請勿重覆操作。" : "此課程已評分過，請勿重覆操作。"}
                     <Alert.Link href="/suggestion" title="點我看評分結果">點我看評分結果 </Alert.Link>
-                    <Button title="關閉此提醒" onClick={() => setShowAlert({"show": false, "type": "success"})}
-                            variant={`outline-${showAlert.type}`}>
-                      關閉此提醒
-                    </Button>
                   </Alert> : null}
                 <form className="row gy-2 gx-7" onSubmit={handleSubmit}>
                   <div className="form-check col-2">
                     <label htmlFor="star5" className="font12em">五顆星
                       <input className="form-check-input" type="radio" name="star" id="star5"
-                             value="5" onChange={handleSelectChange}
+                             value="5" onChange={handleSelectChange}  disabled={disableSend}
                              checked={starSelect["value"] && starSelect["value"] === "5"}/></label>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
@@ -199,7 +197,7 @@ const AboutClass = () => {
                   </div>
                   <div className="form-check col-2">
                     <label htmlFor="star4" className="font12em">四顆星
-                      <input className="form-check-input" type="radio" name="star" id="star4"
+                      <input className="form-check-input" type="radio" name="star" id="star4"  disabled={disableSend}
                              value="4" onChange={handleSelectChange}/></label>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
@@ -208,7 +206,7 @@ const AboutClass = () => {
                   </div>
                   <div className="form-check col-2">
                     <label htmlFor="star3" className="font12em">三顆星
-                      <input className="form-check-input" type="radio" name="star" id="star3"
+                      <input className="form-check-input" type="radio" name="star" id="star3"  disabled={disableSend}
                              value="3" onChange={handleSelectChange}/></label>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
@@ -216,14 +214,14 @@ const AboutClass = () => {
                   </div>
                   <div className="form-check col-2">
                     <label htmlFor="star2" className="font12em">二顆星
-                      <input className="form-check-input" type="radio" name="star" id="star2"
+                      <input className="form-check-input" type="radio" name="star" id="star2"  disabled={disableSend}
                              value="2" onChange={handleSelectChange}/></label>
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
                   </div>
                   <div className="form-check col-1">
                     <label htmlFor="star1" className="font12em">一顆星
-                      <input className="form-check-input" type="radio" name="star" id="star1"
+                      <input className="form-check-input" type="radio" name="star" id="star1"  disabled={disableSend}
                              value="1" onChange={handleSelectChange}/></label>
                     <i className="bx bxs-star"></i>
                   </div>

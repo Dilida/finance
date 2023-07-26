@@ -29,6 +29,7 @@ export function postUser(param){
   return new Promise((resolve, reject) => {
     // resolve(success)
     http("post",'/postUser', param).then(res => {
+      showError(res)
       resolve (res);
     },error => {
       console.log("internet error~",error);
@@ -66,6 +67,7 @@ export function postSuggestion(param){
   return new Promise((resolve, reject) => {
     // resolve(success)
     http("post",'/postSuggest', param).then(res => {
+      showError(res)
       resolve (res);
     },error => {
       console.log("internet error~",error);

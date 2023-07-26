@@ -42,7 +42,7 @@ const Menu = () => {
     setSubjectList(JSON.parse(sessionStorage.getItem(classListKey)))
 
 
-  }, [])
+  }, [userLogin])
 
   const handleMobileMenu = () => {
     setDropDown(true)
