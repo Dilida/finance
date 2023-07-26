@@ -13,7 +13,7 @@ import MenuSelect from "./context/MenuSelect";
 
 const App = () => {
   return (
-    <MenuSelect.Provider value="elllo from context">
+    <MenuSelect>
     <Layout>
         <Routes>
           <Route path="/" element={<Home />} exact />
@@ -23,7 +23,7 @@ const App = () => {
           <Route path='*' element={<NotFound />} />
         </Routes>
     </Layout>
-    </MenuSelect.Provider>
+    </MenuSelect>
   );
 };
 
