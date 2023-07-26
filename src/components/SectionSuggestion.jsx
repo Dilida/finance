@@ -1,32 +1,41 @@
 import Star from "./Star";
 import Satisfy from "./Satisfy";
-import React, {useState} from "react";
-import {postSuggestion} from "../utils/api";
+import React, {useEffect, useState} from "react";
+import { postSuggestion} from "../utils/api";
 import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
 import {suggestTotalKey} from "../config";
 
 
 const SectionSuggestion = () => {
   const suggestItem = [
-    {"id": "platform1", "name": "平台架構"},
-    {"id": "platform2", "name": "版面設計"},
-    {"id": "platform3", "name": "使用便利性"}
+    {"id": "platform", "name": "平台架構"},
+    {"id": "layout", "name": "版面設計"},
+    {"id": "usability", "name": "使用便利性"}
   ]
 
+  const [disableSend, setDisableSend] = useState(false)
   const [showAlert, setShowAlert] = useState({"show": false, "type": "success"})
   const [textAreaUp, setTextAreaUp] = useState("");
   const [textAreaDown, setTextAreaDown] = useState("");
   const [sendObj, setSendObj] = useState({
-    "platform1": "",
-    "platform2": "",
-    "platform3": '',
-    "platform4": '',
-    "suggestion1": '',
-    "suggestion2": '',
+    "platform": "",
+    "layout": "",
+    "usability": '',
+    "overall": '',
+    "suggestLayout": '',
+    "suggestElse": '',
   })
+
+  useEffect(() => {
+    let getSuggestList = JSON.parse(sessionStorage.getItem(suggestTotalKey))
+    if (getSuggestList != null) {
+      setShowAlert({"show": true, "type": "danger"})
+      setDisableSend(true)
+    }
+
+  }, []);
   const handleSelectChange = (event) => {
-    sendObj[event.target.name] = event.target.value
+    sendObj[event.target.name] = parseInt(event.target.value)
     setSendObj(sendObj)
   }
 
@@ -36,19 +45,18 @@ const SectionSuggestion = () => {
     let getSuggestList = JSON.parse(sessionStorage.getItem(suggestTotalKey))
     if (getSuggestList != null) {
       setShowAlert({"show": true, "type": "danger"})
+      setDisableSend(true)
       return
     }
 
-    sendObj.suggestion1 = textAreaUp
-    sendObj.suggestion2 = textAreaDown
-    console.log('mmmmm', sendObj)
+    sendObj.suggestLayout = textAreaUp
+    sendObj.suggestElse = textAreaDown
     postSuggestion(sendObj).then(
       (res) => {
         sessionStorage.setItem(suggestTotalKey, "1")
         setShowAlert({"show": true, "type": "success"})
-        setTimeout(() => {
-          setShowAlert({"show": false, "type": "success"})
-        }, 1000 * 10);
+        setDisableSend(true)
+
       },
       (e) => {
         console.log("get response failed!");
@@ -70,14 +78,14 @@ const SectionSuggestion = () => {
                   <i className="bi bi-palette" title="架構版面評分"></i>
                   <h3>架構版面評分</h3>
                 </label>
-                <Star lists={suggestItem} handleSelectChange={handleSelectChange}/>
+                <Star lists={suggestItem} handleSelectChange={handleSelectChange} disableSend={disableSend}/>
 
               </div>
 
               <div className="form-group mt-5">
                 <label htmlFor="suggestion1" className="suggest"><i className="bi bi-paint-bucket" title="架構版面建議事項"></i>
                   <h3>架構版面建議事項</h3></label>
-                <textarea className="form-control" name="suggestion1" rows="3" id="suggestion1" required
+                <textarea className="form-control" name="suggestion1" rows="3" id="suggestion1" required disabled={disableSend}
                           value={textAreaUp} onChange={e => setTextAreaUp(e.target.value)}></textarea>
               </div>
               <div className="form-group mt-5">
@@ -85,20 +93,17 @@ const SectionSuggestion = () => {
                   <i className="bi bi-receipt" title="其他建議事項"></i>
                   <h3>其他建議事項</h3>
                 </label>
-                <textarea className="form-control" name="suggestion2" rows="3" id="suggestion2" required
+                <textarea className="form-control" name="suggestion2" rows="3" id="suggestion2" required disabled={disableSend}
                           placeholder="請敘明主題、單元或項目等" value={textAreaDown}
                           onChange={e => setTextAreaDown(e.target.value)}></textarea>
               </div>
-              <Satisfy handleSelectChange={handleSelectChange}/>
+              <Satisfy handleSelectChange={handleSelectChange} disableSend={disableSend}/>
 
               {showAlert.show ?
                 <Alert key="success" variant={showAlert.type} className="text-center">
                   {showAlert.type === "success" ? "意見表已成功送出，請勿重覆操作。" : "意見表已填寫過，請勿重覆操作。"}
                   <Alert.Link href="/suggestion">點我看課程評分表 </Alert.Link>
-                  <Button onClick={() => setShowAlert({"show": false, "type": "success"})}
-                          variant={`outline-${showAlert.type}`}>
-                    關閉此提醒
-                  </Button>
+
                 </Alert> : null}
 
               <div className="text-center">

@@ -70,7 +70,6 @@ const Menu = () => {
 
   const handleSelect = (firstID, firstName, secondID, secondName) => {
     const selectKey = `${firstID},${firstName},${secondID},${secondName}`
-    // sessionStorage.setItem(classSelectKey,selectKey)
     navigate('/aboutClass')
     changeItem(selectKey)
   }

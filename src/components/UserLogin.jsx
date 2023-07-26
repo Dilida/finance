@@ -1,6 +1,6 @@
 import {useNavigate} from 'react-router-dom';
 import {postUser} from '../utils/api'
-import {postUserObj} from '../utils/requestMock'
+
 import { userLoginKey } from "../config";
 import {useContext} from "react";
 import GlobalState from "../context/MenuSelect";
@@ -16,7 +16,9 @@ const UserLogin = () => {
   const navigate = useNavigate();
   const { changeItem } = useContext(GlobalState)
   const handlePostUser = (userId) => {
-    //todo: change userId
+    const postUserObj = {
+      "roleId": userId
+    }
     postUser(postUserObj).then(
       (res) => {
         sessionStorage.setItem(userLoginKey, userId);
