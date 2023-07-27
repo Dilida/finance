@@ -13,10 +13,10 @@ const Menu = () => {
   const [subjectList, setSubjectList] = useState([]) // dropmenu資料來源
   const [userLogin, setUserLogin] = useState(false)
   const navigate = useNavigate();
-  const { selectItem,changeItem } = useContext(GlobalState)
+  const { selectItem,changeItem, loginContext } = useContext(GlobalState)
+
 
   useEffect(() => {
-
     if (sessionStorage.getItem(userLoginKey)) {
       setUserLogin(true)
     }
@@ -42,7 +42,7 @@ const Menu = () => {
     setSubjectList(JSON.parse(sessionStorage.getItem(classListKey)))
 
 
-  }, [userLogin])
+  }, [loginContext])
 
   const handleMobileMenu = () => {
     setDropDown(true)

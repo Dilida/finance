@@ -14,7 +14,7 @@ const UserLogin = () => {
     {"id": 4, "name": "本會各局處"}
   ]
   const navigate = useNavigate();
-  const { changeItem } = useContext(GlobalState)
+  const { changeItem, changeLogin } = useContext(GlobalState)
   const handlePostUser = (userId) => {
     const postUserObj = {
       "roleId": userId
@@ -25,6 +25,7 @@ const UserLogin = () => {
         const selectKey = `01,存款業務,A,存款業務及開戶審查`
         navigate('/aboutClass')
         changeItem(selectKey)
+        changeLogin()
       },
       (e) => {
         console.log("get response failed!");

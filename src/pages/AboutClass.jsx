@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from "react";
 import {getFilmUrl, postSubjectSuggestion} from "../utils/api";
-import {classListKey, suggestListKey, suggestTotalKey, userLoginKey} from "../config";
+import {classListKey, suggestListKey, userLoginKey} from "../config";
 import Alert from 'react-bootstrap/Alert';
 import failedImg from '../assets/img/fail.png'
 import {useNavigate} from "react-router-dom";
@@ -18,8 +18,6 @@ const AboutClass = () => {
   const { selectItem } = useContext(GlobalState)
 
   useEffect(() => {
-    setShowAlert({"show": false, "type": "danger"})
-    setDisableSend(false)
     let isUnmounted = false
     //todo: 要做error handle
     const filmArray = JSON.parse(sessionStorage.getItem(classListKey))
