@@ -29,7 +29,7 @@ const SectionSuggestion = () => {
   useEffect(() => {
     let getSuggestList = JSON.parse(sessionStorage.getItem(suggestTotalKey))
     if (getSuggestList != null) {
-      setShowAlert({"show": true, "type": "danger"})
+      setShowAlert({"show": true, "type": "warning"})
       setDisableSend(true)
     }
 
@@ -44,7 +44,7 @@ const SectionSuggestion = () => {
 
     let getSuggestList = JSON.parse(sessionStorage.getItem(suggestTotalKey))
     if (getSuggestList != null) {
-      setShowAlert({"show": true, "type": "danger"})
+      setShowAlert({"show": true, "type": "warning"})
       setDisableSend(true)
       return
     }

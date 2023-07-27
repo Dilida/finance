@@ -1,5 +1,4 @@
 import http from '../utils/http';
-import {classApi, subjectContent, success} from '../utils/responseMock'
 
 function showError(err) {
   if (err.code !== "200" ){
@@ -53,13 +52,12 @@ export function getFilmUrl(param){
 
 export function postSubjectSuggestion(param){
   return new Promise((resolve, reject) => {
-    resolve(success)
-    // http("post",'/postUser', param).then(res => {
-    //   resolve (res);
-    // },error => {
-    //   console.log("internet error~",error);
-    //   reject(error)
-    // })
+    http("post",'/postClass', param).then(res => {
+      resolve (res);
+    },error => {
+      console.log("internet error~",error);
+      reject(error)
+    })
   })
 }
 

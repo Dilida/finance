@@ -10,8 +10,7 @@ import GlobalState from "../context/MenuSelect";
 const AboutClass = () => {
   const [nowSelect, setNowSelect] = useState({"folderUrl":""}) // 該頁內的選擇 課程內容 檢查重點 個案分享 參考資料
   const [itemList, setItemList] = useState([])
-  const [classSelect, setClassSelect] = useState(["01", "存款業務", "A", "存款業務及開戶審查"])  // menu bar 的選擇
-  const [starSelect, setStarSelect] = useState({"subjectID": "01", "subSubjectID": "A", "value": 5})
+  const [starSelect, setStarSelect] = useState({"subjectID": "01", "subSubjectID": "A", "value": 5, "folderId":""})
   const [showAlert, setShowAlert] = useState({"show": false, "type": "success"})
   const [disableSend, setDisableSend] = useState(false)
   const navigate = useNavigate();
@@ -27,14 +26,13 @@ const AboutClass = () => {
     console.log("saveSubjectList", saveSubjectList)
 
     setItemList(saveSubjectList.subjectList)
+    if (sessionStorage.getItem(userLoginKey) === null && !isUnmounted) {
+      navigate("/")
+    }
 
     //get folderId to get film url
-    console.log("show the folderID", saveSubjectList.subjectList[0])
     getFilmUrl(saveSubjectList.subjectList[0].folderId).then(
       (res) => {
-        if (sessionStorage.getItem(userLoginKey) === null && !isUnmounted) {
-          navigate("/")
-        }
         if (res.code !== "200") {
           saveSubjectList.subjectList[0].folderUrl = ""
           setNowSelect(saveSubjectList.subjectList[0])
@@ -51,13 +49,22 @@ const AboutClass = () => {
 
     if (selectItem) {
       const myArray = selectItem.split(",");
-      setClassSelect(myArray)
-      setStarSelect({"subjectID": myArray[0], "subSubjectID": myArray[2], "value": "5"})
+      setStarSelect({"subjectID": myArray[0], "subSubjectID": myArray[2], "value": 5, "folderId":saveSubjectList.folderId})
     }
 
-
+    //顯示評分訊息
+    const getSuggestList = JSON.parse(sessionStorage.getItem(suggestListKey))
+    if (getSuggestList != null) {
+      const sendAgain = getSuggestList.filter((item) => item.subjectID === selectItem.split(',')[0] && item.subSubjectID === selectItem.split(',')[2])
+      if (sendAgain.length > 0) {
+        setShowAlert({"show": true, "type": "warning"})
+        setDisableSend(true)
+      } else {
+        setShowAlert({"show": false, "type": "warning"})
+        setDisableSend(false)
+      }
+    }
     return () => isUnmounted = true
-
   }, [selectItem]);
   const handleClass = (event, contentID) => {
     event.preventDefault();
@@ -82,8 +89,9 @@ const AboutClass = () => {
 
   const handleSelectChange = event => {
     setStarSelect({
-      "subjectID": classSelect[0],
-      "subSubjectID": classSelect[2],
+      "folderId": starSelect.folderId,
+      "subjectID":  selectItem.split(',')[0],
+      "subSubjectID":  selectItem.split(',')[2],
       "value": parseInt(event.target.value),
     })
   }
@@ -95,14 +103,18 @@ const AboutClass = () => {
     if (getSuggestList != null) {
       const sendAgain = getSuggestList.filter((item) => item.subjectID === starSelect.subjectID && item.subSubjectID === starSelect.subSubjectID)
       if (sendAgain.length > 0) {
-        setShowAlert({"show": true, "type": "danger"})
+        setShowAlert({"show": true, "type": "warning"})
         setDisableSend(true)
         return
       }
     }
 
+    const sendStarObj = {
+      "folderId": starSelect.folderId,
+      "value": starSelect.value
+    }
 
-    postSubjectSuggestion(starSelect).then(
+    postSubjectSuggestion(sendStarObj).then(
       (res) => {
         // console.log("get article response:", res);
         const suggestList = [starSelect]
@@ -128,10 +140,10 @@ const AboutClass = () => {
         <div className="container">
 
           <div className="d-flex justify-content-between align-items-center">
-            <h2 aria-current="page">{classSelect[2]}.{classSelect[3]}</h2>
+            <h2 aria-current="page">{ selectItem.split(',')[2]}.{ selectItem.split(',')[3]}</h2>
             <ol aria-label="Breadcrumb" role="navigation">
-              <li>{classSelect[0]}.{classSelect[1]}</li>
-              <li>{classSelect[2]}.{classSelect[3]}</li>
+              <li>{ selectItem.split(',')[0]}.{ selectItem.split(',')[1]}</li>
+              <li>{ selectItem.split(',')[2]}.{ selectItem.split(',')[3]}</li>
               <li>{nowSelect.name}</li>
             </ol>
           </div>
@@ -153,7 +165,7 @@ const AboutClass = () => {
             </div>
             <div className="col-lg-3">
               <div className="portfolio-info">
-                <h3>{classSelect[2]}.{classSelect[3]}</h3>
+                <h3>{ selectItem.split(',')[2]}.{ selectItem.split(',')[3]}</h3>
                 <ul>
                   {itemList.map((item, index) => (
                     <li key={item.id} className="portfolio-description">
