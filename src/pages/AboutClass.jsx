@@ -26,13 +26,13 @@ const AboutClass = () => {
     console.log("saveSubjectList", saveSubjectList)
 
     setItemList(saveSubjectList.subjectList)
-    if (sessionStorage.getItem(userLoginKey) === null && !isUnmounted) {
-      navigate("/")
-    }
 
     //get folderId to get film url
     getFilmUrl(saveSubjectList.subjectList[0].folderId).then(
       (res) => {
+        if (sessionStorage.getItem(userLoginKey) === null && !isUnmounted) {
+          navigate("/")
+        }
         if (res.code !== "200") {
           saveSubjectList.subjectList[0].folderUrl = ""
           setNowSelect(saveSubjectList.subjectList[0])
