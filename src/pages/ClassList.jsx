@@ -1,9 +1,8 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, {useEffect, useState} from "react";
 import {getClassList, getFilmUrl} from "../utils/api";
 import {userLoginKey} from "../config";
 import {useNavigate} from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-import * as subjectList from "react-bootstrap/ElementChildren";
 
 
 const AboutClass = () => {
@@ -17,17 +16,22 @@ const AboutClass = () => {
         if (sessionStorage.getItem(userLoginKey) === null && !isUnmounted) {
           navigate("/")
         }
-        const classList = res.map((item) => {
-          const secondList = item.subjectList.map((item2) => ({
-            mainTitle: `${item.id}.${item.name}`,
-            subTitle: `${item2.id}.${item2.name}`,
-            folderId: item2.folderId,
-            subjectList: item2.subjectList
-          }))
-          return secondList
+
+        let newList = []
+        res.forEach((item) => {
+          item.subjectList.forEach((item2) => {
+            const newItem = {
+              mainTitle: `${item.id}.${item.name}`,
+              subTitle: `${item2.id}.${item2.name}`,
+              folderId: item2.folderId,
+              subjectList: item2.subjectList
+            }
+            console.log('newItem', newItem)
+           newList.push(newItem)
+          })
         })
-        console.log("classList", classList)
-        setItemList(classList)
+        console.log("classList", newList)
+        setItemList(newList)
       },
       (e) => {
         console.log("get response failed!");
@@ -69,28 +73,28 @@ const AboutClass = () => {
       <section id="portfolio-details" className="portfolio-details">
         <div className="container">
           <div className="row gy-4">
-            {/*{itemList.map((item, index) => (*/}
-            {/*  <div className="col-lg-3 portfolio-info" key={item.folderId}>*/}
-            {/*    <Card border="success" style={{maxWidth: '16rem'}}>*/}
-            {/*      <Card.Header>{item.id}.{item.name}</Card.Header>*/}
-            {/*      <Card.Body>*/}
-            {/*        <Card.Title>A.存款業務及開戶審查</Card.Title>*/}
-            {/*        <Card.Text>*/}
-            {/*          <ul>*/}
-            {/*            {itemList.map((item, index) => (*/}
-            {/*              <li key={item.id} className="portfolio-description">*/}
-            {/*                <a href=""><strong role="button" title={item.name}*/}
-            {/*                                   onClick={(e) => handleClass(e, item.id)}>{item.name}</strong></a>*/}
+            {itemList.map((item, index) => (
+              <div className="col-lg-3 portfolio-info" key={item.folderId}>
+                <Card border="success" style={{maxWidth: '16rem'}}>
+                  <Card.Header>{item.mainTitle}</Card.Header>
+                  <Card.Body>
+                    <Card.Title>{item.subTitle}</Card.Title>
+                    <Card.Text>
+                      <ul>
+                        {item.subjectList.map((item, index) => (
+                          <li key={item.id} className="portfolio-description">
+                            <a href=""><strong role="button" title={item.name}
+                                               onClick={(e) => handleClass(e, item.id)}>{item.name}</strong></a>
 
-            {/*              </li>*/}
-            {/*            ))}*/}
-            {/*            <li>評分此單元</li>*/}
-            {/*          </ul>*/}
-            {/*        </Card.Text>*/}
-            {/*      </Card.Body>*/}
-            {/*    </Card>*/}
-            {/*  </div>*/}
-            {/*))}*/}
+                          </li>
+                        ))}
+                        <li>評分此單元</li>
+                      </ul>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </div>
+            ))}
 
 
           </div>
