@@ -1,19 +1,14 @@
 import React, { useEffect, useState, useContext} from "react";
 import {Container} from "react-bootstrap";
-import DropClassMenu from "./DropClassMenu";
-import {userLoginKey,  classListKey} from "../config";
-import {useNavigate} from 'react-router-dom';
+import {userLoginKey} from "../config";
 import Logo from '../assets/img/logo.png'
-import {getClassList} from "../utils/api";
 import GlobalState from "../context/MenuSelect";
 
 const Menu = () => {
   const [mobileMenu, setMobileMenu] = useState([])
-  const [dropDown, setDropDown] = useState([])  //第一層
-  const [subjectList, setSubjectList] = useState([]) // dropmenu資料來源
+
   const [userLogin, setUserLogin] = useState(false)
-  const navigate = useNavigate();
-  const { selectItem,changeItem, loginContext } = useContext(GlobalState)
+  const {loginContext } = useContext(GlobalState)
 
 
   useEffect(() => {
@@ -21,39 +16,11 @@ const Menu = () => {
       setUserLogin(true)
     }
 
-    if (sessionStorage.getItem(classListKey) === null) {
-      getClassList().then(
-        (res) => {
-          setSubjectList(res)
-          sessionStorage.setItem(classListKey, JSON.stringify(res))
-          // myArray = `${firstID},${firstName},${secondID},${secondName}`
-          if (selectItem === null) {
-            const selectKey = `${res[0].id},${res[0].name},${res[0].subjectList[0].id},${res[0].subjectList[0].name}`
-            changeItem(selectKey)
-          }
-
-        },
-        (e) => {
-          console.log("get response failed!");
-        })
-      return
-    }
-
-    setSubjectList(JSON.parse(sessionStorage.getItem(classListKey)))
-
 
   }, [loginContext])
 
   const handleMobileMenu = () => {
-    setDropDown(true)
     setMobileMenu(!mobileMenu)
-  }
-
-  const handleDropDown = () => {
-    setDropDown(!dropDown)
-    if (mobileMenu !== false){
-      handleSelect("01","存款業務","A","存款業務及開戶審查")
-    }
   }
 
 
@@ -68,11 +35,6 @@ const Menu = () => {
     }
   }
 
-  const handleSelect = (firstID, firstName, secondID, secondName) => {
-    const selectKey = `${firstID},${firstName},${secondID},${secondName}`
-    navigate('/aboutClass')
-    changeItem(selectKey)
-  }
 
   return (
     <Container>
@@ -94,13 +56,9 @@ const Menu = () => {
 
           <nav id="navbar" className={mobileMenu ? "navbar" : "navbar navbar-mobile"}>
             <ul>
-              {userLogin ? <DropClassMenu
-                dropDown={dropDown}
-                handleDropDown={handleDropDown}
-                handleSelect={handleSelect}
-                subjectList = {subjectList}
-              /> : null}
+
               <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" onClick={scrollHandle} id="about-" title="回首頁" href="">回首頁</a></li>
+              {userLogin ?<li><a className="nav-link scrollto" role="menuitem" tabIndex="0" href="/classList" title="課程列表">課程列表</a></li>: null}
               <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" href="/sitemap" title="網站導覽">網站導覽</a></li>
               <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" onClick={scrollHandle} id="hero-" title="學習地圖" href="">學習地圖</a></li>
               <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" onClick={scrollHandle} id="contact-" title="意見區" href="">意見區</a></li>

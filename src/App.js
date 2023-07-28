@@ -4,7 +4,7 @@ import Layout from "./layout/Layout";
 
 // pages
 import Home from "./pages/Home";
-import AboutClass from "./pages/AboutClass";
+import ClassList from "./pages/ClassList";
 import NotFound from "./pages/NotFound";
 import SuggestionTable from "./pages/SuggestionTable";
 import Sitemap from './pages/Sitemap'
@@ -16,7 +16,7 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<Home/>} exact/>
-          <Route path="/aboutClass" element={<AboutClass/>}/>
+          <Route path="/classList" element={<ClassList/>}/>
           <Route path='/suggestion' element={<SuggestionTable/>}/>
           <Route path='/sitemap' element={<Sitemap/>}/>
           <Route path='*' element={<NotFound/>}/>
