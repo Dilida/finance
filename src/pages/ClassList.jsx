@@ -26,7 +26,6 @@ const ClassList = () => {
               folderId: item2.folderId,
               subjectList: item2.subjectList
             }
-            console.log('newItem', newItem)
            newList.push(newItem)
           })
         })
@@ -43,7 +42,7 @@ const ClassList = () => {
     event.preventDefault();
     getFilmUrl(folderId).then(
       (res) => {
-        if (res.code !=+ "200"){
+        if (res.code !== "200"){
           return
         }
         const folderUrl = "http://www.itez.com.tw:7070" + res.url
@@ -62,9 +61,10 @@ const ClassList = () => {
     navigate("/classTest?folderId="+item.folderId)
   }
 
-  const handleValue = (event, folderId) => {
+  const handleValue = (event, item) => {
     event.preventDefault();
-    navigate("/classTest"+folderId)
+    sessionStorage.setItem(selectClassTitle, item.mainTitle +" "+ item.subTitle)
+    navigate("/classValue?folderId="+item.folderId)
   }
 
   return (
@@ -88,17 +88,17 @@ const ClassList = () => {
                   <Card.Header className={"back"+item.mainTitle.split('.')[0]}>{item.mainTitle}</Card.Header>
                   <Card.Body>
                     <Card.Title>{item.subTitle}</Card.Title>
-                    <Card.Text>
+
                       <ul>
                         {item.subjectList.map((item, index) => (
                           <li key={item.id} className="portfolio-description">
                             <a href="" role="button" title={item.name}  onClick={(e) => handleClass(e, item.folderId)}>{item.name}</a>
                           </li>
                         ))}
-                        <li><a href="" role="button" title="評分單元"  onClick={(e) => handleClass(e, item.folderId)}>評分單元</a></li>
+                        <li><a href="" role="button" title="評分單元"  onClick={(e) => handleValue(e, item)}>評分單元</a></li>
                         <li><a href="" role="button" title="課程檢測"  onClick={(e) => handleTest(e, item)}>課程檢測</a></li>
                       </ul>
-                    </Card.Text>
+
                   </Card.Body>
                 </Card>
               </div>
