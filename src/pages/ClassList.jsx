@@ -42,9 +42,7 @@ const ClassList = () => {
     event.preventDefault();
     getFilmUrl(folderId).then(
       (res) => {
-        if (res.code !== "200"){
-          return
-        }
+
         const folderUrl = "http://www.itez.com.tw:7070" + res.url
         // http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html
         window.open(folderUrl, '_blank', 'noopener,noreferrer');
