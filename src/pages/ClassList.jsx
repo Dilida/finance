@@ -78,7 +78,7 @@ const ClassList = () => {
 
         </div>
       </section>
-
+      <a className="accesskey" href="#aC" id="aC" accessKey="C" title="中間功能區塊" tabIndex="2">:::</a>
       <section id="portfolio-details" className="portfolio-details">
         <div className="container">
           <div className="row gy-4">

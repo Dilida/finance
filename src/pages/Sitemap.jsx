@@ -44,7 +44,7 @@ const Sitemap = () => {
 
         </div>
       </section>
-
+      <a className="accesskey" href="#aC" id="aC" accessKey="C" title="中間功能區塊" tabIndex="2">:::</a>
       <section id="portfolio-details" className="portfolio-details">
         <div className="container">
           本網站依無障礙網頁設計原則建置，網站的主要內容分為三大區塊<br/>
