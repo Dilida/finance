@@ -11,6 +11,7 @@ const ClassTest = () => {
   const bigTitle = sessionStorage.getItem(selectClassTitle)
   const folderId = new URLSearchParams(location.search).get('folderId')
   const [testList, setTestList] = useState([])
+  const [rightAnswer, setRightAnswer] = useState(0)
 
   useEffect(() => {
     let isUnmounted = false
@@ -31,12 +32,30 @@ const ClassTest = () => {
 
 
   const handleChange = (event) => {
-    console.log('value', parseInt(event.target.value))
-    console.log('questionNo', event.target.name)
+    const selectNo = event.target.name
+    const newValue = testList.map(item => {
+      if (item.quesNo === selectNo) {
+        item.selectValue = parseInt(event.target.value)
+      }
+      return item
+    })
+    setTestList(newValue)
+
   }
   const handleSubmit = event => {
     event.preventDefault();
-    console.log('iiiiii', event.target.value)
+    const submitNo = event.target.name
+    const newValue = testList.map(item => {
+      if (item.quesNo === submitNo) {
+        item.answer = item.idxAns === item.selectValue ? true : false
+        item.show = true
+      }
+      return item
+    })
+
+    const countAnswer = newValue.filter(item => item.answer === true)
+    setTestList(newValue)
+    setRightAnswer(countAnswer.length)
   }
 
 
@@ -58,22 +77,22 @@ const ClassTest = () => {
         <div className="container">
           <ul className="faq-list" data-aos="fade-up">
             {testList.map((item) => (
-              <li key={item.quesNo}>
-                <form className="php-email-form" onSubmit={handleSubmit}>
+              <li key={item.quesNo+"li"}>
+                <form className="php-email-form"  name={item.quesNo} onSubmit={handleSubmit}>
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title question">{item.quesNo}. {item.question}</h5>
                       {item.ansOption.map((option, index)=>(
                         <div className="form-check mb-2 ms-3" key={item.quesNo+"star"+(index+1)}>
                           <label htmlFor={item.quesNo+"star"+(index+1)}>{option}</label>
-                            <input id={item.quesNo+"star"+(index+1)} className="form-check-input" type="radio" name={item.quesNo} value={index+1} required  onChange={handleChange}/>
+                            <input id={item.quesNo+"star"+(index+1)} className="form-check-input" type="radio" name={item.quesNo} value={index+1} required  disabled={item.show} onChange={handleChange}/>
                         </div>
                       ))}
 
                     </div>
                     <div className="mb-3 ms-3 me-3">
-                      <button type="submit">送出回答</button>
-                      <Alert key="success" variant="success">{item.ansDesc}</Alert>
+                      {item.show ? null : <button type="submit">送出回答</button>}
+                      {item.show ? <Alert key="success" variant={item.answer?"success":"warning"}>{item.ansDesc}</Alert> : null}
                     </div>
                   </div>
                 </form>
@@ -81,10 +100,9 @@ const ClassTest = () => {
             ))}
 
           </ul>
+          <div className="back-to-top d-flex align-items-center justify-content-center">您答對 {rightAnswer} 題</div>
         </div>
       </section>
-
-
     </main>
   )
 }
