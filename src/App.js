@@ -5,6 +5,8 @@ import Layout from "./layout/Layout";
 // pages
 import Home from "./pages/Home";
 import ClassList from "./pages/ClassList";
+import ClassTest from "./pages/ClassTest";
+import ClassValue from "./pages/ClassValue";
 import NotFound from "./pages/NotFound";
 import SuggestionTable from "./pages/SuggestionTable";
 import Sitemap from './pages/Sitemap'
@@ -17,6 +19,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home/>} exact/>
           <Route path="/classList" element={<ClassList/>}/>
+          <Route path="/classTest" element={<ClassTest/>}/>
+          <Route path="/classValue" element={<ClassValue/>}/>
           <Route path='/suggestion' element={<SuggestionTable/>}/>
           <Route path='/sitemap' element={<Sitemap/>}/>
           <Route path='*' element={<NotFound/>}/>

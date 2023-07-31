@@ -24,6 +24,20 @@ export function getClassList(){
   })
 }
 
+export function getClassValue(param){
+  return new Promise((resolve, reject) => {
+    // resolve(classApi.data)
+    http("get",'/quiz/'+param).then(res => {
+      showError(res)
+      resolve (res.data);
+    },error => {
+      console.log("internet error~",error);
+      reject(error)
+    })
+  })
+}
+
+
 export function postUser(param){
   return new Promise((resolve, reject) => {
     // resolve(success)
@@ -42,6 +56,7 @@ export function getFilmUrl(param){
     // 呼叫 http://www.itez.com.tw:7070/elearn/api/url/{folderId} 時 會回傳 HTML5 課程檔案的實際 URL
     // resolve(subjectContent.url)
     http("get",'/url/'+param).then(res => {
+      showError(res)
       resolve (res);
     },error => {
       console.log("internet error~",error);

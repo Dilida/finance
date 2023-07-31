@@ -11,4 +11,4 @@ export const suggestListKey = "suggestList"
 
 export const suggestTotalKey = "suggestTotal"
 
-export const selectClassFilm = "classFilm"
+export const selectClassTitle = "classTitle"
