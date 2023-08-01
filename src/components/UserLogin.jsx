@@ -23,7 +23,7 @@ const UserLogin = () => {
       (res) => {
         sessionStorage.setItem(userLoginKey, userId);
         const selectKey = `01,存款業務,A,存款業務及開戶審查`
-        navigate('/classList')
+        navigate('/classTable')
         changeItem(selectKey)
         changeLogin()
       },
@@ -40,7 +40,7 @@ const UserLogin = () => {
              key={list.id}>
           <div className="icon-box">
             <div className="icon"><i className="bx bx-body" title={list.name}></i></div>
-            <h3 className="title"><a href="" role="loginitem" tabIndex="0" onClick={() => handlePostUser(list.id)} title={list.name}>{list.name}</a></h3>
+            <h3 className="title"><a href="" role="button" tabIndex="0" onClick={() => handlePostUser(list.id)} title={list.name}>{list.name}</a></h3>
             <div className="btn-get-started" onClick={() => handlePostUser(list.id)}>進入課程 Start</div>
           </div>
         </div>

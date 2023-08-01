@@ -27,6 +27,7 @@ const ClassTable = () => {
       })
 
     return () => isUnmounted = true
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleClass = (event, folderId) => {
     event.preventDefault();
@@ -59,9 +60,11 @@ const ClassTable = () => {
     <main id="main">
       <section className="breadcrumbs">
         <div className="container">
-
           <div className="d-flex justify-content-between align-items-center">
             <h2 aria-current="page">課程列表</h2>
+            <ol aria-label="Breadcrumb" role="navigation">
+              <li><a href="/classList">方塊排列</a></li>
+            </ol>
           </div>
 
         </div>

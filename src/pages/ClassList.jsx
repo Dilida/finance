@@ -36,6 +36,7 @@ const ClassList = () => {
       })
 
     return () => isUnmounted = true
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleClass = (event, folderId) => {
     event.preventDefault();
@@ -71,6 +72,9 @@ const ClassList = () => {
 
           <div className="d-flex justify-content-between align-items-center">
             <h2 aria-current="page">課程列表</h2>
+            <ol aria-label="Breadcrumb" role="navigation">
+              <li><a href="/classTable">長條排列</a></li>
+            </ol>
           </div>
 
         </div>

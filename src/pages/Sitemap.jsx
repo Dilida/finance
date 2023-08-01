@@ -1,29 +1,9 @@
-import React, {useContext} from "react";
-import {getClassList} from "../utils/api";
-import { userLoginKey} from "../config";
-import {useState, useEffect} from "react";
-import {useNavigate} from 'react-router-dom';
-import GlobalState from "../context/MenuSelect";
+import React, {useEffect} from "react";
 
 const Sitemap = () => {
-  const [subjectList, setSubjectList] = useState([])
-  const [userLogin, setUserLogin] = useState(false)
-  const navigate = useNavigate();
-  const { changeItem } = useContext(GlobalState)
 
   useEffect(() => {
-    if (sessionStorage.getItem(userLoginKey)) {
-      setUserLogin(true)
-    }
 
-    getClassList().then(
-      (res) => {
-        setSubjectList(res)
-      },
-      (e) => {
-        console.log("get response failed!");
-      }
-    );
   }, []);
 
   const scrollHandle = (e) => {
@@ -72,7 +52,7 @@ const Sitemap = () => {
                 <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="回首頁"
                        href="">回首頁</a></li>
                 <li><a className="nav-link scrollto" id="about-" title="課程列表"
-                       href="/classList">課程列表</a></li>
+                       href="/classTable">課程列表</a></li>
                 <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-" title="學習地圖"
                        href="">學習地圖</a></li>
                 <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-" title="意見區"
