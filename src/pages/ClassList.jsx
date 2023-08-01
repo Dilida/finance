@@ -29,7 +29,6 @@ const ClassList = () => {
            newList.push(newItem)
           })
         })
-        console.log("classList", newList)
         setItemList(newList)
       },
       (e) => {
