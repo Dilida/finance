@@ -5,6 +5,7 @@ import Layout from "./layout/Layout";
 // pages
 import Home from "./pages/Home";
 import ClassList from "./pages/ClassList";
+import ClassTable from "./pages/ClassTable";
 import ClassTest from "./pages/ClassTest";
 import ClassValue from "./pages/ClassValue";
 import NotFound from "./pages/NotFound";
@@ -19,6 +20,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home/>} exact/>
           <Route path="/classList" element={<ClassList/>}/>
+          <Route path="/classTable" element={<ClassTable/>}/>
           <Route path="/classTest" element={<ClassTest/>}/>
           <Route path="/classValue" element={<ClassValue/>}/>
           <Route path='/suggestion' element={<SuggestionTable/>}/>

@@ -1441,6 +1441,10 @@ section {
     min-height: 700px;
 }
 
+.classRow{
+    min-height: 2.6rem;
+}
+
 
 /*========list color=======*/
 .back01{
@@ -1448,7 +1452,7 @@ section {
 }
 
 .back02{
-    background-color: #dcfce5;
+    background-color: #f8fff8;
 }
 
 .back03{
@@ -1500,5 +1504,5 @@ section {
 }
 
 .back15{
-    background-color: #cadfff;
+    background-color: #f5f5f5;
 }

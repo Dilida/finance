@@ -1,5 +1,21 @@
+import {getSuggestionValue} from "../utils/api";
+import {useState, useEffect} from "react";
 
-const AboutClass = () => {
+const SuggestionTable = () => {
+  const [testValue, setTestValue] = useState([])
+  useEffect(() => {
+    getSuggestionValue().then(
+      (res) => {
+        console.log('res', res)
+
+        setTestValue(res)
+      },
+      (e) => {
+        console.log("get response failed!");
+      })
+  }, [])
+
+
   return (
     <main id="main">
 
@@ -12,38 +28,27 @@ const AboutClass = () => {
 
         </div>
       </section>
-
+      <a className="accesskey" href="#aC" id="aC" accessKey="C" title="中間功能區塊" tabIndex="2">:::</a>
       <section id="portfolio-details" className="portfolio-details">
         <div className="container">
 
           <table className="table">
             <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">主題單元</th>
               <th scope="col">評價</th>
               <th scope="col">人氣（人次）</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <th scope="row">01</th>
-              <td>存款業務 - A.存款業務及開戶審查 </td>
-              <td>4.7 顆星</td>
-              <td>173</td>
-            </tr>
-            <tr>
-              <th scope="row">02</th>
-              <td>金融商品銷售 - C.銷售管理機制及客訴處理</td>
-              <td>5.0 顆星</td>
-              <td>991101</td>
-            </tr>
-            <tr>
-              <th scope="row">03</th>
-              <td>證券經紀業務 - 證券經紀業務 </td>
-              <td>3.1 顆星</td>
-              <td>292930</td>
-            </tr>
+            {testValue.map((item, index) => (
+              <tr key={"score" + index}>
+                <td>{item.title}</td>
+                <td>{item.value} 顆星</td>
+                <td>{item.count}</td>
+              </tr>
+            ))}
+
             </tbody>
           </table>
 
@@ -54,4 +59,4 @@ const AboutClass = () => {
   )
 }
 
-export default AboutClass
+export default SuggestionTable

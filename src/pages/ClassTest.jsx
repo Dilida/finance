@@ -28,6 +28,7 @@ const ClassTest = () => {
       })
 
     return () => isUnmounted = true
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
@@ -67,12 +68,13 @@ const ClassTest = () => {
           <div className="d-flex justify-content-between align-items-center">
             <h2 aria-current="page">{bigTitle}</h2>
             <ol aria-label="Breadcrumb" role="navigation">
-              <li><a href="/classList">回課程列表頁</a></li>
+              <li><a href="/classTable">回課程列表頁</a></li>
             </ol>
           </div>
 
         </div>
       </section>
+      <a className="accesskey" href="#aC" id="aC" accessKey="C" title="中間功能區塊" tabIndex="2">:::</a>
       <section id="faq" className="faq">
         <div className="container">
           <ul className="faq-list" data-aos="fade-up">

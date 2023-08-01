@@ -55,6 +55,7 @@ const Home = () => {
 
         </div>
       </section>
+      <a className="accesskey" href="#aC" id="aC" accessKey="C" title="中間功能區塊" tabIndex="2">:::</a>
       <section id="hero" className="hero d-flex align-items-center">
         <div className="container">
           <div className="section-title">

@@ -1,29 +1,9 @@
-import React, {useContext} from "react";
-import {getClassList} from "../utils/api";
-import { userLoginKey} from "../config";
-import {useState, useEffect} from "react";
-import {useNavigate} from 'react-router-dom';
-import GlobalState from "../context/MenuSelect";
+import React, {useEffect} from "react";
 
 const Sitemap = () => {
-  const [subjectList, setSubjectList] = useState([])
-  const [userLogin, setUserLogin] = useState(false)
-  const navigate = useNavigate();
-  const { changeItem } = useContext(GlobalState)
 
   useEffect(() => {
-    if (sessionStorage.getItem(userLoginKey)) {
-      setUserLogin(true)
-    }
 
-    getClassList().then(
-      (res) => {
-        setSubjectList(res)
-      },
-      (e) => {
-        console.log("get response failed!");
-      }
-    );
   }, []);
 
   const scrollHandle = (e) => {
@@ -44,7 +24,7 @@ const Sitemap = () => {
 
         </div>
       </section>
-
+      <a className="accesskey" href="#aC" id="aC" accessKey="C" title="中間功能區塊" tabIndex="2">:::</a>
       <section id="portfolio-details" className="portfolio-details">
         <div className="container">
           本網站依無障礙網頁設計原則建置，網站的主要內容分為三大區塊<br/>
@@ -72,7 +52,7 @@ const Sitemap = () => {
                 <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="回首頁"
                        href="">回首頁</a></li>
                 <li><a className="nav-link scrollto" id="about-" title="課程列表"
-                       href="/classList">課程列表</a></li>
+                       href="/classTable">課程列表</a></li>
                 <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-" title="學習地圖"
                        href="">學習地圖</a></li>
                 <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-" title="意見區"
