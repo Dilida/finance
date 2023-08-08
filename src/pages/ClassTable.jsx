@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Spinner from "react-bootstrap/Spinner";
+import axios from "axios";
 
 
 const ClassTable = () => {
@@ -43,7 +44,7 @@ const ClassTable = () => {
     getFilmUrl(folderId).then(
       (res) => {
 
-        const folderUrl = "https://www.itez.com.tw" + res.url
+        const folderUrl = axios.defaults.url + res.url
         // http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html
         window.open(folderUrl, '_blank', 'noopener,noreferrer');
 

@@ -55,14 +55,14 @@ export function getSuggestionValue(){
 
 export function postUser(param){
   return new Promise((resolve, reject) => {
-    resolve(success)
-    // http("post",'/postUser', param).then(res => {
-    //   showError(res)
-    //   resolve (res);
-    // },error => {
-    //   console.log("internet error~",error);
-    //   reject(error)
-    // })
+    // resolve(success)
+    http("post",'/postUser', param).then(res => {
+      showError(res)
+      resolve (res);
+    },error => {
+      console.log("internet error~",error);
+      reject(error)
+    })
   })
 }
 

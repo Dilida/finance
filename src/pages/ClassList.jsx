@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {getClassList, getFilmUrl} from "../utils/api";
-import {userLoginKey, selectClassTitle} from "../config";
+import {userLoginKey, selectClassTitle, classListKey} from "../config";
 import {useNavigate} from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Spinner from 'react-bootstrap/Spinner';
+import axios from "axios";
 
 
 const ClassList = () => {
@@ -13,31 +14,49 @@ const ClassList = () => {
 
   useEffect(() => {
     let isUnmounted = false
-    getClassList().then(
-      (res) => {
-        if (sessionStorage.getItem(userLoginKey) === null && !isUnmounted) {
-          navigate("/")
-        }
-
-        let newList = []
-        res.forEach((item) => {
-          item.subjectList.forEach((item2) => {
-            const newItem = {
-              mainTitle: `${item.id}.${item.name}`,
-              subTitle: `${item2.id}.${item2.name}`,
-              folderId: item2.folderId,
-              subjectList: item2.subjectList
-            }
-            newList.push(newItem)
+    const classList = sessionStorage.getItem(classListKey)
+    if (classList === null) {
+      if (sessionStorage.getItem(userLoginKey) === null && !isUnmounted) {
+        navigate("/")
+      }
+      getClassList().then(
+        (res) => {
+          let newList = []
+          res.forEach((item) => {
+            item.subjectList.forEach((item2) => {
+              const newItem = {
+                mainTitle: `${item.id}.${item.name}`,
+                subTitle: `${item2.id}.${item2.name}`,
+                folderId: item2.folderId,
+                subjectList: item2.subjectList
+              }
+              newList.push(newItem)
+            })
           })
+          setItemList(newList)
+          setLoading(false)
+          sessionStorage.setItem(classListKey, JSON.stringify(res))
+        },
+        (e) => {
+          console.log("get response failed!");
         })
-        setItemList(newList)
-        setLoading(false)
-      },
-      (e) => {
-        console.log("get response failed!");
+    } else {
+      setLoading(false)
+      const classRes = JSON.parse(classList)
+      let newList = []
+      classRes.forEach((item) => {
+        item.subjectList.forEach((item2) => {
+          const newItem = {
+            mainTitle: `${item.id}.${item.name}`,
+            subTitle: `${item2.id}.${item2.name}`,
+            folderId: item2.folderId,
+            subjectList: item2.subjectList
+          }
+          newList.push(newItem)
+        })
       })
-
+      setItemList(newList)
+    }
     return () => isUnmounted = true
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -46,7 +65,7 @@ const ClassList = () => {
     getFilmUrl(folderId).then(
       (res) => {
 
-        const folderUrl = "https://www.itez.com.tw" + res.url
+        const folderUrl = axios.defaults.url + res.url
         // http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html
         window.open(folderUrl, '_blank', 'noopener,noreferrer');
 
