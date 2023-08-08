@@ -14,11 +14,11 @@ const ClassList = () => {
 
   useEffect(() => {
     let isUnmounted = false
+    if (sessionStorage.getItem(userLoginKey) === null && !isUnmounted) {
+      navigate("/")
+    }
     const classList = sessionStorage.getItem(classListKey)
     if (classList === null) {
-      if (sessionStorage.getItem(userLoginKey) === null && !isUnmounted) {
-        navigate("/")
-      }
       getClassList().then(
         (res) => {
           let newList = []
@@ -104,7 +104,7 @@ const ClassList = () => {
       <a className="accesskey" href="#aC" id="aC" accessKey="C" title="中間功能區塊" tabIndex="2">:::</a>
       <section id="portfolio-details" className="portfolio-details">
         <div className="container">
-          {loading === true ?
+          {loading ?
             <div className="text-center"><Spinner animation="border" variant="success"/></div>
             :
             <div className="row gy-4">
