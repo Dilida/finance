@@ -3,10 +3,12 @@ import {getClassList, getFilmUrl} from "../utils/api";
 import {userLoginKey, selectClassTitle} from "../config";
 import {useNavigate} from "react-router-dom";
 import Card from 'react-bootstrap/Card';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 const ClassList = () => {
   const [itemList, setItemList] = useState([])
+  const [loading, setLoading] = useState(true)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,10 +28,11 @@ const ClassList = () => {
               folderId: item2.folderId,
               subjectList: item2.subjectList
             }
-           newList.push(newItem)
+            newList.push(newItem)
           })
         })
         setItemList(newList)
+        setLoading(false)
       },
       (e) => {
         console.log("get response failed!");
@@ -43,7 +46,7 @@ const ClassList = () => {
     getFilmUrl(folderId).then(
       (res) => {
 
-        const folderUrl = "http://www.itez.com.tw:7070" + res.url
+        const folderUrl = "https://www.itez.com.tw" + res.url
         // http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html
         window.open(folderUrl, '_blank', 'noopener,noreferrer');
 
@@ -55,14 +58,14 @@ const ClassList = () => {
 
   const handleTest = (event, item) => {
     event.preventDefault();
-    sessionStorage.setItem(selectClassTitle, item.mainTitle +" "+ item.subTitle)
-    navigate("/classTest?folderId="+item.folderId)
+    sessionStorage.setItem(selectClassTitle, item.mainTitle + " " + item.subTitle)
+    navigate("/classTest?folderId=" + item.folderId)
   }
 
   const handleValue = (event, item) => {
     event.preventDefault();
-    sessionStorage.setItem(selectClassTitle, item.mainTitle +" "+ item.subTitle)
-    navigate("/classValue?folderId="+item.folderId)
+    sessionStorage.setItem(selectClassTitle, item.mainTitle + " " + item.subTitle)
+    navigate("/classValue?folderId=" + item.folderId)
   }
 
   return (
@@ -82,31 +85,38 @@ const ClassList = () => {
       <a className="accesskey" href="#aC" id="aC" accessKey="C" title="中間功能區塊" tabIndex="2">:::</a>
       <section id="portfolio-details" className="portfolio-details">
         <div className="container">
-          <div className="row gy-4">
-            {itemList.map((item, index) => (
-              <div className="col-lg-3 portfolio-info" key={item.folderId}>
-                <Card border="success" style={{maxWidth: '16rem'}}>
-                  <Card.Header className={"back"+item.mainTitle.split('.')[0]}>{item.mainTitle}</Card.Header>
-                  <Card.Body>
-                    <Card.Title>{item.subTitle}</Card.Title>
+          {loading === true ?
+            <div className="text-center"><Spinner animation="border" variant="success"/></div>
+            :
+            <div className="row gy-4">
+              {itemList.map((item, index) => (
+                <div className="col-lg-3 portfolio-info" key={item.folderId}>
+                  <Card border="success" style={{maxWidth: '16rem'}}>
+                    <Card.Header className={"back" + item.mainTitle.split('.')[0]}>{item.mainTitle}</Card.Header>
+                    <Card.Body>
+                      <Card.Title>{item.subTitle}</Card.Title>
 
                       <ul>
                         {item.subjectList.map((item, index) => (
                           <li key={item.id} className="portfolio-description">
-                            <a href="" role="button" title={item.name}  onClick={(e) => handleClass(e, item.folderId)}>{item.name}</a>
+                            <a href="" role="button" title={item.name}
+                               onClick={(e) => handleClass(e, item.folderId)}>{item.name}</a>
                           </li>
                         ))}
-                        <li><a href="" role="button" title="單元評分"  onClick={(e) => handleValue(e, item)}>單元評分</a></li>
-                        <li><a href="" role="button" title="課程檢測"  onClick={(e) => handleTest(e, item)}>課程檢測</a></li>
+                        <li><a href="" role="button" title="單元評分" onClick={(e) => handleValue(e, item)}>單元評分</a>
+                        </li>
+                        <li><a href="" role="button" title="課程檢測" onClick={(e) => handleTest(e, item)}>課程檢測</a>
+                        </li>
                       </ul>
 
-                  </Card.Body>
-                </Card>
-              </div>
-            ))}
+                    </Card.Body>
+                  </Card>
+                </div>
+              ))}
 
 
-          </div>
+            </div>
+          }
         </div>
       </section>
 

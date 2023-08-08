@@ -1445,6 +1445,10 @@ section {
     min-height: 2.6rem;
 }
 
+.classRow:hover{
+    background-color: #f1f1f1;
+}
+
 
 /*========list color=======*/
 .back01{
