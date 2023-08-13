@@ -14,14 +14,16 @@ function showError(err) {
  */
 export function getClassList(){
   return new Promise((resolve, reject) => {
-    // resolve(classApi.data)
-    http("get",'/getClassList').then(res => {
+    resolve(classApi.data)
+    /*
+	http("get",'/getClassList').then(res => {
       showError(res)
       resolve (res.data);
     },error => {
       console.log("internet error~",error);
       reject(error)
     })
+	*/
   })
 }
 
@@ -55,14 +57,14 @@ export function getSuggestionValue(){
 
 export function postUser(param){
   return new Promise((resolve, reject) => {
-    // resolve(success)
-    http("post",'/postUser', param).then(res => {
-      showError(res)
-      resolve (res);
-    },error => {
-      console.log("internet error~",error);
-      reject(error)
-    })
+    resolve(success)
+    //http("post",'/postUser', param).then(res => {
+    //  showError(res)
+    //  resolve (res);
+    //},error => {
+    //  console.log("internet error~",error);
+    //  reject(error)
+    //})
   })
 }
 
