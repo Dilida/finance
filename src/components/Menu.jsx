@@ -58,7 +58,7 @@ const Menu = () => {
             <ul>
 
               <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" onClick={scrollHandle} id="about-" title="回首頁" href="">回首頁</a></li>
-              {userLogin ?<li><a className="nav-link scrollto" role="menuitem" tabIndex="0" href="/classTable" title="課程列表">課程列表</a></li>: null}
+              {userLogin ?<li><a className="nav-link scrollto" role="menuitem" tabIndex="0" href="/classFirst" title="課程列表">課程列表</a></li>: null}
               <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" href="/sitemap" title="網站導覽">網站導覽</a></li>
               <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" onClick={scrollHandle} id="hero-" title="學習地圖" href="">學習地圖</a></li>
               <li><a className="nav-link scrollto" role="menuitem" tabIndex="0" onClick={scrollHandle} id="contact-" title="意見區" href="">意見區</a></li>

@@ -52,7 +52,7 @@ const Sitemap = () => {
                 <li><a className="nav-link scrollto" onClick={scrollHandle} id="about-" title="回首頁"
                        href="">回首頁</a></li>
                 <li><a className="nav-link scrollto" id="about-" title="課程列表"
-                       href="/classTable">課程列表</a></li>
+                       href="/classFirst">課程列表</a></li>
                 <li><a className="nav-link scrollto" onClick={scrollHandle} id="hero-" title="學習地圖"
                        href="">學習地圖</a></li>
                 <li><a className="nav-link scrollto" onClick={scrollHandle} id="contact-" title="意見區"
