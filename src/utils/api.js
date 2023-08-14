@@ -15,13 +15,15 @@ function showError(err) {
 export function getClassList(){
   return new Promise((resolve, reject) => {
     resolve(classApi.data)
-    // http("get",'/getClassList').then(res => {
-    //   showError(res)
-    //   resolve (res.data);
-    // },error => {
-    //   console.log("internet error~",error);
-    //   reject(error)
-    // })
+    /*
+	http("get",'/getClassList').then(res => {
+      showError(res)
+      resolve (res.data);
+    },error => {
+      console.log("internet error~",error);
+      reject(error)
+    })
+	*/
   })
 }
 

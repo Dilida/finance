@@ -1,39 +1,65 @@
 import React, {useEffect, useState} from "react";
-import {getClassList} from "../utils/api";
-import {userLoginKey, classListKey} from "../config";
+import {getClassList, getFilmUrl} from "../utils/api";
+import {userLoginKey, classListKey, selectClassTitle} from "../config";
 import {useNavigate} from "react-router-dom";
-import Spinner from 'react-bootstrap/Spinner';
 import {Col, Row, Card} from "react-bootstrap";
-import pic1 from '../assets/img/test01.png'
 import {getQueryString} from "../utils/utils";
+import axios from "axios";
 
 
 const ClassSecond = () => {
   const navigate = useNavigate();
-  const [content, setContent] = useState([])
+  const id = getQueryString("id")
+  const classList = JSON.parse(sessionStorage.getItem(classListKey))
+  const initClass = classList.find(item => item.id === id)
 
   useEffect(() => {
     let isUnmounted = false
     if (sessionStorage.getItem(userLoginKey) === null && !isUnmounted) {
       navigate("/")
     }
-    const id = getQueryString("id")
-    const classList = JSON.parse(sessionStorage.getItem(classListKey))
-    const selectItem = classList.find(item=>item.id === id)
-    console.log('selectItem', selectItem)
-    setContent(selectItem)
 
     return () => isUnmounted = true
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+
+  const handleClass = (event, folderId) => {
+    event.preventDefault();
+    getFilmUrl(folderId).then(
+      (res) => {
+
+        const folderUrl = axios.defaults.url + res.url
+        // http://www.itez.com.tw:7070/html5/d8d912e0-0a6f-4941-918f-661226cab4c1/index.html
+        window.open(folderUrl, '_blank', 'noopener,noreferrer');
+
+      },
+      (e) => {
+        console.log("get response failed!");
+      })
+  }
+
+  const handleTest = (event, item, itemSub, folderId) => {
+    event.preventDefault();
+    sessionStorage.setItem(selectClassTitle, item + " " + itemSub)
+    navigate("/classTest?folderId=" + folderId)
+  }
+
+  const handleValue = (event, item, itemSub, folderId) => {
+    event.preventDefault();
+    sessionStorage.setItem(selectClassTitle, item + " " + itemSub)
+    navigate("/classValue?folderId=" + folderId)
+  }
+
   return (
     <main id="main">
       <section className="breadcrumbs">
         <div className="container">
-
           <div className="d-flex justify-content-between align-items-center">
-            <h2 aria-current="page">{content.id}.{content.name}</h2>
+            <h2 aria-current="page">{initClass.id}.{initClass.name}</h2>
+            <ol aria-label="Breadcrumb" role="navigation">
+              <li><a href="/classFirst" title="回到課程列表" role="button">回到課程列表</a></li>
+            </ol>
           </div>
         </div>
       </section>
@@ -41,29 +67,39 @@ const ClassSecond = () => {
       <section id="class-second" className="class-second">
         <div className="container">
           <div className="row gy-4">
-            <div className="px-3 col-lg-6" key={"class-second"}>
-              <Card border="success">
-                <Card.Header className="">A.存款</Card.Header>
-                <Card.Body>
-                  <Row>
-                    <Col>課程內容</Col>
-                    <Col>檢查重點</Col>
-                    <Col>個案分享</Col>
-                    <Col>參考資料</Col>
-                  </Row>
-                  <hr/>
-                  <Row>
-                    <Col xs={3}>單元評分</Col>
-                    <Col xs={3}>課程檢測</Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </div>
+            {initClass.subjectList.map((item, index) => (
+              <div className="px-3 col-lg-6" key={`class-second-01-${index}`}>
+                <Card border="success">
+                  <Card.Header className="">{item.id}.{item.name}</Card.Header>
+                  <Card.Body>
+                    <Row>
+                      {item.subjectList.map((item2, index2) =>
+                        <Col className="text-center" key={`class-second-02-${index2}`}><a href="" key={"item2" + index2}
+                                                                                          role="button"
+                                                                                          title={item2.name}
+                                                                                          className="card-link me-lg-3"
+                                                                                          onClick={(e) => handleClass(e, item2.folderId)}>{item2.name}</a></Col>
+                      )}
+                    </Row>
+                    <hr/>
+                    <Row>
+                      <Col xs={3} className="text-center">
+                        <a href="" role="button" title="單元評分" className="card-link me-lg-3"
+                           onClick={(e) => handleValue(e, `${initClass.id}.${initClass.name}`, `${item.id}.${item.name}`, item.folderId)}>單元評分</a>
+                      </Col>
+                      <Col xs={3} className="text-center">
+                        <a href="" role="button" title="課程檢測" className="card-link me-lg-3"
+                           onClick={(e) => handleTest(e, `${initClass.id}.${initClass.name}`, `${item.id}.${item.name}`, item.folderId)}>課程檢測</a>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                </Card>
+              </div>
+            ))}
+
           </div>
         </div>
       </section>
-
-
     </main>
   )
 }

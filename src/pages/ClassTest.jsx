@@ -70,7 +70,8 @@ const ClassTest = () => {
           <div className="d-flex justify-content-between align-items-center">
             <h2 aria-current="page">{bigTitle}</h2>
             <ol aria-label="Breadcrumb" role="navigation">
-              <li><a href="/classTable">回課程列表頁</a></li>
+              <li><a href="/classFirst" title="回到課程列表" role="button">回到課程列表</a></li>
+              <li><a href="javascript:history.back()" title="回上一頁" role="button">回上一頁</a></li>
             </ol>
           </div>
 

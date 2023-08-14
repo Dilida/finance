@@ -4,7 +4,7 @@ import {userLoginKey, classListKey} from "../config";
 import {useNavigate} from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner';
 import {Col, Row, Card} from "react-bootstrap";
-import pic1 from '../assets/img/test01.png'
+
 
 
 const ClassFirst = () => {
@@ -57,15 +57,15 @@ const ClassFirst = () => {
             <div className="row gy-4">
               {itemList.map((item, index) => (
                 <div className="px-3 col-lg-6" key={"class-first" + item.id}>
-                  <a href={"/classSecond?id=" + item.id} title={item.id + "." + item.name}>
+                  <a href={"/classSecond?id=" + item.id} title={item.id + "." + item.name} role="button">
                     <Card border="success">
                       <Card.Body>
                         <Row>
-                          <Col sm={4} className="mh-100"><img src={pic1} alt={item.id + "." + item.name}/></Col>
+                          <Col sm={4} className="mh-100"><img src={item.image} alt={item.id + "." + item.name}/></Col>
                           <Col sm={8} className="mh-100">
                             <p className="text-start">{item.id}.{item.name}</p>
                             <p
-                              className="text-start">世界第一張股票在十七世紀由荷蘭東印度公司發行[2]。發行650萬荷蘭盾股票，已具備現代股份公司的主要特徵，其運作方式對後世產生重大深遠影響。</p>
+                              className="text-start">{item.note}</p>
                           </Col>
                         </Row>
                       </Card.Body>
