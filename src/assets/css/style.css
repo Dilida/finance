@@ -791,16 +791,35 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Class-first
+--------------------------------------------------------------*/
+
+.class-first img {
+    max-width: 100%;
+}
+
+.class-first p {
+    font-size:1.2em;
+    color: #4e4039;
+}
+
+.class-first .card-body:hover{
+    background-color: #f8fff8;
+    cursor: pointer;
+}
+
+
+/*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
 
-.portfolio-details .portfolio-details-slider img {
-    width: 100%;
+.portfolio-details img {
+    max-width: 100%;
 }
 
-.portfolio-details .portfolio-details-slider .swiper-pagination {
-    margin-top: 20px;
-    position: relative;
+.portfolio-details p {
+    font-size:1.2em;
+    color: #4e4039;
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {

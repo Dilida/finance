@@ -24,7 +24,7 @@ const UserLogin = () => {
         sessionStorage.setItem(userLoginKey, userId);
         const selectKey = `01,存款業務,A,存款業務及開戶審查`
 
-        navigate('/classTable')
+        navigate('/classFirst')
         changeItem(selectKey)
         changeLogin()
       },
