@@ -4,7 +4,8 @@ import {userLoginKey, classListKey} from "../config";
 import {useNavigate} from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner';
 import {Col, Row, Card} from "react-bootstrap";
-
+import axios from "axios";
+import ready from '../assets/img/ready.png'
 
 
 const ClassFirst = () => {
@@ -61,11 +62,13 @@ const ClassFirst = () => {
                     <Card border="success">
                       <Card.Body>
                         <Row>
-                          <Col sm={4} className="mh-100"><img src={item.image} alt={item.id + "." + item.name}/></Col>
+                          <Col sm={4} className="mh-100"><img
+                            src={item.uriLogo.length > 0 ? axios.defaults.url + item.uriLogo : ready}
+                            alt={item.id + "." + item.name}/></Col>
                           <Col sm={8} className="mh-100">
                             <p className="text-start">{item.id}.{item.name}</p>
                             <p
-                              className="text-start">{item.note}</p>
+                              className="text-start">{item.desc}</p>
                           </Col>
                         </Row>
                       </Card.Body>
