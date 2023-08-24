@@ -8,6 +8,7 @@ import SectionLogin from "../components/SectionLogin";
 
 import {userLoginKey} from "../config";
 import React, {useEffect, useState} from "react";
+import {postUser} from "../utils/api";
 
 const Home = () => {
   const [userLogin, setUserLogin] = useState(false)
@@ -17,10 +18,17 @@ const Home = () => {
     }
   }, [])
 
+  const handleOnLoad = () => {
+    const postUserObj = {
+      "roleId": 0
+    }
+    postUser(postUserObj).then();
+  }
+
   return (
     <main id="main">
       <section id="about" className="about section-bg">
-        <div className="container">
+        <div className="container"  onLoad={() => handleOnLoad()}>
           <div className="row justify-content-between">
             <div className="col-lg-4 d-flex align-items-center justify-content-center about-img">
               <img src={aboutImg} className="img-fluid" alt="金檢學堂學習目的" data-aos="zoom-in" />
@@ -28,7 +36,7 @@ const Home = () => {
             <div className="col-lg-7 pt-5 pt-lg-0">
               <h2 data-aos="fade-up">金檢學堂</h2>
               <p data-aos="fade-up" data-aos-delay="100">
-                <b className="note">本系統假日不對外開放</b>
+                <b className="note">（本系統假日不對外開放）</b>
               </p>
               <div className="row">
                 <div className="col-md-6" data-aos="fade-up" data-aos-delay="100">
