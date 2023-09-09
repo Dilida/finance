@@ -1,8 +1,9 @@
 import axios from "axios";
 
 axios.defaults.timeout = 100000;
-axios.defaults.baseURL = "https://www.itez.com.tw/elearn/api/";
+// axios.defaults.baseURL = "https://www.itez.com.tw/elearn/api/";
 axios.defaults.url = "https://www.itez.com.tw"
+axios.defaults.baseURL = window.location.origin+'/elearn/api/'
 /**
  * http request 拦截器
  */
