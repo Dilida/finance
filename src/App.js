@@ -14,6 +14,7 @@ import NotFound from "./pages/NotFound";
 import SuggestionTable from "./pages/SuggestionTable";
 import Sitemap from './pages/Sitemap'
 import {GlobalProvider} from "./context/MenuSelect";
+import SectionSuggestion from "./pages/SectionSuggestion";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/classValue" element={<ClassValue/>}/>
           <Route path='/suggestion' element={<SuggestionTable/>}/>
           <Route path='/sitemap' element={<Sitemap/>}/>
+          <Route path='/sectionSuggestion' element={<SectionSuggestion/>}/>
           <Route path='*' element={<NotFound/>}/>
         </Routes>
       </Layout>

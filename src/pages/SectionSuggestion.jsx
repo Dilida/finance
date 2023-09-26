@@ -1,5 +1,5 @@
-import Star from "./Star";
-import Satisfy from "./Satisfy";
+import Star from "../components/Star";
+import Satisfy from "../components/Satisfy";
 import React, {useEffect, useState} from "react";
 import { postSuggestion} from "../utils/api";
 import Alert from "react-bootstrap/Alert";
@@ -18,10 +18,10 @@ const SectionSuggestion = () => {
   const [textAreaUp, setTextAreaUp] = useState("");
   const [textAreaDown, setTextAreaDown] = useState("");
   const [sendObj, setSendObj] = useState({
-    "platform": "",
-    "layout": "",
-    "usability": '',
-    "overall": '',
+    "platform": 5,
+    "layout": 5,
+    "usability": 5,
+    "overall": 5,
     "suggestLayout": '',
     "suggestElse": '',
   })
@@ -35,6 +35,7 @@ const SectionSuggestion = () => {
 
   }, []);
   const handleSelectChange = (event) => {
+    event.stopPropagation();
     sendObj[event.target.name] = parseInt(event.target.value)
     setSendObj(sendObj)
   }

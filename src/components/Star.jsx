@@ -10,7 +10,9 @@ const Star = ({ lists, handleSelectChange, disableSend }) => {
               {list.name}
             </div>
             <div className="form-check col-2">
-              <label htmlFor={list.id+"star5"}>五顆星<input id={list.id+"star5"} className="form-check-input" type="radio" name={list.id} value="5" onChange={handleSelectChange} required disabled={disableSend}/></label>
+              <label htmlFor={list.id+"star5"}>五顆星
+                <input id={list.id+"star5"} defaultChecked className="form-check-input" type="radio" name={list.id} value="5" onChange={handleSelectChange} required disabled={disableSend}/>
+              </label>
               <i className="bx bxs-star"></i>
               <i className="bx bxs-star"></i>
               <i className="bx bxs-star"></i>

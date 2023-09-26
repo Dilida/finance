@@ -3,7 +3,7 @@ import map1 from '../assets/img/c1.png';
 import map2 from '../assets/img/c2.png';
 import map3 from '../assets/img/c3.png';
 
-import SectionSuggestion from "../components/SectionSuggestion";
+import SectionSuggestion from "./SectionSuggestion";
 import SectionLogin from "../components/SectionLogin";
 
 import {userLoginKey} from "../config";
@@ -19,10 +19,10 @@ const Home = () => {
   }, [])
 
   const handleOnLoad = () => {
-    const postUserObj = {
-      "roleId": 0
-    }
-    postUser(postUserObj).then();
+    // const postUserObj = {
+    //   "roleId": 0
+    // }
+    // postUser(postUserObj).then();
   }
 
   return (
@@ -71,13 +71,13 @@ const Home = () => {
               <h3>本園區提供15站探索之旅，請循序漸進體驗</h3>
             </div>
           <div className="row gy-4">
-            <div className="col-lg-4 order-1 order-lg-2 hero-img">
+            <div className="d-flex justify-content-center hero-img">
               <img src={map1} className="img-fluid animated" alt="學習地圖1-5 存款業務、洗錢防制、內部管理、授信業務、投資業務"/>
             </div>
-            <div className="col-lg-4 order-1 order-lg-2 hero-img">
+            <div className="d-flex justify-content-center hero-img">
               <img src={map2} className="img-fluid animated" alt="學習地圖6-10 信託業務、金融商品銷售、資訊作業、保險招纜、證券承銷"/>
             </div>
-            <div className="col-lg-4 order-1 order-lg-2 hero-img">
+            <div className="d-flex justify-content-center hero-img">
               <img src={map3} className="img-fluid animated" alt="學習地圖11-15 核保理賠、投資型商品、證券經紀、保險業資金運用、保險業收費及佣金"/>
             </div>
           </div>
