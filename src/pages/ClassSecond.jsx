@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {Col, Row, Card} from "react-bootstrap";
 import {getQueryString} from "../utils/utils";
 import axios from "axios";
+import Meta from "../components/Meta";
 
 
 const ClassSecond = () => {
@@ -53,6 +54,7 @@ const ClassSecond = () => {
 
   return (
     <main id="main">
+      <Meta title="課程列表" />
       <section className="breadcrumbs">
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">

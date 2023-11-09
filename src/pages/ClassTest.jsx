@@ -4,6 +4,7 @@ import {userLoginKey, selectClassTitle} from "../config";
 import {useNavigate, useLocation} from "react-router-dom";
 import Alert from 'react-bootstrap/Alert';
 import Spinner from "react-bootstrap/Spinner";
+import Meta from "../components/Meta";
 
 
 const ClassTest = () => {
@@ -64,6 +65,7 @@ const ClassTest = () => {
 
   return (
     <main id="main">
+      <Meta title="課程檢測" />
       <section className="breadcrumbs">
         <div className="container">
 

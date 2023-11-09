@@ -3,6 +3,7 @@ import { postSubjectSuggestion} from "../utils/api";
 import { selectClassTitle, suggestListKey, userLoginKey} from "../config";
 import Alert from 'react-bootstrap/Alert';
 import {useLocation, useNavigate} from "react-router-dom";
+import Meta from "../components/Meta";
 
 const ClassValue = () => {
   const location = useLocation();
@@ -76,6 +77,7 @@ const ClassValue = () => {
 
   return (
     <main id="main">
+      <Meta title="課程評價" />
       <section className="breadcrumbs">
         <div className="container">
 

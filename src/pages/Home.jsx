@@ -5,10 +5,12 @@ import map3 from '../assets/img/c3.png';
 
 import SectionSuggestion from "./SectionSuggestion";
 import SectionLogin from "../components/SectionLogin";
+import Meta from "../components/Meta"
 
 import {userLoginKey} from "../config";
 import React, {useEffect, useState} from "react";
 import {postUser} from "../utils/api";
+
 
 const Home = () => {
   const [userLogin, setUserLogin] = useState(false)
@@ -27,6 +29,7 @@ const Home = () => {
 
   return (
     <main id="main">
+      <Meta title="首頁" />
       <section id="about" className="about section-bg">
         <div className="container"  onLoad={() => handleOnLoad()}>
           <div className="row justify-content-between">

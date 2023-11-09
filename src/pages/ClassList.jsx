@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Spinner from 'react-bootstrap/Spinner';
 import axios from "axios";
+import Meta from "../components/Meta";
 
 
 const ClassList = () => {
@@ -89,6 +90,7 @@ const ClassList = () => {
 
   return (
     <main id="main">
+      <Meta title="課程列表" />
       <section className="breadcrumbs">
         <div className="container">
 

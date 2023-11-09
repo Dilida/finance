@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import Meta from "../components/Meta";
 
 const Sitemap = () => {
 
@@ -15,6 +16,7 @@ const Sitemap = () => {
   }
   return (
     <main id="main">
+      <Meta title="網站導覽" />
       <section className="breadcrumbs">
         <div className="container">
 

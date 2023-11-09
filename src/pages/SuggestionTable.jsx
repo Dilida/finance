@@ -1,5 +1,6 @@
 import {getSuggestionValue} from "../utils/api";
 import {useState, useEffect} from "react";
+import Meta from "../components/Meta";
 
 const SuggestionTable = () => {
   const [testValue, setTestValue] = useState([])
@@ -18,7 +19,7 @@ const SuggestionTable = () => {
 
   return (
     <main id="main">
-
+      <Meta title="單元評價結果" />
       <section className="breadcrumbs">
         <div className="container">
 

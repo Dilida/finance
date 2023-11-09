@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
+import Meta from "../components/Meta";
 
 
 const ClassTable = () => {
@@ -68,6 +69,7 @@ const ClassTable = () => {
 
   return (
     <main id="main">
+      <Meta title="課程列表" />
       <section className="breadcrumbs">
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">

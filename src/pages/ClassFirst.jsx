@@ -6,6 +6,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import {Col, Row, Card} from "react-bootstrap";
 import axios from "axios";
 import ready from '../assets/img/ready.png'
+import Meta from "../components/Meta";
 
 
 const ClassFirst = () => {
@@ -41,6 +42,7 @@ const ClassFirst = () => {
 
   return (
     <main id="main">
+      <Meta title="課程列表" />
       <section className="breadcrumbs">
         <div className="container">
 

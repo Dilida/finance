@@ -20,7 +20,7 @@ const App = () => {
     <GlobalProvider>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home/>} exact title="首頁"/>
+          <Route path="/" element={<Home/>} exact/>
           <Route path="/classList" element={<ClassList/>}/>
           <Route path="/classTable" element={<ClassTable/>}/>
           <Route path="/classFirst" element={<ClassFirst/>}/>
