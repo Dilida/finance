@@ -190,6 +190,7 @@ h6,
     color: #38804B;
 }
 
+
 .navbar .getstarted,
 .navbar .getstarted:focus {
     background: #38804B;
@@ -415,7 +416,7 @@ h6,
 
 #hero .animated {
     height: 80%;
-    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+    /*animation: up-down 2s ease-in-out infinite alternate-reverse both;*/
 }
 
 .hero-img{

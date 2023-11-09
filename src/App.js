@@ -1,7 +1,6 @@
 import {Routes, Route} from "react-router-dom";
 // Layout
 import Layout from "./layout/Layout";
-
 // pages
 import Home from "./pages/Home";
 import ClassList from "./pages/ClassList";
@@ -21,7 +20,7 @@ const App = () => {
     <GlobalProvider>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home/>} exact/>
+          <Route path="/" element={<Home/>} exact title="首頁"/>
           <Route path="/classList" element={<ClassList/>}/>
           <Route path="/classTable" element={<ClassTable/>}/>
           <Route path="/classFirst" element={<ClassFirst/>}/>
