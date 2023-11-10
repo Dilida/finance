@@ -109,7 +109,7 @@ h6,
 # Header
 --------------------------------------------------------------*/
 #header {
-    height: 72px;
+    height: 78px;
     transition: all 0.5s;
     z-index: 997;
     transition: all 0.5s;
@@ -139,6 +139,14 @@ h6,
 
 #main {
     margin-top: 50px;
+}
+
+.sr-only{
+    color: white;
+}
+
+.sr-only:focus{
+    color: #0f5132;
 }
 
 /*--------------------------------------------------------------
@@ -416,7 +424,7 @@ h6,
 
 #hero .animated {
     height: 80%;
-    /*animation: up-down 2s ease-in-out infinite alternate-reverse both;*/
+    /*animation: up-down 8s ease-in-out infinite alternate-reverse both;*/
 }
 
 .hero-img{

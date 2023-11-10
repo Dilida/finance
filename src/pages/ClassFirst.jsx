@@ -51,16 +51,16 @@ const ClassFirst = () => {
           </div>
         </div>
       </section>
-      <a className="accesskey" href="#aC" id="aC" accessKey="C" title="中間功能區塊" tabIndex="2">:::</a>
       <section id="class-first" className="class-first">
         <div className="container">
+          <a className="accesskey" href="#aC" id="aC" accessKey="C" title="中間功能區塊" tabIndex="2">:::</a>
           {loading ?
             <div className="text-center"><Spinner animation="border" variant="success"/></div>
             :
             <div className="row gy-4">
               {itemList.map((item, index) => (
                 <div className="px-3 col-lg-6" key={"class-first" + item.id}>
-                  <a href={"/classSecond?id=" + item.id} title={item.id + "." + item.name} role="button">
+                  <a href={"/classSecond?id=" + item.id +"&name=" + item.name} title={item.id + "." + item.name} role="button" tabIndex="2">
                     <Card border="success">
                       <Card.Body>
                         <Row>

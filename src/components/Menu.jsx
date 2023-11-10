@@ -37,28 +37,30 @@ const Menu = () => {
 
 
   return (
-    <Container>
-      <header id="header" className="fixed-top d-flex align-items-center">
+    <Container className="">
+      <header id="header" className="fixed-top align-items-center">
+        <div className="container">
+          <a className="sr-only" href="#aC" pagescroll="" tabIndex="1"
+             title="跳到主要內容區塊">跳到主要內容區塊</a>
+        </div>
         <div className="container d-flex align-items-center justify-content-between">
-
           <div className="logo">
             <div className="row">
               <div className="col-md-7" data-aos="fade-up" data-aos-delay="100">
-                <a href="/" title="e化金檢知識網" tabIndex="0"><img src={Logo} alt="金融監督管理委會員檢查局"/></a>
+                <a href="/" title="e化金檢知識網"><img src={Logo} alt="金融監督管理委會員檢查局"/></a>
               </div>
               <div className="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <h1 className="text-light"><a href="/" title="e化金檢知識網"  tabIndex="0"><span><strong>e</strong>化金檢知識網</span></a></h1>
+                <h1 className="text-light"><a href="/" title="e化金檢知識網"><span><strong>e</strong>化金檢知識網</span></a></h1>
               </div>
             </div>
-
           </div>
 
           <nav id="navbar" className={mobileMenu ? "navbar" : "navbar navbar-mobile"}>
+            <a className="accesskey" href="#aU" id="aU" accessKey="U" title="上方功能區塊">:::</a>
             <ul>
-              {/*<li><a className="accesskey" href="#aU" id="aU" accessKey="U" title="上方功能區塊" tabIndex="2">:::</a></li>*/}
               <li>
                 <a className="nav-link scrollto" role="menuitem" tabIndex="1" onClick={scrollHandle} id="about-" title="回首頁" href="">回首頁</a></li>
-              {userLogin ?<li><a className="nav-link scrollto" role="menuitem" tabIndex="0" href="/classFirst" title="課程列表">課程列表</a></li>: null}
+              {userLogin ?<li><a className="nav-link scrollto" role="menuitem" tabIndex="1" href="/classFirst" title="課程列表">課程列表</a></li>: null}
               <li><a className="nav-link scrollto" role="menuitem" tabIndex="1" href="/sitemap" title="網站導覽">網站導覽</a></li>
               <li><a className="nav-link scrollto" role="menuitem" tabIndex="1" onClick={scrollHandle} id="hero-" title="學習地圖" href="">學習地圖</a></li>
               <li><a className="nav-link scrollto" role="menuitem" tabIndex="1" title="意見區" href="/sectionSuggestion">意見區</a></li>

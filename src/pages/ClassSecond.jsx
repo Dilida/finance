@@ -78,20 +78,20 @@ const ClassSecond = () => {
                       {item.subjectList.map((item2, index2) =>
                         <Col className="text-center" key={`class-second-02-${index2}`}><a href="" key={"item2" + index2}
                                                                                           role="button"
-                                                                                          title={item2.name}
+                                                                                          title={item2.id + item2.name}
                                                                                           className="card-link me-lg-3"
-                                                                                          onClick={(e) => handleClass(e, item2.folderId)}>{item2.name}</a></Col>
+                                                                                          onClick={(e) => handleClass(e, item2.folderId)}>{item.name}_{item2.name} (另開新視窗）</a></Col>
                       )}
                     </Row>
                     <hr/>
                     <Row>
                       <Col xs={3} className="text-center">
                         <a href="" role="button" title="單元評分" className="card-link me-lg-3"
-                           onClick={(e) => handleValue(e, `${initClass.id}.${initClass.name}`, `${item.id}.${item.name}`, item.folderId)}>單元評分</a>
+                           onClick={(e) => handleValue(e, `${initClass.id}.${initClass.name}`, `${item.id}.${item.name}`, item.folderId)}>{item.name}_單元評分</a>
                       </Col>
                       <Col xs={3} className="text-center">
                         <a href="" role="button" title="課程檢測" className="card-link me-lg-3"
-                           onClick={(e) => handleTest(e, `${initClass.id}.${initClass.name}`, `${item.id}.${item.name}`, item.folderId)}>課程檢測</a>
+                           onClick={(e) => handleTest(e, `${initClass.id}.${initClass.name}`, `${item.id}.${item.name}`, item.folderId)}>{item.name}_課程檢測</a>
                       </Col>
                     </Row>
                   </Card.Body>
